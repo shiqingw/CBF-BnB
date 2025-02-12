@@ -1,0 +1,25 @@
+{   
+    "SingleIntegrator3D":{
+        "type": "SingleIntegrator3D",
+        "properties": {
+            "n_state": 3,
+            "n_control": 3
+        },
+        "params":{
+        }
+    },
+
+    "InvertedPendulum":{
+        "type": "InvertedPendulum",
+        "properties": {
+            "n_state": 2,
+            "n_control": 1
+        },
+        "params":{
+            "mass": 1.0,
+            "length": 1.0,
+            "viscous_friction": 0.1
+        }
+    }
+
+}
