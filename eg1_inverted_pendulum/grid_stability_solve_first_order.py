@@ -7,6 +7,7 @@ import numpy as np
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 import time
+import matplotlib.pyplot as plt
 
 from cores.dynamical_systems.create_system import get_system
 from cores.lip_nn.models import LipschitzNetwork, ControllerNetwork
@@ -23,6 +24,12 @@ if __name__ == '__main__':
     parser.add_argument('--precision', default=1e-3, type=float, help='precision')
     parser.add_argument('--draw', action='store_true', help='draw the mesh')
     args = parser.parse_args()
+
+    # Matplotlib settings
+    plt.rcParams['font.family'] = 'serif'
+    plt.rcParams.update({"text.usetex": True,
+                        "text.latex.preamble": r"\usepackage{amsmath}"})
+    plt.rcParams.update({'pdf.fonttype': 42})
 
     # Create result directory
     print("==> Creating result directory ...")
@@ -221,7 +228,29 @@ if __name__ == '__main__':
 
             # Plot mesh
             if args.draw:
-                raise NotImplementedError("Drawing is not implemented yet.")
+                regions = mesh.regions
+                labelsize = 30
+                ticksize = 30
+                fig = plt.figure(figsize=(10, 10), dpi=100)
+                ax = fig.add_subplot(111)
+                for (idx, region) in enumerate(regions):
+                    x_lb, x_ub = region
+                    facecolor = "tab:blue" if f_lb[idx] >= 0 else "tab:orange"
+                    ax.add_patch(plt.Rectangle(x_lb.cpu().numpy(), 
+                                                x_ub.cpu().numpy()[0] - x_lb.cpu().numpy()[0], 
+                                                x_ub.cpu().numpy()[1] - x_lb.cpu().numpy()[1], 
+                                                edgecolor=None, facecolor=facecolor))
+                plt.xlabel(r"$x_1$", fontsize=labelsize)
+                plt.ylabel(r"$x_2$", fontsize=labelsize)
+                plt.tick_params(axis='both', which='major', labelsize=ticksize)
+                plt.xlim(subregion_lb_np[0], subregion_ub_np[0])
+                plt.ylim(subregion_lb_np[1], subregion_ub_np[1])
+                ax.add_patch(plt.Rectangle((0, 0), 0, 0, edgecolor=None, facecolor="tab:blue", label="Feasible"))
+                ax.add_patch(plt.Rectangle((0, 0), 0, 0, edgecolor=None, facecolor="tab:orange", label="Infeasible"))
+                plt.legend(fontsize=labelsize, loc="upper right")
+                plt.tight_layout()
+                plt.savefig(f"{results_dir}/00_grid_feasibility_{jj:010d}_{i:02d}.png", dpi=100)
+                plt.close()
 
             if f_lb_min >= 0:
                 success = True
@@ -233,7 +262,7 @@ if __name__ == '__main__':
                 print("> Early stopping. Done!")
                 break
             
-            refine_idx = (f_ub > 0)
+            refine_idx = (f_lb < 0)
             mesh.refine(refine_idx)
 
         end_time = time.time()
