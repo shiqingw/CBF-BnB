@@ -20,6 +20,16 @@
             "length": 1.0,
             "viscous_friction": 0.1
         }
+    },
+
+    "DoubleIntegrator2D":{
+        "type": "DoubleIntegrator2D",
+        "properties": {
+            "n_state": 4,
+            "n_control": 2
+        },
+        "params":{
+        }
     }
 
 }

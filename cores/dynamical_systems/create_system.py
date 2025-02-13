@@ -8,6 +8,7 @@ from .quadrotor_2d import Quadrotor2D
 from .unicycle_circle_following import UnicycleCircleFollowing
 from .cartesian_arm_2_link import CartesianArmTwoLink
 from .single_integrator_3d import SingleIntegrator3D
+from .double_integrator_2d import DoubleIntegrator2D
 from pathlib import Path
 
 def get_system(system_name, dtype):
@@ -50,6 +51,8 @@ def get_system(system_name, dtype):
                                    dtype=dtype)
     elif data["type"] == "SingleIntegrator3D":
         return SingleIntegrator3D(dtype=dtype)
+    elif data["type"] == "DoubleIntegrator2D":
+        return DoubleIntegrator2D(dtype=dtype)
     else:
         raise ValueError("System type not found in systems.json")
 
