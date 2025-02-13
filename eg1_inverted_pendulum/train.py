@@ -10,7 +10,6 @@ sys.path.append(str(Path(__file__).parent.parent))
 from torchinfo import summary
 from torch.utils.data import DataLoader
 import time
-import matplotlib.pyplot as plt
 
 from cores.dynamical_systems.create_system import get_system
 from cores.lip_nn.models import LipschitzNetwork
@@ -64,7 +63,7 @@ if __name__ == '__main__':
                         dtype=config.pt_dtype)
     save_nn_weights(system, f"{results_dir}/system_params.pt")
 
-    # Build Lyapunov network
+    # Build CBF network
     print("==> Building cbf neural network ...")
     cbf_config = test_settings["cbf_nn_config"]
     cbf_alpha = cbf_config["alpha"]
@@ -90,7 +89,7 @@ if __name__ == '__main__':
     summary(cbf_nn, input_size=(1, cbf_in_features), dtypes=[config.pt_dtype])
     save_nn_weights(cbf_nn, f"{results_dir}/cbf_weights_init.pt")
     lip_cbf_nn = cbf_nn.get_l2_lipschitz_bound()
-    print("==> Lipschitz constant of Lyapunov network: {:.6f}".format(lip_cbf_nn))
+    print("==> Lipschitz constant of CBF network: {:.6f}".format(lip_cbf_nn))
     cbf_nn.to(device)
 
     # Control config
@@ -98,11 +97,11 @@ if __name__ == '__main__':
     control_lower_bound = torch.tensor(control_config["lower_bound"], dtype=config.pt_dtype, device=device)
     control_upper_bound = torch.tensor(control_config["upper_bound"], dtype=config.pt_dtype, device=device)
 
-    # matplotlib settings
-    plt.rcParams['font.family'] = 'serif'
-    plt.rcParams.update({"text.usetex": True,
-                        "text.latex.preamble": r"\usepackage{amsmath}"})
-    plt.rcParams.update({'pdf.fonttype': 42})
+    # Disturbance config
+    disturbance_config = test_settings["disturbance_config"]
+    disturbance_channel_matrix = torch.tensor(disturbance_config["channel_matrix"], dtype=config.pt_dtype, device=device)
+    disturbance_lower_bound = torch.tensor(disturbance_config["lower_bound"], dtype=config.pt_dtype, device=device)
+    disturbance_upper_bound = torch.tensor(disturbance_config["upper_bound"], dtype=config.pt_dtype, device=device)
 
     # The state space
     dataset_config = test_settings["dataset_config"]
@@ -182,32 +181,41 @@ if __name__ == '__main__':
             x = x.to(device)
             optimizer.zero_grad()
             h, h_dx = cbf_nn.forward_with_jacobian(x) # (batch_size, 1), (batch_size, 1, state_dim)
+            h = h.squeeze(1) # (batch_size,)
+            h_dx = h_dx.squeeze(1) # (batch_size, state_dim)
 
             # Safe and unsafe indices
             safe_set_idx = label > 0
             unsafe_set_idx = label < 0
 
             # Loss for safe set (label = 1)
-            h_safe_set = h[safe_set_idx] # (batch_size, 1)
+            h_safe_set = h[safe_set_idx] # (batch_size,)
             loss_safe_set = safe_set_weight * torch.max(-h_safe_set, torch.zeros_like(h_safe_set)).mean()
             
             # Loss for unsafe set (label = -1)
-            h_unsafe_set = h[unsafe_set_idx] # (batch_size, 1)
+            h_unsafe_set = h[unsafe_set_idx] # (batch_size,)
             loss_unsafe_set = unsafe_set_weight * torch.max(h_unsafe_set + unsafe_set_margin, torch.zeros_like(h_unsafe_set)).mean()
 
             # Loss for feasibility
             x_safe = x[safe_set_idx] # (safe_size, state_dim)
-            h_dx_safe = h_dx[safe_set_idx] # (safe_size, 1, state_dim)
+            h_dx_safe = h_dx[safe_set_idx] # (safe_size, state_dim)
             drift_safe = system.get_drift(x_safe) # (safe_size, state_dim)
             actuation_safe = system.get_actuation(x_safe) # (safe_size, state_dim, control_dim)
-            h_dx_f_safe = torch.bmm(h_dx_safe, drift_safe.unsqueeze(-1)).squeeze(-1) # (safe_size, 1)
-            h_dx_g_safe = torch.bmm(h_dx_safe, actuation_safe).squeeze(1) # (safe_size, control_dim)
+            h_dx_f_safe = (h_dx_safe * drift_safe).sum(dim=1) # (safe_size,)
+            h_dx_g_safe = torch.bmm(h_dx_safe.unsqueeze(1), actuation_safe).squeeze(1) # (safe_size, control_dim)
             h_dx_g_safe_pos = torch.max(h_dx_g_safe, torch.zeros_like(h_dx_g_safe)) # (safe_size, control_dim)
             h_dx_g_safe_neg = torch.min(h_dx_g_safe, torch.zeros_like(h_dx_g_safe)) # (safe_size, control_dim)
-            tmp = h_dx_f_safe
-            tmp += (h_dx_g_safe_pos * control_upper_bound).sum(dim=1, keepdim=True)
-            tmp += (h_dx_g_safe_neg * control_lower_bound).sum(dim=1, keepdim=True)
-            tmp += cbf_alpha * h_safe_set
+            tmp = h_dx_f_safe # (safe_size,)
+            tmp += (h_dx_g_safe_pos * control_upper_bound).sum(dim=1) # (safe_size,)
+            tmp += (h_dx_g_safe_neg * control_lower_bound).sum(dim=1) # (safe_size,)
+            tmp += cbf_alpha * h_safe_set # (safe_size,)
+
+            # Add disturbance
+            h_dx_G_safe = torch.matmul(h_dx_safe, disturbance_channel_matrix) # (safe_size, disturbance_dim)
+            h_dx_G_safe_pos = torch.max(h_dx_G_safe, torch.zeros_like(h_dx_G_safe)) # (safe_size, disturbance_dim)
+            h_dx_G_safe_neg = torch.min(h_dx_G_safe, torch.zeros_like(h_dx_G_safe)) # (safe_size, disturbance_dim)
+            tmp += (h_dx_G_safe_pos * disturbance_lower_bound).sum(dim=1) # (safe_size,)
+            tmp += (h_dx_G_safe_neg * disturbance_upper_bound).sum(dim=1) # (safe_size,)
             loss_feasibility = feasibility_weight * torch.max(-tmp + feasibility_margin, torch.zeros_like(tmp)).mean()
 
             # Total loss
@@ -251,33 +259,42 @@ if __name__ == '__main__':
             for batch_idx, (x, label) in enumerate(test_dataloader):
                 x = x.to(device)
                 h, h_dx = cbf_nn.forward_with_jacobian(x) # (batch_size, 1), (batch_size, 1, state_dim)
+                h = h.squeeze(1) # (batch_size,)
+                h_dx = h_dx.squeeze(1) # (batch_size, state_dim)
 
                 # Safe and unsafe indices
                 safe_set_idx = label > 0
                 unsafe_set_idx = label < 0
 
                 # Loss for safe set (label = 1)
-                h_safe_set = h[safe_set_idx] # (batch_size, 1)
+                h_safe_set = h[safe_set_idx] # (batch_size,)
                 loss_safe_set = safe_set_weight * torch.max(-h_safe_set, torch.zeros_like(h_safe_set)).mean()
                 
                 # Loss for unsafe set (label = -1)
-                h_unsafe_set = h[unsafe_set_idx] # (batch_size, 1)
-                loss_unsafe_set = unsafe_set_weight * torch.max(h_unsafe_set + unsafe_set_margin, torch.zeros_like(h_unsafe_set)).mean()
+                h_unsafe_set = h[unsafe_set_idx] # (batch_size,)
+                loss_unsafe_set = unsafe_set_weight * torch.max(h_unsafe_set, torch.zeros_like(h_unsafe_set)).mean()
 
                 # Loss for feasibility
                 x_safe = x[safe_set_idx] # (safe_size, state_dim)
-                h_dx_safe = h_dx[safe_set_idx] # (safe_size, 1, state_dim)
+                h_dx_safe = h_dx[safe_set_idx] # (safe_size, state_dim)
                 drift_safe = system.get_drift(x_safe) # (safe_size, state_dim)
                 actuation_safe = system.get_actuation(x_safe) # (safe_size, state_dim, control_dim)
-                h_dx_f_safe = torch.bmm(h_dx_safe, drift_safe.unsqueeze(-1)).squeeze(-1) # (safe_size, 1)
-                h_dx_g_safe = torch.bmm(h_dx_safe, actuation_safe).squeeze(1) # (safe_size, control_dim)
+                h_dx_f_safe = (h_dx_safe * drift_safe).sum(dim=1) # (safe_size,)
+                h_dx_g_safe = torch.bmm(h_dx_safe.unsqueeze(1), actuation_safe).squeeze(1) # (safe_size, control_dim)
                 h_dx_g_safe_pos = torch.max(h_dx_g_safe, torch.zeros_like(h_dx_g_safe)) # (safe_size, control_dim)
                 h_dx_g_safe_neg = torch.min(h_dx_g_safe, torch.zeros_like(h_dx_g_safe)) # (safe_size, control_dim)
-                tmp = h_dx_f_safe
-                tmp += (h_dx_g_safe_pos * control_upper_bound).sum(dim=1, keepdim=True)
-                tmp += (h_dx_g_safe_neg * control_lower_bound).sum(dim=1, keepdim=True)
-                tmp += cbf_alpha * h_safe_set
-                loss_feasibility = feasibility_weight * torch.max(-tmp + feasibility_margin, torch.zeros_like(tmp)).mean()
+                tmp = h_dx_f_safe # (safe_size,)
+                tmp += (h_dx_g_safe_pos * control_upper_bound).sum(dim=1) # (safe_size,)
+                tmp += (h_dx_g_safe_neg * control_lower_bound).sum(dim=1) # (safe_size,)
+                tmp += cbf_alpha * h_safe_set # (safe_size,)
+
+                # Add disturbance
+                h_dx_G_safe = torch.matmul(h_dx_safe, disturbance_channel_matrix) # (safe_size, disturbance_dim)
+                h_dx_G_safe_pos = torch.max(h_dx_G_safe, torch.zeros_like(h_dx_G_safe)) # (safe_size, disturbance_dim)
+                h_dx_G_safe_neg = torch.min(h_dx_G_safe, torch.zeros_like(h_dx_G_safe)) # (safe_size, disturbance_dim)
+                tmp += (h_dx_G_safe_pos * disturbance_lower_bound).sum(dim=1) # (safe_size,)
+                tmp += (h_dx_G_safe_neg * disturbance_upper_bound).sum(dim=1) # (safe_size,)
+                loss_feasibility = feasibility_weight * torch.max(-tmp, torch.zeros_like(tmp)).mean()
 
                 # Total loss
                 loss = loss_safe_set + loss_unsafe_set + loss_feasibility
@@ -329,8 +346,8 @@ if __name__ == '__main__':
     print("==> Computing the smoothness constants ...")
     lip_cbf_nn = cbf_nn.get_l2_lipschitz_bound()
     hess_bound_cbf_nn = cbf_nn.get_l2_hessian_bound()
-    print("> Lipschitz constant of Lyapunov network: {:.6f}".format(lip_cbf_nn))
-    print("> Hessian bound of Lyapunov network: {:.6f}".format(hess_bound_cbf_nn))
+    print("> Lipschitz constant of CBF network: {:.6f}".format(lip_cbf_nn))
+    print("> Hessian bound of CBF network: {:.6f}".format(hess_bound_cbf_nn))
 
     # Save the training results
     print("==> Saving the training results ...")
@@ -347,7 +364,7 @@ if __name__ == '__main__':
     }
     save_dict(train_results, f"{results_dir}/train_results.pkl")
 
-    # Check the Lyapunov function and stability condition
+    # Check the CBF function and feasibility condition
     print("==> Visualizing the CBF function and feasibility condition ...")
     post_mesh_size = dataset_config["post_mesh_size"]
     meshgrid = np.meshgrid(*[np.linspace(state_lower_bound[i], state_upper_bound[i], post_mesh_size[i]) for i in range(state_dim)])
@@ -363,22 +380,29 @@ if __name__ == '__main__':
         batch_size=batch_size,
         shuffle=False
     )
-    h_flatten_torch = torch.zeros((state_flatten_np.shape[0], 1), dtype=config.pt_dtype)
-    feasibility_flatten_torch = torch.zeros((state_flatten_np.shape[0], 1), dtype=config.pt_dtype)
+    h_flatten_torch = torch.zeros((state_flatten_np.shape[0],), dtype=config.pt_dtype)
+    feasibility_flatten_torch = torch.zeros((state_flatten_np.shape[0],), dtype=config.pt_dtype)
     for (batch_idx, (state_batch,)) in enumerate(dataloader):
         state_batch = state_batch.to(device)
         h_batch, h_dx_batch = cbf_nn.forward_with_jacobian(state_batch)
+        h_batch = h_batch.squeeze(1)
+        h_dx_batch = h_dx_batch.squeeze(1)
         h_flatten_torch[batch_idx*batch_size:min((batch_idx+1)*batch_size, h_flatten_torch.shape[0])] = h_batch.detach().cpu()
         drift_batch = system.get_drift(state_batch) # (batch_size, state_dim)
         actuation_batch = system.get_actuation(state_batch) # (batch_size, state_dim, control_dim)
-        h_dx_f_batch = torch.bmm(h_dx_batch, drift_batch.unsqueeze(-1)).squeeze(-1) # (batch_size, 1)
-        h_dx_g_batch = torch.bmm(h_dx_batch, actuation_batch).squeeze(1) # (batch_size, control_dim)
+        h_dx_f_batch = (h_dx_batch * drift_batch).sum(dim=1) # (batch_size,)
+        h_dx_g_batch = torch.bmm(h_dx_batch.unsqueeze(1), actuation_batch).squeeze(1) # (batch_size, control_dim)
         h_dx_g_pos_batch = torch.max(h_dx_g_batch, torch.zeros_like(h_dx_g_batch)) # (batch_size, control_dim)
         h_dx_g_neg_batch = torch.min(h_dx_g_batch, torch.zeros_like(h_dx_g_batch)) # (batch_size, control_dim)
         tmp = h_dx_f_batch
-        tmp += (h_dx_g_pos_batch * control_upper_bound).sum(dim=1, keepdim=True)
-        tmp += (h_dx_g_neg_batch * control_lower_bound).sum(dim=1, keepdim=True)
+        tmp += (h_dx_g_pos_batch * control_upper_bound).sum(dim=1)
+        tmp += (h_dx_g_neg_batch * control_lower_bound).sum(dim=1)
         tmp += cbf_alpha * h_batch
+        h_dx_G_batch = torch.matmul(h_dx_batch, disturbance_channel_matrix) # (batch_size, disturbance_dim)
+        h_dx_G_pos_batch = torch.max(h_dx_G_batch, torch.zeros_like(h_dx_G_batch)) # (batch_size, disturbance_dim)
+        h_dx_G_neg_batch = torch.min(h_dx_G_batch, torch.zeros_like(h_dx_G_batch)) # (batch_size, disturbance_dim)
+        tmp += (h_dx_G_pos_batch * disturbance_lower_bound).sum(dim=1)
+        tmp += (h_dx_G_neg_batch * disturbance_upper_bound).sum(dim=1)
         feasibility_flatten_torch[batch_idx*batch_size:min((batch_idx+1)*batch_size, feasibility_flatten_torch.shape[0])] = tmp.detach().cpu()
 
     del state_flatten_torch, dataset, dataloader
@@ -436,17 +460,24 @@ if __name__ == '__main__':
                             pt_dtype=config.pt_dtype)
 
     def feasibility_fun(x):
-        h, h_dx = cbf_nn.forward_with_jacobian(x)
+        h, h_dx = cbf_nn.forward_with_jacobian(x) # (batch_size, 1), (batch_size, 1, state_dim)
+        h = h.squeeze(1) # (batch_size,)
+        h_dx = h_dx.squeeze(1) # (batch_size, state_dim)
         drift = system.get_drift(x) # (batch_size, state_dim)
         actuation = system.get_actuation(x) # (batch_size, state_dim, control_dim)
-        h_dx_f = torch.bmm(h_dx, drift.unsqueeze(-1)).squeeze(-1) # (batch_size, 1)
-        h_dx_g = torch.bmm(h_dx, actuation).squeeze(1) # (batch_size, control_dim)
+        h_dx_f = (h_dx * drift).sum(dim=1) # (batch_size,)
+        h_dx_g = torch.bmm(h_dx.unsqueeze(1), actuation).squeeze(1) # (batch_size, control_dim)
         h_dx_g_pos = torch.max(h_dx_g, torch.zeros_like(h_dx_g)) # (batch_size, control_dim)
         h_dx_g_neg = torch.min(h_dx_g, torch.zeros_like(h_dx_g)) # (batch_size, control_dim)
         tmp = h_dx_f
-        tmp += (h_dx_g_pos * control_upper_bound).sum(dim=1, keepdim=True)
-        tmp += (h_dx_g_neg * control_lower_bound).sum(dim=1, keepdim=True)
+        tmp += (h_dx_g_pos * control_upper_bound).sum(dim=1)
+        tmp += (h_dx_g_neg * control_lower_bound).sum(dim=1)
         tmp += cbf_alpha * h
+        h_dx_G = torch.matmul(h_dx, disturbance_channel_matrix) # (safe_size, disturbance_dim)
+        h_dx_G_pos = torch.max(h_dx_G, torch.zeros_like(h_dx_G)) # (safe_size, disturbance_dim)
+        h_dx_G_neg = torch.min(h_dx_G, torch.zeros_like(h_dx_G)) # (safe_size, disturbance_dim)
+        tmp += (h_dx_G_pos * disturbance_lower_bound).sum(dim=1)
+        tmp += (h_dx_G_neg * disturbance_upper_bound).sum(dim=1)
         return tmp
     
     print("==> Visualizing the feasibility condition ...")

@@ -165,6 +165,24 @@ class InvertedPendulum(nn.Module):
 
         return f_bound
     
+    def get_f_l1_bound(self, x_lb, x_ub, u_lb, u_ub) -> float:
+        
+        gravity = self.gravity.item()
+        mass = self.mass.item()
+        length = self.length.item()
+        friction = self.viscous_friction.item()
+
+        sin_theta_bound = max_abs_sin(x_lb[0], x_ub[0])
+        dtheta_bound = max(abs(x_lb[1]), abs(x_ub[1]))
+        u_bound = max(abs(u_lb[0]), abs(u_ub[0]))
+
+        f_1_bound = dtheta_bound
+        f_2_bound = sin_theta_bound*gravity/length + u_bound/(mass*length**2) + friction/(mass*length**2)*dtheta_bound
+        
+        f_bound = f_1_bound + f_2_bound
+
+        return f_bound
+    
     def get_f_du_l2_bound(self, x_lb, x_ub, u_lb, u_ub) -> float:
         """Calculates the L2 norm bound of ∂f/∂u (partial derivative of dynamics w.r.t. control).
 
