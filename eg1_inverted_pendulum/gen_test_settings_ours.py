@@ -41,7 +41,7 @@ def generate_json_script(filename, entry):
     "dataset_config": {{
         "state_lower_bound": [-3.14, -5],
         "state_upper_bound": [3.14, 5],
-        "mesh_size": [30, 50],
+        "mesh_size": [60, 100],
         "post_mesh_size": [120, 200]
     }},
 
@@ -55,21 +55,22 @@ def generate_json_script(filename, entry):
         "warmup_steps": 30,
         "batch_size": 256,
         "cbf_lr": 1e-2,
-        "cbf_wd": 1e-4,
+        "cbf_wd": 1e-6,
         "safe_set_weight": 0.1,
-        "unsafe_set_weight": 1.0,
-        "feasibility_weight": 1.0,
-        "unsafe_set_margin": 0.006,
-        "feasibility_margin": 0.002
+        "unsafe_set_weight": 2.5,
+        "feasibility_weight": 2.5,
+        "safe_set_margin": 0.02,
+        "unsafe_set_margin": 0.03,
+        "feasibility_margin": 0.05
     }}
 }}"""
     with open(filename, 'w') as file:
         file.write(data_str)
 
 
-num_layers = [2, 3, 4]
+num_layers = [4]
 num_layers.sort()
-cbf_alphas = [1e-1, 2e-1, 4e-1, 8e-1]
+cbf_alphas = [5e-1]
 cbf_alphas.sort()
 random_seeds = [0, 100, 200, 300]
 random_seeds.sort()
@@ -85,7 +86,7 @@ for num_layer in num_layers:
                 "random_seed": random_seed
             })
 
-start = 1
+start = 9
 exp_nums = range(start, start+len(data))
 for i in range(len(data)):
     entry = data[i]

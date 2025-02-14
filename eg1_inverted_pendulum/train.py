@@ -153,6 +153,7 @@ if __name__ == '__main__':
     safe_set_weight = train_config["safe_set_weight"]
     unsafe_set_weight = train_config["unsafe_set_weight"]
     feasibility_weight = train_config["feasibility_weight"]
+    safe_set_margin = train_config["safe_set_margin"]
     unsafe_set_margin = train_config["unsafe_set_margin"]
     feasibility_margin = train_config["feasibility_margin"]
     train_loss_monitor = np.zeros(num_epochs, dtype=config.np_dtype)
@@ -190,7 +191,7 @@ if __name__ == '__main__':
 
             # Loss for safe set (label = 1)
             h_safe_set = h[safe_set_idx] # (batch_size,)
-            loss_safe_set = safe_set_weight * torch.max(-h_safe_set, torch.zeros_like(h_safe_set)).mean()
+            loss_safe_set = safe_set_weight * torch.max(-h_safe_set + safe_set_margin, torch.zeros_like(h_safe_set)).mean()
             
             # Loss for unsafe set (label = -1)
             h_unsafe_set = h[unsafe_set_idx] # (batch_size,)
