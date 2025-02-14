@@ -1,0 +1,61 @@
+==> Creating result directory ...
+==> Loading test settings ...
+==> Deciding torch device ...
+==> torch device:  cpu
+==> Building cbf neural network ...
+==> Lipschitz constant of CBF network: 1.000000
+==> Hessian bound of CBF network: 2.177606
+==> Third order elementwise bound of CBF network: 8.000000
+==> Number of subregions: 4
+==> Subregion 0000000001 / 0000000004: 
+==> [[-3.14 -5.  ], [-2.618  5.   ]]
+> Iteration 00 | Bound: [-0.066527, 4.940280] | l2 radius: 5.01E+00 | Size: 1.00E+00 | Time: 15ms
+> Iteration 01 | Bound: [-0.087148, 2.426439] | l2 radius: 2.51E+00 | Size: 2.00E+00 | Time: 16ms
+> Iteration 02 | Bound: [-0.077146, 1.199812] | l2 radius: 1.28E+00 | Size: 4.00E+00 | Time: 17ms
+> Iteration 03 | Bound: [-0.069706, 0.491507] | l2 radius: 6.77E-01 | Size: 8.00E+00 | Time: 18ms
+> Iteration 04 | Bound: [-0.067314, 0.121563] | l2 radius: 4.07E-01 | Size: 1.60E+01 | Time: 19ms
+> Iteration 05 | Bound: [-0.062232, 0.042728] | l2 radius: 3.04E-01 | Size: 2.60E+01 | Time: 20ms
+> Iteration 06 | Bound: [-0.026728, 0.006355] | l2 radius: 2.04E-01 | Size: 3.40E+01 | Time: 21ms
+> Iteration 07 | Bound: [-0.017364, -0.003989] | l2 radius: 1.52E-01 | Size: 1.00E+01 | Time: 21ms
+> No region to refine. Done!
+> Time for subregion 0000000001: 21ms
+> Total time up to subregion 0000000001: 21ms = 0.02189040184020996 s
+==> Subregion 0000000002 / 0000000004: 
+==> [[ 2.618 -5.   ], [3.14 5.  ]]
+> Iteration 00 | Bound: [-0.072923, 4.933885] | l2 radius: 5.01E+00 | Size: 1.00E+00 | Time: 0ms
+> Iteration 01 | Bound: [-0.082939, 2.430649] | l2 radius: 2.51E+00 | Size: 2.00E+00 | Time: 1ms
+> Iteration 02 | Bound: [-0.078698, 1.198260] | l2 radius: 1.28E+00 | Size: 4.00E+00 | Time: 2ms
+> Iteration 03 | Bound: [-0.074897, 0.485562] | l2 radius: 6.77E-01 | Size: 8.00E+00 | Time: 3ms
+> Iteration 04 | Bound: [-0.072986, 0.113569] | l2 radius: 4.07E-01 | Size: 1.60E+01 | Time: 4ms
+> Iteration 05 | Bound: [-0.068252, 0.036144] | l2 radius: 3.04E-01 | Size: 2.60E+01 | Time: 4ms
+> Iteration 06 | Bound: [-0.032763, -0.000076] | l2 radius: 2.04E-01 | Size: 3.40E+01 | Time: 5ms
+> No region to refine. Done!
+> Time for subregion 0000000002: 5ms
+> Total time up to subregion 0000000002: 27ms = 0.027781963348388672 s
+==> Subregion 0000000003 / 0000000004: 
+==> [[-2.618 -5.   ], [ 2.618 -4.   ]]
+> Iteration 00 | Bound: [-0.223979, 2.441340] | l2 radius: 2.67E+00 | Size: 1.00E+00 | Time: 0ms
+> Iteration 01 | Bound: [-0.108225, 1.293018] | l2 radius: 1.40E+00 | Size: 2.00E+00 | Time: 1ms
+> Iteration 02 | Bound: [-0.076174, 0.719451] | l2 radius: 8.24E-01 | Size: 4.00E+00 | Time: 2ms
+> Iteration 03 | Bound: [-0.072415, 0.369227] | l2 radius: 5.98E-01 | Size: 8.00E+00 | Time: 3ms
+> Iteration 04 | Bound: [-0.058262, 0.114765] | l2 radius: 4.12E-01 | Size: 1.60E+01 | Time: 3ms
+> Iteration 05 | Bound: [-0.056111, 0.022553] | l2 radius: 2.99E-01 | Size: 1.40E+01 | Time: 4ms
+> Iteration 06 | Bound: [-0.046895, -0.015093] | l2 radius: 2.06E-01 | Size: 1.00E+01 | Time: 5ms
+> No region to refine. Done!
+> Time for subregion 0000000003: 5ms
+> Total time up to subregion 0000000003: 33ms = 0.03337550163269043 s
+==> Subregion 0000000004 / 0000000004: 
+==> [[-2.618  4.   ], [2.618 5.   ]]
+> Iteration 00 | Bound: [-0.181316, 2.484003] | l2 radius: 2.67E+00 | Size: 1.00E+00 | Time: 0ms
+> Iteration 01 | Bound: [-0.109556, 1.291687] | l2 radius: 1.40E+00 | Size: 2.00E+00 | Time: 1ms
+> Iteration 02 | Bound: [-0.085147, 0.707856] | l2 radius: 8.24E-01 | Size: 4.00E+00 | Time: 2ms
+> Iteration 03 | Bound: [-0.084407, 0.357327] | l2 radius: 5.98E-01 | Size: 8.00E+00 | Time: 3ms
+> Iteration 04 | Bound: [-0.067467, 0.103417] | l2 radius: 4.12E-01 | Size: 1.60E+01 | Time: 3ms
+> Iteration 05 | Bound: [-0.064225, 0.014626] | l2 radius: 2.99E-01 | Size: 1.60E+01 | Time: 4ms
+> Iteration 06 | Bound: [-0.053755, -0.021717] | l2 radius: 2.06E-01 | Size: 8.00E+00 | Time: 5ms
+> No region to refine. Done!
+> Time for subregion 0000000004: 5ms
+> Total time up to subregion 0000000004: 39ms = 0.03903651237487793 s
+> Total time excluding drawing: 39ms = 0.03903651237487793 s
+> Success: True
+==> Done!
