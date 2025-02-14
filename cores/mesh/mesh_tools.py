@@ -144,3 +144,57 @@ def split_nd_rectangle_at_index(
 
     # Cast to requested dtype
     return sub_lower.to(pt_dtype), sub_upper.to(pt_dtype)
+
+import torch
+
+def decompose_hyperrectangle(lb, ub, a_lb, a_ub):
+    """
+    Decompose the set difference A \ B, where
+      A = { x in R^N : lb <= x <= ub }
+      B = { x in R^N : a_lb <= x <= a_ub }
+    into hyperrectangles.
+    
+    Args:
+        lb  : Tensor of shape (N,) representing the lower bound of A.
+        ub  : Tensor of shape (N,) representing the upper bound of A.
+        a_lb: Tensor of shape (N,) representing the lower bound of B.
+        a_ub: Tensor of shape (N,) representing the upper bound of B.
+        
+    Returns:
+        X_lb: Tensor of shape (m, N) with the lower bounds of the pieces.
+        X_ub: Tensor of shape (m, N) with the upper bounds of the pieces.
+    """
+    pieces_lb = []
+    pieces_ub = []
+    N = lb.numel()
+    
+    for d in range(N):
+        # Lower slab in dimension d
+        if a_lb[d] > lb[d]:
+            # Start with the full A
+            new_lb = lb.clone()
+            new_ub = ub.clone()
+            # For dimensions before d, restrict to B
+            if d > 0:
+                new_lb[:d] = a_lb[:d]
+                new_ub[:d] = a_ub[:d]
+            # At dimension d, take the part left of B
+            new_ub[d] = a_lb[d]
+            pieces_lb.append(new_lb)
+            pieces_ub.append(new_ub)
+        
+        # Upper slab in dimension d
+        if a_ub[d] < ub[d]:
+            new_lb = lb.clone()
+            new_ub = ub.clone()
+            if d > 0:
+                new_lb[:d] = a_lb[:d]
+                new_ub[:d] = a_ub[:d]
+            # At dimension d, take the part right of B
+            new_lb[d] = a_ub[d]
+            pieces_lb.append(new_lb)
+            pieces_ub.append(new_ub)
+    
+    X_lb = torch.stack(pieces_lb, dim=0)
+    X_ub = torch.stack(pieces_ub, dim=0)
+    return X_lb, X_ub
