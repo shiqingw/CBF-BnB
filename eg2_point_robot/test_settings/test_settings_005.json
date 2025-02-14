@@ -6,7 +6,7 @@
         "out_features": 1,
         "lipschitz_constant": 1.0,
         "activations": "tanh",
-        "num_layers": 2,
+        "num_layers": 3,
         "width_each_layer": 128,
         "input_bias": [
             0.0,

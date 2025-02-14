@@ -1,12 +1,12 @@
 {
-    "seed": 0,
+    "seed": 200,
     "true_system_name": "DoubleIntegrator2D",
     "cbf_nn_config": {
         "in_features": 4,
         "out_features": 1,
         "lipschitz_constant": 1.0,
         "activations": "tanh",
-        "num_layers": 2,
+        "num_layers": 3,
         "width_each_layer": 128,
         "input_bias": [
             0.0,

@@ -1,5 +1,5 @@
 {
-    "seed": 0,
+    "seed": 300,
     "true_system_name": "DoubleIntegrator2D",
     "cbf_nn_config": {
         "in_features": 4,

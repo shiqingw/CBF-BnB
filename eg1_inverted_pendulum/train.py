@@ -136,7 +136,6 @@ if __name__ == '__main__':
     )
     test_dataloader = train_dataloader
 
-    
     # Define optimizer, learning rate scheduler, loss function, and loss monitor
     num_epochs = train_config["num_epochs"]
     optimizer = torch.optim.Adam([
