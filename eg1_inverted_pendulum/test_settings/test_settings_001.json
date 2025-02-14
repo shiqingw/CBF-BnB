@@ -7,7 +7,7 @@
         "lipschitz_constant": 1.0,
         "activations": "tanh",
         "num_layers": 2,
-        "width_each_layer": 32,
+        "width_each_layer": 128,
         "input_bias": [
             0.0,
             0.0
@@ -25,10 +25,10 @@
         "upper_bound": [12.0]
     },
 
-    "disturbance_config": {
+   "disturbance_config": {
         "channel_matrix": [[0], [1]],
-        "lower_bound": [-0.0],
-        "upper_bound": [0.0]
+        "lower_bound": [-0.05],
+        "upper_bound": [0.05]
     },
 
     "dataset_config": {
@@ -49,10 +49,10 @@
         "batch_size": 256,
         "cbf_lr": 1e-2,
         "cbf_wd": 1e-4,
-        "safe_set_weight": 0.5,
-        "unsafe_set_weight": 3.0,
-        "feasibility_weight": 4.0,
-        "unsafe_set_margin": 0.02,
-        "feasibility_margin": 0.03
+        "safe_set_weight": 0.1,
+        "unsafe_set_weight": 1.0,
+        "feasibility_weight": 1.0,
+        "unsafe_set_margin": 0.002,
+        "feasibility_margin": 0.002
     }
 }
