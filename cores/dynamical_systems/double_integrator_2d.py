@@ -16,12 +16,16 @@ class DoubleIntegrator2D(nn.Module):
 
     def forward(self, x: torch.Tensor, u: torch.Tensor) -> torch.Tensor:
 
+        dx = torch.zeros_like(x)
         vx = x[:,2]
         vy = x[:,3]
         ax = u[:,0]
         ay = u[:,1]
 
-        dx = torch.cat([vx, vy, ax, ay], dim=1)
+        dx[:, 0] = vx
+        dx[:, 1] = vy
+        dx[:, 2] = ax
+        dx[:, 3] = ay
         return dx
     
     def get_drift(self, x: torch.Tensor) -> torch.Tensor:
