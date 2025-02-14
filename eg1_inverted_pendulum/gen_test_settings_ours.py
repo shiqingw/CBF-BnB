@@ -59,7 +59,7 @@ def generate_json_script(filename, entry):
         "safe_set_weight": 0.1,
         "unsafe_set_weight": 1.0,
         "feasibility_weight": 1.0,
-        "unsafe_set_margin": 0.002,
+        "unsafe_set_margin": 0.006,
         "feasibility_margin": 0.002
     }}
 }}"""

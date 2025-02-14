@@ -309,6 +309,7 @@ if __name__ == '__main__':
         # Save the model if the test loss is the best
         if epoch_test_loss < best_epoch_test_loss:
             best_epoch_test_loss = epoch_test_loss
+            best_epoch = epoch
             torch.save(cbf_nn.state_dict(), cbf_best_loss_loc)
             print("> Save at epoch {:03d} | Test loss {:.4E}".format(epoch+1, best_epoch_test_loss))
 
@@ -422,14 +423,35 @@ if __name__ == '__main__':
     unsafe_set_count = np.sum(unsafe_set_idx)
     unsafe_set_percentage = np.sum(h_flatten_np[unsafe_set_idx] < 0) / unsafe_set_count
     print(f"> Unsafe set percentage: {unsafe_set_percentage:.4f}")
+    safety_success = False
+    if unsafe_set_percentage == 1.0:
+        safety_success = True
 
     # Calculate the percentage of feasibility_flatten_torch >= 0 within h_flatten_np >= 0
     feasibility_flatten_np = feasibility_flatten_torch.detach().cpu().numpy()
     feasibility_flatten_np = feasibility_flatten_np.squeeze()
     feasibility_idx = h_flatten_np >= 0
-    feasibility_count = np.sum(feasibility_idx)
+    feasibility_count = max(np.sum(feasibility_idx), 1)
     feasibility_percentage = np.sum(feasibility_flatten_np[feasibility_idx] >= 0) / feasibility_count
+    feasibility_success = False
+    if feasibility_percentage == 1.0:
+        feasibility_success = True
     print(f"> Feasibility percentage: {feasibility_percentage:.4f}")
+
+    print("> Success: ", safety_success and feasibility_success)
+
+    # Save the feasilibity results
+    print("==> Saving the feasibility results ...")
+    feasibility_results = {
+        "best_epoch": best_epoch,
+        "success": safety_success and feasibility_success,
+        "safety_success": safety_success,
+        "feasibility_success": feasibility_success,
+        "safe_set_percentage": safe_set_percentage,
+        "unsafe_set_percentage": unsafe_set_percentage,
+        "feasibility_percentage": feasibility_percentage
+    }
+    save_dict(feasibility_results, f"{results_dir}/feasibility_results.pkl")
 
     del state_flatten_np, h_flatten_np, feasibility_flatten_np, safe_set_idx, unsafe_set_idx, feasibility_idx
 
