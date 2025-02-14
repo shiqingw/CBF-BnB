@@ -55,7 +55,7 @@
         "cbf_wd": 1e-6,
         "safe_set_weight": 0.1,
         "unsafe_set_weight": 5.0,
-        "feasibility_weight": 4.0,
+        "feasibility_weight": 0.0,
         "unsafe_set_margin": 0.1,
         "feasibility_margin": 0.1
     }
