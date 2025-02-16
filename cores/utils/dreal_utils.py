@@ -7,17 +7,17 @@ from dreal import Variable, tanh, Expression, Config, logical_and, logical_not, 
 from ..lip_nn.layers import SandwichFc, SandwichLin
 from .utils import format_time
 
-def get_dreal_lyapunov_exp(vars, lyapunov_nn, dtype, device):
+def get_dreal_lipschitz_exp(vars, lipschitz_nn, dtype, device):
     # Check the input
-    assert len(vars) == lyapunov_nn.in_features
+    assert len(vars) == lipschitz_nn.in_features
 
     # Construct the Lyapunov function
-    num_layers = len(lyapunov_nn.layers)
-    activations = lyapunov_nn.activations
+    num_layers = len(lipschitz_nn.layers)
+    activations = lipschitz_nn.activations
 
     # For input transform
-    input_bias = lyapunov_nn.input_bias.detach().cpu().numpy()
-    input_transform = lyapunov_nn.input_transform.detach().cpu().numpy()
+    input_bias = lipschitz_nn.input_bias.detach().cpu().numpy()
+    input_transform = lipschitz_nn.input_transform.detach().cpu().numpy()
     out = input_transform * (vars - input_bias)
 
     print("> Start constructing the dReal expression for lyapunov function ...")
@@ -26,7 +26,7 @@ def get_dreal_lyapunov_exp(vars, lyapunov_nn, dtype, device):
 
     # For the SandwichFc layers
     for i in range(num_layers-1):
-        layer = lyapunov_nn.layers[i]
+        layer = lipschitz_nn.layers[i]
         if not isinstance(layer, SandwichFc):
             raise ValueError("The layer is not SandwichFc!")
         
@@ -55,7 +55,7 @@ def get_dreal_lyapunov_exp(vars, lyapunov_nn, dtype, device):
         out = np.dot(weight2, out)
     
     # For the last SandwichLin layer
-    layer = lyapunov_nn.layers[-1]
+    layer = lipschitz_nn.layers[-1]
     if not isinstance(layer, SandwichLin):
         raise ValueError("The layer is not SandwichLin!")
     weight = layer.weight.detach().cpu().numpy()
@@ -73,29 +73,29 @@ def get_dreal_lyapunov_exp(vars, lyapunov_nn, dtype, device):
         out = np.dot(2*A.T, out)
     if bias is not None:
         out += bias
-    V = out[0] # dReal scalar expression
+    model = out[0] # dReal scalar expression
     
     # Substract the value at zero
-    if lyapunov_nn.zero_at_zero:
+    if lipschitz_nn.zero_at_zero:
         env = {var:0.0 for var in vars}
-        zero_value = V.Evaluate(env)
-        V = V - Expression(zero_value)
-        assert abs(V.Evaluate(env)) < 1e-7
+        zero_value = model.Evaluate(env)
+        model = model - Expression(zero_value)
+        assert abs(model.Evaluate(env)) < 1e-7
     
     stop_time = time.time()
     print("> Stop time:", datetime.fromtimestamp(stop_time))
     print(f"> Time used: {format_time(stop_time-start_time)} = {stop_time-start_time} s")
 
     # Test the dReal expression
-    print("> Checking consistency for lyapunov function ...")
+    print("> Checking consistency for lipschitz neural network ...")
     N = 20
-    test_input = torch.rand((N, lyapunov_nn.in_features), dtype=dtype, device=device)
+    test_input = torch.rand((N, lipschitz_nn.in_features), dtype=dtype, device=device)
     for i in range(N):
         env = {var:test_input[i, j].item() for j, var in enumerate(vars)}
         t1 = time.time()
         dreal_value = V.Evaluate(env)
         t2 = time.time()
-        pytorch_value = lyapunov_nn(test_input[i].unsqueeze(0)).item()
+        pytorch_value = lipschitz_nn(test_input[i].unsqueeze(0)).item()
         if abs(dreal_value-pytorch_value) > 1e-5:
             print(f"> Test input {i+1}: {test_input[i]}")
             print(f"> dReal value: {dreal_value} | Time used: {format_time(t2-t1)}")
@@ -103,7 +103,7 @@ def get_dreal_lyapunov_exp(vars, lyapunov_nn, dtype, device):
             print(f"> Difference: {np.linalg.norm(np.array(dreal_value)-pytorch_value)}")
             raise ValueError("The dReal expression for lyapunov function is not correct!")
 
-    return V
+    return model
 
 def get_dreal_controller_exp(vars, controller_nn, dtype, device):
     # Check the input

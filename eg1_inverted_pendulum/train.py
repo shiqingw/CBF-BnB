@@ -64,7 +64,7 @@ if __name__ == '__main__':
     save_nn_weights(system, f"{results_dir}/system_params.pt")
 
     # Build CBF network
-    print("==> Building cbf neural network ...")
+    print("==> Building CBF neural network ...")
     cbf_config = test_settings["cbf_nn_config"]
     cbf_alpha = cbf_config["alpha"]
     cbf_in_features = cbf_config["in_features"]
