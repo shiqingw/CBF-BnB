@@ -49,7 +49,7 @@ def generate_json_script(filename, entry):
         "post_mesh_size": [40, 40, 20, 20]
     }},
 
-    "safe_set_config": {{
+    "unsafe_set_config": {{
         "unsafe_set_lower_bound": [-0.5, -2, -1, -1],
         "unsafe_set_upper_bound": [0.5, 0, 1, 1]
     }},
@@ -64,8 +64,8 @@ def generate_json_script(filename, entry):
         "unsafe_set_weight": 2.5,
         "feasibility_weight": 2.5,
         "safe_set_margin": 0.02,
-        "unsafe_set_margin": 0.03,
-        "feasibility_margin": 0.05
+        "unsafe_set_margin": 0.1,
+        "feasibility_margin": 0.1
     }}
 }}"""
     with open(filename, 'w') as file:
