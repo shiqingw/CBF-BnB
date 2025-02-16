@@ -9,7 +9,7 @@ sys.path.append(str(Path(__file__).parent.parent))
 import time
 import multiprocessing
 from datetime import datetime
-from dreal import Variable, abs, sin, sqrt, Expression, Config, logical_and, logical_not, logical_imply, CheckSatisfiability
+from dreal import Variable, sin, sqrt, Expression, Config, logical_and, logical_not, logical_imply, CheckSatisfiability
 
 from cores.utils.dreal_utils import get_dreal_lipschitz_exp
 from cores.dynamical_systems.create_system import get_system
@@ -153,7 +153,7 @@ if __name__ == '__main__':
     cbf = get_dreal_lipschitz_exp(vars_, cbf_nn, dtype=config.pt_dtype, device=device)
 
     # System dynamics
-    print("==> dReal for stability condition")
+    print("==> dReal for feasibility condition")
     mass = system.mass.detach().cpu().numpy().item()
     length = system.length.detach().cpu().numpy().item()
     viscous_friction = system.viscous_friction.detach().cpu().numpy().item()
@@ -165,11 +165,11 @@ if __name__ == '__main__':
     actuation = np.array([[0.0], [1.0/inertia]]) # (state_dim, control_dim)
     h_dx_g = np.dot(h_dx, actuation) # (1, control_dim)
     h_dx_g_abs = np.abs(h_dx_g)
-    feasibility_condition += np.dot(h_dx_g_abs, control_upper_bound.cpu().numpy().squeeze())
+    feasibility_condition += np.dot(h_dx_g_abs, control_upper_bound.cpu().numpy())
     feasibility_condition += cbf_alpha * cbf
-    h_dx_G = np.dot(h_dx, disturbance_channel_matrix.cpu().numpy().squeeze())
+    h_dx_G = np.dot(h_dx, disturbance_channel_matrix.cpu().numpy())
     h_dx_G_abs = np.abs(h_dx_G)
-    feasibility_condition += np.dot(h_dx_G_abs, disturbance_elementwise_upper_bound.cpu().numpy().squeeze())
+    feasibility_condition -= np.dot(h_dx_G_abs, disturbance_elementwise_upper_bound.cpu().numpy())
 
     # Test dReal expression
     print("> Checking consistency for feasibility condition ...")
