@@ -64,7 +64,7 @@ if __name__ == '__main__':
     system.load_state_dict(torch.load(f"{results_dir}/system_params.pt", weights_only=True, map_location=device))
     system.eval()
 
-     # Build CBF network
+    # Build CBF network
     print("==> Building cbf neural network ...")
     cbf_config = test_settings["cbf_nn_config"]
     cbf_alpha = cbf_config["alpha"]
