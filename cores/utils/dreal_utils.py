@@ -93,7 +93,7 @@ def get_dreal_lipschitz_exp(vars, lipschitz_nn, dtype, device):
     for i in range(N):
         env = {var:test_input[i, j].item() for j, var in enumerate(vars)}
         t1 = time.time()
-        dreal_value = V.Evaluate(env)
+        dreal_value = model.Evaluate(env)
         t2 = time.time()
         pytorch_value = lipschitz_nn(test_input[i].unsqueeze(0)).item()
         if abs(dreal_value-pytorch_value) > 1e-5:

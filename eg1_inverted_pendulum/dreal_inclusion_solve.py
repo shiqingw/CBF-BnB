@@ -162,7 +162,7 @@ if __name__ == '__main__':
         time_checking += stop_time-start_time
         print(f"> Time for subregion {(jj+1):010d}: {format_time(stop_time-start_time)} = {stop_time-start_time} s")
         print(f"> Total time up to subregion {(jj+1):010d}: {format_time(time_checking)} = {time_checking} s")
-
+        print("")
     
     # Save the result
     checing_result = {
@@ -174,6 +174,6 @@ if __name__ == '__main__':
     }
 
     save_dict(checing_result, f"{results_dir}/00_dreal_inclusion_result_{dreal_config.precision:.1E}.pkl")
-
+    print("==> Success:", success)
     print("==> Done!")
 
