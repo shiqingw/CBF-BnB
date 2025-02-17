@@ -53,7 +53,7 @@
         "unsafe_set_weight": 2.5,
         "feasibility_weight": 2.5,
         "safe_set_margin": 0.02,
-        "unsafe_set_margin": 0.06,
-        "feasibility_margin": 0.05
+        "unsafe_set_margin": 0.1,
+        "feasibility_margin": 0.08
     }
 }

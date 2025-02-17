@@ -55,13 +55,13 @@ def generate_json_script(filename, entry):
         "warmup_steps": 30,
         "batch_size": 256,
         "cbf_lr": 1e-2,
-        "cbf_wd": 1e-6,
+        "cbf_wd": 3e-5,
         "safe_set_weight": 0.1,
         "unsafe_set_weight": 2.5,
         "feasibility_weight": 2.5,
         "safe_set_margin": 0.02,
-        "unsafe_set_margin": 0.03,
-        "feasibility_margin": 0.05
+        "unsafe_set_margin": 0.04,
+        "feasibility_margin": 0.03
     }}
 }}"""
     with open(filename, 'w') as file:
