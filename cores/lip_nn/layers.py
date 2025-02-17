@@ -92,11 +92,8 @@ def get_activation_second_der(activation_name):
 ## from https://github.com/acfr/LBDN
 class SandwichFc(nn.Linear): 
     def __init__(self, in_features, out_features, bias=True, activation='relu', scale=1.0, dtype=torch.float32, 
-                random_psi=False, trainable_psi=True, initialize_all_weights_to_zero=False):
+                random_psi=False, trainable_psi=True):
         super().__init__(in_features+out_features, out_features, bias, dtype=dtype)
-        if initialize_all_weights_to_zero:
-            self.weight.data = torch.zeros_like(self.weight)
-            self.bias.data = torch.zeros_like(self.bias)
         self.dtype = dtype
         self.alpha = nn.Parameter(torch.ones(1, dtype=self.dtype, requires_grad=True))
         self.alpha.data = self.weight.norm() 
@@ -266,12 +263,8 @@ class SandwichFc(nn.Linear):
         return out, jac, W1, W2, sigma_second_der
     
 class SandwichLin(nn.Linear):
-    def __init__(self, in_features, out_features, bias=True, scale=1.0, AB=False, dtype=torch.float32,
-                 initialize_all_weights_to_zero=False):
+    def __init__(self, in_features, out_features, bias=True, scale=1.0, AB=False, dtype=torch.float32):
         super().__init__(in_features+out_features, out_features, bias, dtype=dtype)
-        if initialize_all_weights_to_zero:
-            self.weight.data = torch.zeros_like(self.weight)
-            self.bias.data = torch.zeros_like(self.bias)
         self.dtype = dtype
         self.alpha = nn.Parameter(torch.ones(1, dtype=self.dtype, requires_grad=True))
         self.alpha.data = self.weight.norm()

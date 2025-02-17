@@ -41,8 +41,7 @@ def get_activation_third_der_bound(activation_name):
 
 class LipschitzNetwork(nn.Module):
     def __init__(self, in_features, out_features, gamma, activations, widths, zero_at_zero=False, 
-                 input_bias=None, input_transform=None, dtype=torch.float32, random_psi=False, trainable_psi=True,
-                 initialize_all_weights_to_zero=False):
+                 input_bias=None, input_transform=None, dtype=torch.float32, random_psi=False, trainable_psi=True):
         super().__init__()
         self.in_features = in_features
         self.out_features = out_features
@@ -82,15 +81,13 @@ class LipschitzNetwork(nn.Module):
                                      scale=scale,
                                      dtype=self.dtype, 
                                      random_psi=random_psi,
-                                     trainable_psi=trainable_psi,
-                                     initialize_all_weights_to_zero=initialize_all_weights_to_zero))
+                                     trainable_psi=trainable_psi))
         layers.append(SandwichLin(in_features=self.widths[-2], 
                                   out_features=self.out_features, 
                                   bias=True, 
                                   scale=math.sqrt(self.gamma), 
                                   AB=False,
-                                  dtype=self.dtype,
-                                  initialize_all_weights_to_zero=initialize_all_weights_to_zero))  # Last layer with identity activation
+                                  dtype=self.dtype))  # Last layer with identity activation
         self.model = nn.Sequential(*layers)
         self.layers = layers
             
