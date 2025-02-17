@@ -113,7 +113,7 @@ if __name__ == '__main__':
     print(f"> dReal number of jobs: {dreal_config.number_of_jobs}")
 
     time_checking = 0.0
-    success = None
+    success = True
 
     for jj in range(n_subregions):
         if success == False:

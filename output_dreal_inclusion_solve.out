@@ -1,0 +1,6 @@
+nohup: ignoring input
+mkdir: cannot create directory ‘eg1_results/001’: File exists
+mkdir: cannot create directory ‘eg1_results/002’: File exists
+mkdir: cannot create directory ‘eg1_results/003’: File exists
+mkdir: cannot create directory ‘eg1_results/004’: File exists
+mkdir: cannot create directory ‘eg1_results/005’: File exists
