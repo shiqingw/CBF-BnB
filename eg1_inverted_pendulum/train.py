@@ -85,8 +85,7 @@ if __name__ == '__main__':
                                 input_transform=cbf_input_transform,
                                 dtype=config.pt_dtype,
                                 random_psi=False,
-                                trainable_psi=False,
-                                initialize_all_weights_to_zero=True)
+                                trainable_psi=False)
     summary(cbf_nn, input_size=(1, cbf_in_features), dtypes=[config.pt_dtype])
     save_nn_weights(cbf_nn, f"{results_dir}/cbf_weights_init.pt")
     lip_cbf_nn = cbf_nn.get_l2_lipschitz_bound()

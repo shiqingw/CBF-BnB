@@ -60,8 +60,8 @@ def generate_json_script(filename, entry):
         "unsafe_set_weight": 2.5,
         "feasibility_weight": 2.5,
         "safe_set_margin": 0.02,
-        "unsafe_set_margin": 0.04,
-        "feasibility_margin": 0.03
+        "unsafe_set_margin": 0.060,
+        "feasibility_margin": 0.07
     }}
 }}"""
     with open(filename, 'w') as file:

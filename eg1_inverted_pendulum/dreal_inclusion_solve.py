@@ -108,7 +108,7 @@ if __name__ == '__main__':
     dreal_config.use_polytope_in_forall = True
     dreal_config.use_local_optimization = True
     dreal_config.precision = dreal_precision
-    dreal_config.number_of_jobs = min(4, multiprocessing.cpu_count())
+    dreal_config.number_of_jobs = min(1, multiprocessing.cpu_count())
     print(f"> dReal precision: {dreal_config.precision:.1E}")
     print(f"> dReal number of jobs: {dreal_config.number_of_jobs}")
 

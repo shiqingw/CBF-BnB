@@ -1,0 +1,14 @@
+nohup: ignoring input
+mkdir: cannot create directory ‘eg1_results/001’: File exists
+mkdir: cannot create directory ‘eg1_results/002’: File exists
+mkdir: cannot create directory ‘eg1_results/003’: File exists
+mkdir: cannot create directory ‘eg1_results/004’: File exists
+mkdir: cannot create directory ‘eg1_results/005’: File exists
+run_dreal_feasibility_solve.sh: line 10: 349947 Killed                  python -u eg1_inverted_pendulum/dreal_feasibility_solve.py --exp_num 5 --dreal_precision 1.0E-03 > eg1_results/005/output_dreal_feasibility_solve_1.0E-03.out
+mkdir: cannot create directory ‘eg1_results/006’: File exists
+run_dreal_feasibility_solve.sh: line 12: 352175 Killed                  python -u eg1_inverted_pendulum/dreal_feasibility_solve.py --exp_num 6 --dreal_precision 1.0E-03 > eg1_results/006/output_dreal_feasibility_solve_1.0E-03.out
+mkdir: cannot create directory ‘eg1_results/007’: File exists
+run_dreal_feasibility_solve.sh: line 14: 354456 Killed                  python -u eg1_inverted_pendulum/dreal_feasibility_solve.py --exp_num 7 --dreal_precision 1.0E-03 > eg1_results/007/output_dreal_feasibility_solve_1.0E-03.out
+mkdir: cannot create directory ‘eg1_results/008’: File exists
+run_dreal_feasibility_solve.sh: line 16: 356713 Killed                  python -u eg1_inverted_pendulum/dreal_feasibility_solve.py --exp_num 8 --dreal_precision 1.0E-03 > eg1_results/008/output_dreal_feasibility_solve_1.0E-03.out
+mkdir: cannot create directory ‘eg1_results/009’: File exists

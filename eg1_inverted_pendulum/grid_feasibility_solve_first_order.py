@@ -142,7 +142,7 @@ if __name__ == '__main__':
     print(f"==> Number of subregions: {n_subregions}")
     
     # Iterate over all subregions
-    success = None
+    success = True
     time_checking = 0.0
     precision = args.precision
 
@@ -224,6 +224,7 @@ if __name__ == '__main__':
                 h_value = cbf_nn.forward(negative_regions_mid.to(device)).detach().cpu()
                 print("> Double check: ", f_ub_double_check)
                 print("> CBF value: ", h_value)
+                success = False
                 break
 
             # Plot mesh

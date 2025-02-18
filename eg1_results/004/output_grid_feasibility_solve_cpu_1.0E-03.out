@@ -11,27 +11,27 @@
 ==> Subregion 0000000001 / 0000000001: 
 ==> [[-3.14 -5.  ], [3.14 5.  ]]
 ==> Lipschitz constant of the zero order test function: 60.206924
-> Iteration 00 | Bound: [-354.982605, 0.491238] | l2 radius: 5.90E+00 | Size: 1.00E+00 | Time: 6ms
-> Iteration 01 | Bound: [-240.204834, 1.446294] | l2 radius: 4.01E+00 | Size: 2.00E+00 | Time: 9ms
-> Iteration 02 | Bound: [-177.675369, 0.061560] | l2 radius: 2.95E+00 | Size: 4.00E+00 | Time: 11ms
-> Iteration 03 | Bound: [-120.736977, 0.088583] | l2 radius: 2.01E+00 | Size: 8.00E+00 | Time: 14ms
-> Iteration 04 | Bound: [-88.795418, 0.073042] | l2 radius: 1.48E+00 | Size: 1.60E+01 | Time: 16ms
-> Iteration 05 | Bound: [-60.336842, 0.075937] | l2 radius: 1.00E+00 | Size: 3.20E+01 | Time: 19ms
-> Iteration 06 | Bound: [-44.420895, 0.013335] | l2 radius: 7.38E-01 | Size: 6.40E+01 | Time: 23ms
-> Iteration 07 | Bound: [-30.204872, 0.001518] | l2 radius: 5.02E-01 | Size: 1.28E+02 | Time: 29ms
-> Iteration 08 | Bound: [-19.047783, 0.046975] | l2 radius: 3.69E-01 | Size: 2.36E+02 | Time: 38ms
-> Iteration 09 | Bound: [-8.751852, 0.001086] | l2 radius: 2.51E-01 | Size: 3.87E+02 | Time: 50ms
-> Iteration 10 | Bound: [-4.770176, 0.009780] | l2 radius: 1.85E-01 | Size: 6.27E+02 | Time: 69ms
-> Iteration 11 | Bound: [-2.140641, 0.030272] | l2 radius: 1.25E-01 | Size: 1.09E+03 | Time: 116ms
-> Iteration 12 | Bound: [-1.204186, 0.043680] | l2 radius: 9.23E-02 | Size: 1.91E+03 | Time: 147ms
-> Iteration 13 | Bound: [-0.500729, 0.046615] | l2 radius: 6.27E-02 | Size: 2.46E+03 | Time: 195ms
-> Iteration 14 | Bound: [-0.258999, 0.046311] | l2 radius: 4.61E-02 | Size: 3.08E+03 | Time: 251ms
-> Iteration 15 | Bound: [-0.090969, 0.046352] | l2 radius: 3.14E-02 | Size: 4.49E+03 | Time: 348ms
-> Iteration 16 | Bound: [-0.032630, 0.046322] | l2 radius: 2.31E-02 | Size: 4.49E+03 | Time: 421ms
-> Iteration 17 | Bound: [0.012586, 0.046342] | l2 radius: 1.57E-02 | Size: 2.06E+03 | Time: 463ms
+> Iteration 00 | Bound: [-355.178009, 0.295831] | l2 radius: 5.90E+00 | Size: 1.00E+00 | Time: 4ms
+> Iteration 01 | Bound: [-238.819168, 2.831953] | l2 radius: 4.01E+00 | Size: 2.00E+00 | Time: 5ms
+> Iteration 02 | Bound: [-177.656372, 0.080544] | l2 radius: 2.95E+00 | Size: 4.00E+00 | Time: 7ms
+> Iteration 03 | Bound: [-120.689568, 0.135996] | l2 radius: 2.01E+00 | Size: 8.00E+00 | Time: 8ms
+> Iteration 04 | Bound: [-88.744873, 0.123586] | l2 radius: 1.48E+00 | Size: 1.60E+01 | Time: 10ms
+> Iteration 05 | Bound: [-60.298500, 0.114281] | l2 radius: 1.00E+00 | Size: 3.20E+01 | Time: 11ms
+> Iteration 06 | Bound: [-44.458385, 0.059227] | l2 radius: 7.38E-01 | Size: 6.40E+01 | Time: 13ms
+> Iteration 07 | Bound: [-30.234459, 0.048045] | l2 radius: 5.02E-01 | Size: 1.23E+02 | Time: 18ms
+> Iteration 08 | Bound: [-19.267582, 0.000633] | l2 radius: 3.69E-01 | Size: 2.09E+02 | Time: 23ms
+> Iteration 09 | Bound: [-8.869251, 0.058608] | l2 radius: 2.51E-01 | Size: 3.09E+02 | Time: 32ms
+> Iteration 10 | Bound: [-4.782301, 0.026865] | l2 radius: 1.85E-01 | Size: 5.58E+02 | Time: 48ms
+> Iteration 11 | Bound: [-2.162906, 0.037951] | l2 radius: 1.25E-01 | Size: 1.03E+03 | Time: 94ms
+> Iteration 12 | Bound: [-1.162229, 0.060414] | l2 radius: 9.23E-02 | Size: 1.30E+03 | Time: 115ms
+> Iteration 13 | Bound: [-0.476890, 0.060469] | l2 radius: 6.27E-02 | Size: 1.77E+03 | Time: 143ms
+> Iteration 14 | Bound: [-0.230412, 0.060577] | l2 radius: 4.61E-02 | Size: 2.36E+03 | Time: 188ms
+> Iteration 15 | Bound: [-0.074326, 0.060682] | l2 radius: 3.14E-02 | Size: 3.18E+03 | Time: 238ms
+> Iteration 16 | Bound: [-0.012370, 0.060620] | l2 radius: 2.31E-02 | Size: 2.01E+03 | Time: 272ms
+> Iteration 17 | Bound: [0.026711, 0.060547] | l2 radius: 1.57E-02 | Size: 4.85E+02 | Time: 288ms
 > No region to refine. Done!
-> Time for subregion 0000000001: 463ms
-> Total time up to subregion 0000000001: 463ms = 0.4637739658355713 s
-> Total time excluding drawing: 463ms = 0.4637739658355713 s
+> Time for subregion 0000000001: 288ms
+> Total time up to subregion 0000000001: 288ms = 0.28809094429016113 s
+> Total time excluding drawing: 288ms = 0.28809094429016113 s
 > Success: True
 ==> Done!

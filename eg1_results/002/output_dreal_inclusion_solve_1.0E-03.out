@@ -7,48 +7,48 @@
 ==> dReal variables:  [Variable('x1') Variable('x2')]
 ==> dReal for CBF function
 > Start constructing the dReal expression for lyapunov function ...
-> Start time: 2025-02-16 13:39:17.931072
-> Stop time: 2025-02-16 13:39:18.089677
-> Time used: 158ms = 0.15860486030578613 s
+> Start time: 2025-02-17 19:07:39.942805
+> Stop time: 2025-02-17 19:07:40.077778
+> Time used: 134ms = 0.13497328758239746 s
 > Checking consistency for lipschitz neural network ...
 ==> Verifying with dReal ...
 > dReal precision: 1.0E-03
-> dReal number of jobs: 4
+> dReal number of jobs: 1
 ==> Subregion 0000000001 / 0000000004: 
 ==> [[-3.14 -5.  ], [-2.618  5.   ]]
-> Start time: 2025-02-16 13:39:18.099081
-> Stop time: 2025-02-16 13:39:34.585424
+> Start time: 2025-02-17 19:07:40.086800
+> Stop time: 2025-02-17 19:08:05.808425
 > Result:
 None
-> Time for subregion 0000000001: 16s486ms = 16.48634386062622 s
-> Total time up to subregion 0000000001: 16s486ms = 16.48634386062622 s
+> Time for subregion 0000000001: 25s721ms = 25.72162437438965 s
+> Total time up to subregion 0000000001: 25s721ms = 25.72162437438965 s
 
 ==> Subregion 0000000002 / 0000000004: 
 ==> [[ 2.618 -5.   ], [3.14 5.  ]]
-> Start time: 2025-02-16 13:39:34.585884
-> Stop time: 2025-02-16 13:39:45.656340
+> Start time: 2025-02-17 19:08:05.808848
+> Stop time: 2025-02-17 19:08:42.580123
 > Result:
 None
-> Time for subregion 0000000002: 11s70ms = 11.07045578956604 s
-> Total time up to subregion 0000000002: 27s556ms = 27.55679965019226 s
+> Time for subregion 0000000002: 36s771ms = 36.77127456665039 s
+> Total time up to subregion 0000000002: 1m2s = 62.49289894104004 s
 
 ==> Subregion 0000000003 / 0000000004: 
 ==> [[-2.618 -5.   ], [ 2.618 -4.   ]]
-> Start time: 2025-02-16 13:39:45.656806
-> Stop time: 2025-02-16 13:39:50.658790
+> Start time: 2025-02-17 19:08:42.580545
+> Stop time: 2025-02-17 19:08:53.516736
 > Result:
 None
-> Time for subregion 0000000003: 5s1ms = 5.001984596252441 s
-> Total time up to subregion 0000000003: 32s558ms = 32.5587842464447 s
+> Time for subregion 0000000003: 10s936ms = 10.936190843582153 s
+> Total time up to subregion 0000000003: 1m13s = 73.42908978462219 s
 
 ==> Subregion 0000000004 / 0000000004: 
 ==> [[-2.618  4.   ], [2.618 5.   ]]
-> Start time: 2025-02-16 13:39:50.659275
-> Stop time: 2025-02-16 13:39:55.167282
+> Start time: 2025-02-17 19:08:53.517197
+> Stop time: 2025-02-17 19:09:00.152748
 > Result:
 None
-> Time for subregion 0000000004: 4s508ms = 4.508007287979126 s
-> Total time up to subregion 0000000004: 37s66ms = 37.06679153442383 s
+> Time for subregion 0000000004: 6s635ms = 6.6355507373809814 s
+> Total time up to subregion 0000000004: 1m20s = 80.06464052200317 s
 
 ==> Success: True
 ==> Done!
