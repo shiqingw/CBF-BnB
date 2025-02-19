@@ -30,6 +30,29 @@
         },
         "params":{
         }
+    },
+
+    "Unicycle":{
+        "type": "Unicycle",
+        "properties": {
+            "n_state": 3,
+            "n_control": 2
+        },
+        "params":{
+        }
+    },
+
+    "Quadrotor2D":{
+        "type": "Quadrotor2D",
+        "properties": {
+            "n_state": 6,
+            "n_control": 2
+        },
+        "params":{
+            "mass": 1.0,
+            "inertia": 0.018,
+            "arm_length": 0.15
+        }
     }
 
 }

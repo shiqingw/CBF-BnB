@@ -118,6 +118,41 @@ class Quadrotor2D(nn.Module):
 
         return torch.cat([dx, dy, dtheta, ddx, ddy, ddtheta], dim=1)
     
+    def get_drift(self, x):
+
+        theta, dx, dy, dtheta = x[:, 2:3], x[:, 3:4], x[:, 4:5], x[:, 5:6]
+
+        gravity = self.gravity
+
+        sin_theta = torch.sin(theta)
+        cos_theta = torch.cos(theta)
+
+        ddx = - gravity * sin_theta
+        ddy = gravity * (cos_theta - 1)
+        ddtheta = torch.zeros_like(dtheta)
+
+        return torch.cat([dx, dy, dtheta, ddx, ddy, ddtheta], dim=1)
+    
+    def get_actuation(self, x):
+
+        mass = self.mass
+        inertia = self.inertia
+        arm_length = self.arm_length
+
+        theta = x[:, 2]
+        sin_theta = torch.sin(theta)
+        cos_theta = torch.cos(theta)
+
+        actuation = torch.zeros(x.shape[0], self.state_dim, self.control_dim, dtype=self.dtype, device=x.device)
+        actuation[:, 3, 0] = -sin_theta / mass
+        actuation[:, 3, 1] = -sin_theta / mass
+        actuation[:, 4, 0] = cos_theta / mass
+        actuation[:, 4, 1] = cos_theta / mass
+        actuation[:, 5, 0] = -arm_length / inertia
+        actuation[:, 5, 1] = arm_length / inertia
+
+        return actuation
+    
     def linearize(self) -> Tuple[np.ndarray, np.ndarray]:
         """Linearizes the dynamics around the hover position: ẋ = Ax + Bu.
 
@@ -175,6 +210,38 @@ class Quadrotor2D(nn.Module):
 
         f_bound = np.sqrt(f_1_bound ** 2 + f_2_bound ** 2 + f_3_bound ** 2 +
                           f_4_bound ** 2 + f_5_bound ** 2 + f_6_bound ** 2)
+        return f_bound
+    
+    def get_f_l1_bound(self, x_lb, x_ub, u_lb, u_ub) -> float:
+
+        mass = self.mass.item()
+        inertia = self.inertia.item()
+        arm_length = self.arm_length.item()
+        gravity = self.gravity.item()
+
+        sin_theta_bound = max_abs_sin(x_lb[2], x_ub[2])
+        cos_theta_bound = max_abs_cos(x_lb[2], x_ub[2])
+        cos_theta_minus_one_bound = max_abs_cos_minus_one(x_lb[2], x_ub[2])
+
+        f_1_bound = max(abs(x_ub[3]), abs(x_lb[3]))
+        f_2_bound = max(abs(x_ub[4]), abs(x_lb[4]))
+        f_3_bound = max(abs(x_ub[5]), abs(x_lb[5]))
+
+        tmp1 = (u_lb[0] + u_ub[0]) / mass + gravity
+        tmp2 = (u_lb[1] + u_ub[1]) / mass + gravity
+        tmp = max(abs(tmp1), abs(tmp2))
+
+        f_4_bound = tmp * sin_theta_bound
+
+        tmp1 = u_lb[0] + u_ub[0]
+        tmp2 = u_lb[1] + u_ub[1]
+        tmp = max(abs(tmp1), abs(tmp2))
+        f_5_bound = tmp / mass * cos_theta_bound + gravity * cos_theta_minus_one_bound
+
+        tmp = max(abs(u_lb[1] - u_lb[0]), abs(u_ub[1] - u_ub[0]), abs(u_lb[1] - u_ub[0]), abs(u_ub[1] - u_lb[0]))
+        f_6_bound = arm_length * tmp / inertia
+
+        f_bound = f_1_bound + f_2_bound + f_3_bound + f_4_bound + f_5_bound + f_6_bound
         return f_bound
     
     def get_f_du_l2_bound(self, x_lb, x_ub, u_lb, u_ub) -> float:
