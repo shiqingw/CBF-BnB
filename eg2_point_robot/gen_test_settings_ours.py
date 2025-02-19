@@ -14,7 +14,7 @@ def generate_json_script(filename, entry):
         "lipschitz_constant": 1.0,
         "activations": "tanh",
         "num_layers": {entry["num_layer"]},
-        "width_each_layer": 128,
+        "width_each_layer": 256,
         "input_bias": [
             0.0,
             0.0,
@@ -38,8 +38,8 @@ def generate_json_script(filename, entry):
 
    "disturbance_config": {{
         "channel_matrix": [[0, 0], [0, 0], [1, 0], [0, 1]],
-        "lower_bound": [-0.05, -0.05],
-        "upper_bound": [0.05, 0.05]
+        "lower_bound": [-0.01, -0.01],
+        "upper_bound": [0.01, 0.01]
     }},
 
     "dataset_config": {{
@@ -57,22 +57,22 @@ def generate_json_script(filename, entry):
     "train_config": {{
         "num_epochs": 100,
         "warmup_steps": 30,
-        "batch_size": 256,
-        "cbf_lr": 5e-3,
+        "batch_size": 512,
+        "cbf_lr": 1e-3,
         "cbf_wd": 1e-6,
-        "safe_set_weight": 0.1,
-        "unsafe_set_weight": 2.5,
-        "feasibility_weight": 2.5,
-        "safe_set_margin": 0.02,
-        "unsafe_set_margin": 0.1,
-        "feasibility_margin": 0.1
+        "safe_set_weight": 0.01,
+        "unsafe_set_weight": 1.0,
+        "feasibility_weight": 1.0,
+        "safe_set_margin": 0.05,
+        "unsafe_set_margin": 0.15,
+        "feasibility_margin": 0.05
     }}
 }}"""
     with open(filename, 'w') as file:
         file.write(data_str)
 
 
-num_layers = [2, 3, 4]
+num_layers = [4]
 num_layers.sort()
 cbf_alphas = [5e-1]
 cbf_alphas.sort()
@@ -90,7 +90,7 @@ for num_layer in num_layers:
                 "random_seed": random_seed
             })
 
-start = 1
+start = 9
 exp_nums = range(start, start+len(data))
 for i in range(len(data)):
     entry = data[i]

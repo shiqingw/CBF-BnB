@@ -1,0 +1,33 @@
+==> Creating result directory ...
+==> Loading test settings ...
+==> Deciding torch device ...
+==> torch device:  cuda
+==> Building cbf neural network ...
+==> Lipschitz constant of CBF network: 1.000000
+==> Hessian bound of CBF network: 4.355212
+==> Third order elementwise bound of CBF network: 30.225904
+==> Number of subregions: 1
+==> Subregion 0000000001 / 0000000001: 
+==> [[-0.5 -2.  -1.  -1. ], [0.5 0.  1.  1. ]]
+> Iteration 00 | Bound: [-0.314099, 1.488677] | l2 radius: 1.80E+00 | Size: 1.00E+00 | Time: 68ms
+> Iteration 01 | Bound: [-0.296449, 1.284690] | l2 radius: 1.58E+00 | Size: 2.00E+00 | Time: 73ms
+> Iteration 02 | Bound: [-0.260494, 1.062382] | l2 radius: 1.32E+00 | Size: 4.00E+00 | Time: 75ms
+> Iteration 03 | Bound: [-0.229754, 0.770246] | l2 radius: 1.00E+00 | Size: 8.00E+00 | Time: 76ms
+> Iteration 04 | Bound: [-0.183857, 0.717530] | l2 radius: 9.01E-01 | Size: 1.60E+01 | Time: 77ms
+> Iteration 05 | Bound: [-0.183623, 0.606947] | l2 radius: 7.91E-01 | Size: 3.20E+01 | Time: 79ms
+> Iteration 06 | Bound: [-0.176338, 0.485100] | l2 radius: 6.61E-01 | Size: 6.40E+01 | Time: 80ms
+> Iteration 07 | Bound: [-0.155848, 0.344152] | l2 radius: 5.00E-01 | Size: 1.28E+02 | Time: 82ms
+> Iteration 08 | Bound: [-0.123382, 0.327312] | l2 radius: 4.51E-01 | Size: 2.46E+02 | Time: 84ms
+> Iteration 09 | Bound: [-0.107676, 0.287609] | l2 radius: 3.95E-01 | Size: 4.70E+02 | Time: 87ms
+> Iteration 10 | Bound: [-0.105919, 0.201962] | l2 radius: 3.31E-01 | Size: 8.44E+02 | Time: 93ms
+> Iteration 11 | Bound: [-0.098604, 0.097960] | l2 radius: 2.50E-01 | Size: 1.34E+03 | Time: 102ms
+> Iteration 12 | Bound: [-0.080411, 0.073655] | l2 radius: 2.25E-01 | Size: 7.90E+02 | Time: 107ms
+> Iteration 13 | Bound: [-0.072028, 0.044968] | l2 radius: 1.98E-01 | Size: 4.88E+02 | Time: 110ms
+> Iteration 14 | Bound: [-0.072031, 0.011317] | l2 radius: 1.65E-01 | Size: 2.28E+02 | Time: 112ms
+> Iteration 15 | Bound: [-0.056101, -0.015008] | l2 radius: 1.25E-01 | Size: 1.60E+01 | Time: 113ms
+> No region to refine. Done!
+> Time for subregion 0000000001: 113ms
+> Total time up to subregion 0000000001: 113ms = 0.11371922492980957 s
+> Total time excluding drawing: 113ms = 0.11371922492980957 s
+> Success: True
+==> Done!

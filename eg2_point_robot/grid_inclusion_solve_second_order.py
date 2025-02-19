@@ -97,7 +97,7 @@ if __name__ == '__main__':
     print(f"==> Number of subregions: {n_subregions}")
     
     # Iterate over all subregions
-    success = None
+    success = True
     time_checking = 0.0
     precision = args.precision
 
@@ -144,6 +144,7 @@ if __name__ == '__main__':
                 # double check
                 f_lb_double_check = cbf_nn(not_included_region_mid.to(device)).detach().cpu()
                 print("> Double check: ", f_lb_double_check)
+                success = False
                 break
 
             if f_ub_max <= 0.0:

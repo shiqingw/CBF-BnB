@@ -416,13 +416,13 @@ if __name__ == '__main__':
     safe_set_idx = label_np > 0
     safe_set_count = np.sum(safe_set_idx)
     safe_set_percentage = np.sum(h_flatten_np[safe_set_idx] >= 0) / safe_set_count
-    print(f"> Safe set percentage: {safe_set_percentage:.4f}")
+    print(f"> Safe set percentage: {safe_set_percentage:.6f}")
 
     # Calculate the percentage of h_flatten_np < 0 within label_np < 0
     unsafe_set_idx = label_np < 0
     unsafe_set_count = np.sum(unsafe_set_idx)
     unsafe_set_percentage = np.sum(h_flatten_np[unsafe_set_idx] < 0) / unsafe_set_count
-    print(f"> Unsafe set percentage: {unsafe_set_percentage:.4f}")
+    print(f"> Unsafe set percentage: {unsafe_set_percentage:.6f}")
     safety_success = False
     if unsafe_set_percentage == 1.0:
         safety_success = True
@@ -436,7 +436,7 @@ if __name__ == '__main__':
     feasibility_success = False
     if feasibility_percentage == 1.0:
         feasibility_success = True
-    print(f"> Feasibility percentage: {feasibility_percentage:.4f}")
+    print(f"> Feasibility percentage: {feasibility_percentage:.6f}")
 
     print("> Success: ", safety_success and feasibility_success)
 

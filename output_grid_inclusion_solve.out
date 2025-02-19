@@ -1,13 +1,13 @@
 nohup: ignoring input
-mkdir: cannot create directory ‘eg1_results/001’: File exists
-mkdir: cannot create directory ‘eg1_results/002’: File exists
-mkdir: cannot create directory ‘eg1_results/003’: File exists
-mkdir: cannot create directory ‘eg1_results/004’: File exists
-mkdir: cannot create directory ‘eg1_results/005’: File exists
-mkdir: cannot create directory ‘eg1_results/006’: File exists
-mkdir: cannot create directory ‘eg1_results/007’: File exists
-mkdir: cannot create directory ‘eg1_results/008’: File exists
-mkdir: cannot create directory ‘eg1_results/009’: File exists
-mkdir: cannot create directory ‘eg1_results/010’: File exists
-mkdir: cannot create directory ‘eg1_results/011’: File exists
-mkdir: cannot create directory ‘eg1_results/012’: File exists
+mkdir: cannot create directory ‘eg2_results/001’: File exists
+mkdir: cannot create directory ‘eg2_results/002’: File exists
+mkdir: cannot create directory ‘eg2_results/003’: File exists
+mkdir: cannot create directory ‘eg2_results/004’: File exists
+mkdir: cannot create directory ‘eg2_results/005’: File exists
+mkdir: cannot create directory ‘eg2_results/006’: File exists
+mkdir: cannot create directory ‘eg2_results/007’: File exists
+mkdir: cannot create directory ‘eg2_results/008’: File exists
+mkdir: cannot create directory ‘eg2_results/009’: File exists
+mkdir: cannot create directory ‘eg2_results/010’: File exists
+mkdir: cannot create directory ‘eg2_results/011’: File exists
+mkdir: cannot create directory ‘eg2_results/012’: File exists

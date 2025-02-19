@@ -163,13 +163,13 @@ if __name__ == '__main__':
     h_dx = np.array([cbf.Differentiate(x1), cbf.Differentiate(x2)])
     feasibility_condition = np.dot(drift, h_dx)
     actuation = np.array([[0.0], [1.0/inertia]]) # (state_dim, control_dim)
-    h_dx_g = np.dot(h_dx, actuation) # (1, control_dim)
-    h_dx_g_abs = np.abs(h_dx_g)
-    feasibility_condition += np.dot(h_dx_g_abs, control_upper_bound.cpu().numpy())
+    h_dx_g = np.dot(h_dx, actuation) # (control_dim, )
+    h_dx_g_abs = np.abs(h_dx_g) # (control_dim, )
+    feasibility_condition += np.dot(h_dx_g_abs, control_upper_bound.cpu().numpy()) # scalar
     feasibility_condition += cbf_alpha * cbf
-    h_dx_G = np.dot(h_dx, disturbance_channel_matrix.cpu().numpy())
-    h_dx_G_abs = np.abs(h_dx_G)
-    feasibility_condition -= np.dot(h_dx_G_abs, disturbance_elementwise_upper_bound.cpu().numpy())
+    h_dx_G = np.dot(h_dx, disturbance_channel_matrix.cpu().numpy()) # (disturbance_dim, )
+    h_dx_G_abs = np.abs(h_dx_G) # (disturbance_dim, )
+    feasibility_condition -= np.dot(h_dx_G_abs, disturbance_elementwise_upper_bound.cpu().numpy()) # scalar
 
     # Test dReal expression
     print("> Checking consistency for feasibility condition ...")
