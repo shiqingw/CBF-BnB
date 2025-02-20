@@ -12,7 +12,6 @@ from cores.lip_nn.models import LipschitzNetwork
 from cores.utils.utils import format_time, save_dict
 from cores.utils.config import Configuration
 from cores.mesh.inclusion_adaptive_mesh_second_order import InclusionAdaptiveMeshSecondOrder
-from cores.mesh.mesh_tools import decompose_hyperrectangle
 
 if __name__ == '__main__':
     # Parse arguments

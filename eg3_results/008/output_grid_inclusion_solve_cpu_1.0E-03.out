@@ -1,0 +1,27 @@
+==> Creating result directory ...
+==> Loading test settings ...
+==> Deciding torch device ...
+==> torch device:  cpu
+==> Building cbf neural network ...
+==> Lipschitz constant of CBF network: 1.000000
+==> Hessian bound of CBF network: 4.355212
+==> Third order elementwise bound of CBF network: 30.225904
+==> Number of subregions: 1
+==> Subregion 0000000001 / 0000000001: 
+==> [[-0.5  -2.   -1.57], [0.5  0.   1.57]]
+> Iteration 00 | Bound: [-0.378296, 1.549112] | l2 radius: 1.93E+00 | Size: 1.00E+00 | Time: 8ms
+> Iteration 01 | Bound: [-0.403491, 0.962608] | l2 radius: 1.37E+00 | Size: 2.00E+00 | Time: 9ms
+> Iteration 02 | Bound: [-0.353349, 0.703167] | l2 radius: 1.06E+00 | Size: 4.00E+00 | Time: 11ms
+> Iteration 03 | Bound: [-0.316195, 0.492542] | l2 radius: 8.09E-01 | Size: 8.00E+00 | Time: 14ms
+> Iteration 04 | Bound: [-0.275035, 0.408014] | l2 radius: 6.83E-01 | Size: 1.60E+01 | Time: 17ms
+> Iteration 05 | Bound: [-0.270862, 0.257396] | l2 radius: 5.28E-01 | Size: 3.20E+01 | Time: 24ms
+> Iteration 06 | Bound: [-0.267098, 0.137271] | l2 radius: 4.04E-01 | Size: 6.00E+01 | Time: 33ms
+> Iteration 07 | Bound: [-0.227593, 0.113932] | l2 radius: 3.42E-01 | Size: 1.00E+02 | Time: 45ms
+> Iteration 08 | Bound: [-0.192573, 0.062493] | l2 radius: 2.64E-01 | Size: 8.40E+01 | Time: 58ms
+> Iteration 09 | Bound: [-0.153740, -0.000562] | l2 radius: 2.02E-01 | Size: 1.60E+01 | Time: 62ms
+> No region to refine. Done!
+> Time for subregion 0000000001: 62ms
+> Total time up to subregion 0000000001: 62ms = 0.06234383583068848 s
+> Total time excluding drawing: 62ms = 0.06234383583068848 s
+> Success: True
+==> Done!

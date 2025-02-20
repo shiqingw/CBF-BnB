@@ -7,9 +7,9 @@ sys.path.append(str(Path(__file__).parent.parent))
 def generate_json_script(filename, entry):
     data_str = f"""{{
     "seed": {entry["random_seed"]},
-    "true_system_name": "DoubleIntegrator2D",
+    "true_system_name": "Unicycle",
     "cbf_nn_config": {{
-        "in_features": 4,
+        "in_features": 3,
         "out_features": 1,
         "lipschitz_constant": 1.0,
         "activations": "tanh",
@@ -18,11 +18,9 @@ def generate_json_script(filename, entry):
         "input_bias": [
             0.0,
             0.0,
-            0.0,
             0.0
         ],
         "input_transform_to_inverse": [
-            1.0,
             1.0,
             1.0,
             1.0
@@ -37,21 +35,21 @@ def generate_json_script(filename, entry):
     }},
 
    "disturbance_config": {{
-        "channel_matrix": [[0, 0], [0, 0], [1, 0], [0, 1]],
-        "lower_bound": [-0.01, -0.01],
-        "upper_bound": [0.01, 0.01]
+        "channel_matrix": [[0.0], [0.0], [0.0]],
+        "lower_bound": [-0.0],
+        "upper_bound": [0.0]
     }},
 
     "dataset_config": {{
-        "state_lower_bound": [-2.0, -2.0, -1.0, -1.0],
-        "state_upper_bound": [2.0, 2.0, 1.0, 1.0],
-        "mesh_size": [20, 20, 10, 10],
-        "post_mesh_size": [40, 40, 20, 20]
+        "state_lower_bound": [-2.0, -2.0, -1.57],
+        "state_upper_bound": [2.0, 2.0, 1.57],
+        "mesh_size": [40, 40, 30],
+        "post_mesh_size": [80, 80, 60]
     }},
 
     "unsafe_set_config": {{
-        "unsafe_set_lower_bound": [-0.5, -2, -1, -1],
-        "unsafe_set_upper_bound": [0.5, 0, 1, 1]
+        "unsafe_set_lower_bound": [-0.5, -2, -1.57],
+        "unsafe_set_upper_bound": [0.5, 0.0, 1.57]
     }},
 
     "train_config": {{
@@ -59,13 +57,13 @@ def generate_json_script(filename, entry):
         "warmup_steps": 30,
         "batch_size": 512,
         "cbf_lr": 1e-3,
-        "cbf_wd": 1e-6,
-        "safe_set_weight": 0.01,
+        "cbf_wd": 1e-5,
+        "safe_set_weight": 0.0025,
         "unsafe_set_weight": 1.0,
         "feasibility_weight": 1.0,
-        "safe_set_margin": 0.05,
-        "unsafe_set_margin": 0.15,
-        "feasibility_margin": 0.05
+        "safe_set_margin": 0.04,
+        "unsafe_set_margin": 0.16,
+        "feasibility_margin": 0.10
     }}
 }}"""
     with open(filename, 'w') as file:
@@ -95,5 +93,5 @@ exp_nums = range(start, start+len(data))
 for i in range(len(data)):
     entry = data[i]
     exp_num = exp_nums[i]
-    filename = os.path.join(str(Path(__file__).parent.parent), 'eg2_point_robot', 'test_settings', f"test_settings_{exp_num:03}.json")
+    filename = os.path.join(str(Path(__file__).parent.parent), 'eg3_unicycle', 'test_settings', f"test_settings_{exp_num:03}.json")
     generate_json_script(filename, entry)

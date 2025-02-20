@@ -10,7 +10,7 @@ import time
 import matplotlib.pyplot as plt
 
 from cores.dynamical_systems.create_system import get_system
-from cores.lip_nn.models import LipschitzNetwork, ControllerNetwork
+from cores.lip_nn.models import LipschitzNetwork
 from cores.utils.utils import format_time, load_dict, save_dict
 from cores.utils.config import Configuration
 from cores.mesh.feasibility_adaptive_mesh import FeasibilityAdaptiveMesh

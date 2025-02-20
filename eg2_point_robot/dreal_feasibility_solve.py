@@ -28,9 +28,9 @@ if __name__ == '__main__':
     # Create result directory
     print("==> Creating result directory ...")
     exp_num = args.exp_num
-    results_dir = "{}/eg1_results/{:03d}".format(str(Path(__file__).parent.parent), exp_num)
+    results_dir = "{}/eg2_results/{:03d}".format(str(Path(__file__).parent.parent), exp_num)
     if not os.path.exists(results_dir):
-        results_dir = "{}/eg1_results_keep/{:03d}".format(str(Path(__file__).parent.parent), exp_num)
+        results_dir = "{}/eg2_results_keep/{:03d}".format(str(Path(__file__).parent.parent), exp_num)
     test_settings_path = "{}/test_settings/test_settings_{:03d}.json".format(results_dir, exp_num)
     if not os.path.exists(test_settings_path):
         test_settings_path = "{}/test_settings/test_settings_{:03d}.json".format(str(Path(__file__).parent), exp_num)

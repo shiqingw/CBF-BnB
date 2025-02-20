@@ -94,11 +94,11 @@ if __name__ == "__main__":
     with open("text.txt", "w") as file:
         exp_nums = list(range(1, 13))
         for exp_num in exp_nums:
-            # try:
-            out = diagnosis(exp_num)
-            print("#############################################")
-            for ii in out:
-                file.write(f"{ii}\t")
-            file.write(f"\n")
-            # except:
-            #     file.write(f"\n")
+            try:
+                out = diagnosis(exp_num)
+                print("#############################################")
+                for ii in out:
+                    file.write(f"{ii}\t")
+                file.write(f"\n")
+            except:
+                file.write(f"\n")

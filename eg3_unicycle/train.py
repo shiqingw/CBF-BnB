@@ -195,7 +195,7 @@ if __name__ == '__main__':
             # Loss for unsafe set (label = -1)
             h_unsafe_set = h[unsafe_set_idx] # (batch_size,)
             loss_unsafe_set = unsafe_set_weight * torch.max(h_unsafe_set + unsafe_set_margin, torch.zeros_like(h_unsafe_set)).mean()
-
+            
             # Loss for feasibility
             x_safe = x[safe_set_idx] # (safe_size, state_dim)
             h_dx_safe = h_dx[safe_set_idx] # (safe_size, state_dim)

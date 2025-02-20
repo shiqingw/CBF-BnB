@@ -1,0 +1,204 @@
+==> Creating result directory ...
+==> Loading test settings ...
+==> Deciding torch device ...
+==> torch device:  cuda
+==> Building dynamical system ...
+==> Building cbf neural network ...
+==> Lipschitz constant of CBF network: 1.000000
+==> Hessian bound of CBF network: 6.532818
+==> Third order elementwise bound of CBF network: 66.677713
+==> Number of subregions: 8
+==> Subregion 0000000001 / 0000000008: 
+==> [[-2.   -2.   -1.57], [0. 0. 0.]]
+==> Lipschitz constant of the zero order test function: 13.229385
+> Iteration 00 | Bound: [-20.933897, 0.464302] | l2 radius: 1.62E+00 | Size: 1.00E+00 | Time: 70ms
+> Iteration 01 | Bound: [-17.887325, 0.185315] | l2 radius: 1.37E+00 | Size: 2.00E+00 | Time: 73ms
+> Iteration 02 | Bound: [-13.778020, 0.199030] | l2 radius: 1.06E+00 | Size: 4.00E+00 | Time: 76ms
+> Iteration 03 | Bound: [-10.549266, 0.149834] | l2 radius: 8.09E-01 | Size: 8.00E+00 | Time: 79ms
+> Iteration 04 | Bound: [-9.064508, 0.035057] | l2 radius: 6.83E-01 | Size: 1.60E+01 | Time: 88ms
+> Iteration 05 | Bound: [-7.014819, 0.103226] | l2 radius: 5.28E-01 | Size: 3.00E+01 | Time: 93ms
+> Iteration 06 | Bound: [-5.374807, 0.000210] | l2 radius: 4.04E-01 | Size: 5.20E+01 | Time: 100ms
+> Iteration 07 | Bound: [-4.596553, 0.102211] | l2 radius: 3.42E-01 | Size: 9.30E+01 | Time: 106ms
+> Iteration 08 | Bound: [-3.214209, 0.280054] | l2 radius: 2.64E-01 | Size: 1.53E+02 | Time: 114ms
+> Iteration 09 | Bound: [-2.399011, 0.275764] | l2 radius: 2.02E-01 | Size: 2.72E+02 | Time: 123ms
+> Iteration 10 | Bound: [-1.984842, 0.274239] | l2 radius: 1.71E-01 | Size: 5.04E+02 | Time: 136ms
+> Iteration 11 | Bound: [-1.462252, 0.284879] | l2 radius: 1.32E-01 | Size: 9.24E+02 | Time: 153ms
+> Iteration 12 | Bound: [-0.893461, 0.281308] | l2 radius: 1.01E-01 | Size: 1.72E+03 | Time: 209ms
+> Iteration 13 | Bound: [-0.565951, 0.281226] | l2 radius: 8.54E-02 | Size: 3.22E+03 | Time: 251ms
+> Iteration 14 | Bound: [-0.238473, 0.270261] | l2 radius: 6.60E-02 | Size: 6.23E+03 | Time: 329ms
+> Iteration 15 | Bound: [-0.015487, 0.286245] | l2 radius: 5.05E-02 | Size: 6.32E+03 | Time: 430ms
+> Iteration 16 | Bound: [0.066351, 0.285711] | l2 radius: 4.27E-02 | Size: 2.40E+01 | Time: 433ms
+> No region to refine. Done!
+> Time for subregion 0000000001: 433ms
+> Total time up to subregion 0000000001: 433ms = 0.4333634376525879 s
+==> Subregion 0000000002 / 0000000008: 
+==> [[ 0.   -2.   -1.57], [2. 0. 0.]]
+==> Lipschitz constant of the zero order test function: 13.229385
+> Iteration 00 | Bound: [-20.752151, 0.646047] | l2 radius: 1.62E+00 | Size: 1.00E+00 | Time: 1ms
+> Iteration 01 | Bound: [-17.632853, 0.439789] | l2 radius: 1.37E+00 | Size: 2.00E+00 | Time: 3ms
+> Iteration 02 | Bound: [-13.588307, 0.388743] | l2 radius: 1.06E+00 | Size: 4.00E+00 | Time: 6ms
+> Iteration 03 | Bound: [-10.395981, 0.303118] | l2 radius: 8.09E-01 | Size: 8.00E+00 | Time: 8ms
+> Iteration 04 | Bound: [-8.935472, 0.100849] | l2 radius: 6.83E-01 | Size: 1.60E+01 | Time: 10ms
+> Iteration 05 | Bound: [-6.886064, 0.102461] | l2 radius: 5.28E-01 | Size: 3.20E+01 | Time: 15ms
+> Iteration 06 | Bound: [-5.209130, 0.140420] | l2 radius: 4.04E-01 | Size: 5.70E+01 | Time: 20ms
+> Iteration 07 | Bound: [-4.456230, 0.061930] | l2 radius: 3.42E-01 | Size: 1.05E+02 | Time: 26ms
+> Iteration 08 | Bound: [-3.293286, 0.200977] | l2 radius: 2.64E-01 | Size: 1.83E+02 | Time: 34ms
+> Iteration 09 | Bound: [-2.421695, 0.253081] | l2 radius: 2.02E-01 | Size: 3.40E+02 | Time: 43ms
+> Iteration 10 | Bound: [-1.980705, 0.278376] | l2 radius: 1.71E-01 | Size: 6.22E+02 | Time: 58ms
+> Iteration 11 | Bound: [-1.449049, 0.298083] | l2 radius: 1.32E-01 | Size: 1.18E+03 | Time: 83ms
+> Iteration 12 | Bound: [-0.905298, 0.312963] | l2 radius: 1.01E-01 | Size: 2.24E+03 | Time: 127ms
+> Iteration 13 | Bound: [-0.554749, 0.318552] | l2 radius: 8.54E-02 | Size: 4.24E+03 | Time: 217ms
+> Iteration 14 | Bound: [-0.205795, 0.306361] | l2 radius: 6.60E-02 | Size: 8.24E+03 | Time: 329ms
+> Iteration 15 | Bound: [-0.004175, 0.300748] | l2 radius: 5.05E-02 | Size: 2.42E+03 | Time: 383ms
+> Iteration 16 | Bound: [0.077184, 0.299626] | l2 radius: 4.27E-02 | Size: 2.00E+00 | Time: 385ms
+> No region to refine. Done!
+> Time for subregion 0000000002: 385ms
+> Total time up to subregion 0000000002: 819ms = 0.8192157745361328 s
+==> Subregion 0000000003 / 0000000008: 
+==> [[-2.    0.   -1.57], [0. 2. 0.]]
+==> Lipschitz constant of the zero order test function: 13.229385
+> Iteration 00 | Bound: [-20.665171, 0.733028] | l2 radius: 1.62E+00 | Size: 1.00E+00 | Time: 1ms
+> Iteration 01 | Bound: [-17.442413, 0.630229] | l2 radius: 1.37E+00 | Size: 2.00E+00 | Time: 2ms
+> Iteration 02 | Bound: [-13.475517, 0.501533] | l2 radius: 1.06E+00 | Size: 4.00E+00 | Time: 5ms
+> Iteration 03 | Bound: [-10.245111, 0.453989] | l2 radius: 8.09E-01 | Size: 8.00E+00 | Time: 7ms
+> Iteration 04 | Bound: [-8.631970, 0.404351] | l2 radius: 6.83E-01 | Size: 1.60E+01 | Time: 10ms
+> Iteration 05 | Bound: [-6.675245, 0.313280] | l2 radius: 5.28E-01 | Size: 3.20E+01 | Time: 15ms
+> Iteration 06 | Bound: [-5.084407, 0.265142] | l2 radius: 4.04E-01 | Size: 6.10E+01 | Time: 21ms
+> Iteration 07 | Bound: [-4.374935, 0.143226] | l2 radius: 3.42E-01 | Size: 1.21E+02 | Time: 27ms
+> Iteration 08 | Bound: [-3.405987, 0.088276] | l2 radius: 2.64E-01 | Size: 2.34E+02 | Time: 35ms
+> Iteration 09 | Bound: [-2.517559, 0.157216] | l2 radius: 2.02E-01 | Size: 4.46E+02 | Time: 46ms
+> Iteration 10 | Bound: [-2.083343, 0.175737] | l2 radius: 1.71E-01 | Size: 8.71E+02 | Time: 58ms
+> Iteration 11 | Bound: [-1.519995, 0.227137] | l2 radius: 1.32E-01 | Size: 1.65E+03 | Time: 80ms
+> Iteration 12 | Bound: [-0.994985, 0.230584] | l2 radius: 1.01E-01 | Size: 3.18E+03 | Time: 120ms
+> Iteration 13 | Bound: [-0.646185, 0.234105] | l2 radius: 8.54E-02 | Size: 6.19E+03 | Time: 213ms
+> Iteration 14 | Bound: [-0.320072, 0.219997] | l2 radius: 6.60E-02 | Size: 1.21E+04 | Time: 614ms
+> Iteration 15 | Bound: [-0.083784, 0.247362] | l2 radius: 5.05E-02 | Size: 8.89E+03 | Time: 753ms
+> Iteration 16 | Bound: [0.009620, 0.245669] | l2 radius: 4.27E-02 | Size: 1.09E+02 | Time: 756ms
+> No region to refine. Done!
+> Time for subregion 0000000003: 756ms
+> Total time up to subregion 0000000003: 1s576ms = 1.5760221481323242 s
+==> Subregion 0000000004 / 0000000008: 
+==> [[ 0.    0.   -1.57], [2. 2. 0.]]
+==> Lipschitz constant of the zero order test function: 13.229385
+> Iteration 00 | Bound: [-21.029413, 0.368785] | l2 radius: 1.62E+00 | Size: 1.00E+00 | Time: 3ms
+> Iteration 01 | Bound: [-17.745100, 0.327541] | l2 radius: 1.37E+00 | Size: 2.00E+00 | Time: 8ms
+> Iteration 02 | Bound: [-13.752422, 0.224627] | l2 radius: 1.06E+00 | Size: 4.00E+00 | Time: 13ms
+> Iteration 03 | Bound: [-10.361121, 0.337979] | l2 radius: 8.09E-01 | Size: 8.00E+00 | Time: 18ms
+> Iteration 04 | Bound: [-8.732068, 0.304253] | l2 radius: 6.83E-01 | Size: 1.60E+01 | Time: 23ms
+> Iteration 05 | Bound: [-6.709741, 0.278784] | l2 radius: 5.28E-01 | Size: 3.20E+01 | Time: 28ms
+> Iteration 06 | Bound: [-5.138563, 0.210987] | l2 radius: 4.04E-01 | Size: 6.30E+01 | Time: 34ms
+> Iteration 07 | Bound: [-4.383542, 0.134619] | l2 radius: 3.42E-01 | Size: 1.25E+02 | Time: 40ms
+> Iteration 08 | Bound: [-3.340563, 0.153700] | l2 radius: 2.64E-01 | Size: 2.46E+02 | Time: 48ms
+> Iteration 09 | Bound: [-2.488043, 0.186732] | l2 radius: 2.02E-01 | Size: 4.81E+02 | Time: 60ms
+> Iteration 10 | Bound: [-2.059044, 0.200037] | l2 radius: 1.71E-01 | Size: 9.48E+02 | Time: 79ms
+> Iteration 11 | Bound: [-1.531303, 0.215829] | l2 radius: 1.32E-01 | Size: 1.85E+03 | Time: 104ms
+> Iteration 12 | Bound: [-0.978472, 0.217829] | l2 radius: 1.01E-01 | Size: 3.61E+03 | Time: 150ms
+> Iteration 13 | Bound: [-0.634387, 0.224315] | l2 radius: 8.54E-02 | Size: 7.12E+03 | Time: 259ms
+> Iteration 14 | Bound: [-0.286565, 0.220539] | l2 radius: 6.60E-02 | Size: 1.40E+04 | Time: 586ms
+> Iteration 15 | Bound: [-0.080604, 0.220668] | l2 radius: 5.05E-02 | Size: 2.51E+04 | Time: 1s78ms
+> Iteration 16 | Bound: [0.001238, 0.220236] | l2 radius: 4.27E-02 | Size: 1.40E+03 | Time: 1s101ms
+> No region to refine. Done!
+> Time for subregion 0000000004: 1s101ms
+> Total time up to subregion 0000000004: 2s677ms = 2.677309989929199 s
+==> Subregion 0000000005 / 0000000008: 
+==> [[-2. -2.  0.], [0.   0.   1.57]]
+==> Lipschitz constant of the zero order test function: 13.229385
+> Iteration 00 | Bound: [-20.892323, 0.505877] | l2 radius: 1.62E+00 | Size: 1.00E+00 | Time: 1ms
+> Iteration 01 | Bound: [-17.838037, 0.234604] | l2 radius: 1.37E+00 | Size: 2.00E+00 | Time: 2ms
+> Iteration 02 | Bound: [-13.831678, 0.145371] | l2 radius: 1.06E+00 | Size: 4.00E+00 | Time: 5ms
+> Iteration 03 | Bound: [-10.623855, 0.075245] | l2 radius: 8.09E-01 | Size: 8.00E+00 | Time: 7ms
+> Iteration 04 | Bound: [-9.090049, 0.017187] | l2 radius: 6.83E-01 | Size: 1.60E+01 | Time: 9ms
+> Iteration 05 | Bound: [-7.047781, 0.024780] | l2 radius: 5.28E-01 | Size: 3.20E+01 | Time: 11ms
+> Iteration 06 | Bound: [-5.444301, 0.008019] | l2 radius: 4.04E-01 | Size: 6.40E+01 | Time: 13ms
+> Iteration 07 | Bound: [-4.630756, 0.018163] | l2 radius: 3.42E-01 | Size: 1.14E+02 | Time: 16ms
+> Iteration 08 | Bound: [-3.496908, 0.041903] | l2 radius: 2.64E-01 | Size: 2.01E+02 | Time: 20ms
+> Iteration 09 | Bound: [-2.604654, 0.070121] | l2 radius: 2.02E-01 | Size: 3.50E+02 | Time: 26ms
+> Iteration 10 | Bound: [-2.229784, 0.029297] | l2 radius: 1.71E-01 | Size: 6.54E+02 | Time: 35ms
+> Iteration 11 | Bound: [-1.679719, 0.067412] | l2 radius: 1.32E-01 | Size: 1.24E+03 | Time: 53ms
+> Iteration 12 | Bound: [-1.156017, 0.067687] | l2 radius: 1.01E-01 | Size: 2.37E+03 | Time: 100ms
+> Iteration 13 | Bound: [-0.800172, 0.086575] | l2 radius: 8.54E-02 | Size: 4.54E+03 | Time: 176ms
+> Iteration 14 | Bound: [-0.439964, 0.097866] | l2 radius: 6.60E-02 | Size: 8.92E+03 | Time: 319ms
+> Iteration 15 | Bound: [-0.229565, 0.092208] | l2 radius: 5.05E-02 | Size: 9.10E+03 | Time: 448ms
+> Iteration 16 | Bound: [-0.147723, 0.092414] | l2 radius: 4.27E-02 | Size: 2.60E+03 | Time: 481ms
+> Iteration 17 | Bound: [-0.054948, 0.093378] | l2 radius: 3.30E-02 | Size: 1.32E+03 | Time: 500ms
+> Iteration 18 | Bound: [0.005367, 0.095118] | l2 radius: 2.53E-02 | Size: 1.81E+02 | Time: 503ms
+> No region to refine. Done!
+> Time for subregion 0000000005: 503ms
+> Total time up to subregion 0000000005: 3s181ms = 3.181262493133545 s
+==> Subregion 0000000006 / 0000000008: 
+==> [[ 0. -2.  0.], [2.   0.   1.57]]
+==> Lipschitz constant of the zero order test function: 13.229385
+> Iteration 00 | Bound: [-21.017750, 0.380449] | l2 radius: 1.62E+00 | Size: 1.00E+00 | Time: 1ms
+> Iteration 01 | Bound: [-17.894558, 0.178084] | l2 radius: 1.37E+00 | Size: 2.00E+00 | Time: 2ms
+> Iteration 02 | Bound: [-13.848981, 0.128069] | l2 radius: 1.06E+00 | Size: 4.00E+00 | Time: 4ms
+> Iteration 03 | Bound: [-10.547284, 0.151815] | l2 radius: 8.09E-01 | Size: 8.00E+00 | Time: 6ms
+> Iteration 04 | Bound: [-8.997324, 0.038997] | l2 radius: 6.83E-01 | Size: 1.60E+01 | Time: 8ms
+> Iteration 05 | Bound: [-6.954007, 0.034518] | l2 radius: 5.28E-01 | Size: 3.20E+01 | Time: 10ms
+> Iteration 06 | Bound: [-5.330078, 0.019472] | l2 radius: 4.04E-01 | Size: 6.10E+01 | Time: 12ms
+> Iteration 07 | Bound: [-4.446456, 0.071704] | l2 radius: 3.42E-01 | Size: 1.12E+02 | Time: 15ms
+> Iteration 08 | Bound: [-3.349486, 0.144777] | l2 radius: 2.64E-01 | Size: 1.91E+02 | Time: 19ms
+> Iteration 09 | Bound: [-2.536573, 0.138201] | l2 radius: 2.02E-01 | Size: 3.46E+02 | Time: 25ms
+> Iteration 10 | Bound: [-2.133524, 0.125556] | l2 radius: 1.71E-01 | Size: 6.36E+02 | Time: 34ms
+> Iteration 11 | Bound: [-1.617611, 0.129521] | l2 radius: 1.32E-01 | Size: 1.17E+03 | Time: 51ms
+> Iteration 12 | Bound: [-1.067909, 0.119663] | l2 radius: 1.01E-01 | Size: 2.24E+03 | Time: 81ms
+> Iteration 13 | Bound: [-0.741662, 0.114388] | l2 radius: 8.54E-02 | Size: 4.26E+03 | Time: 153ms
+> Iteration 14 | Bound: [-0.404445, 0.114671] | l2 radius: 6.60E-02 | Size: 8.10E+03 | Time: 252ms
+> Iteration 15 | Bound: [-0.190682, 0.119584] | l2 radius: 5.05E-02 | Size: 1.11E+04 | Time: 406ms
+> Iteration 16 | Bound: [-0.100696, 0.116518] | l2 radius: 4.27E-02 | Size: 8.64E+03 | Time: 529ms
+> Iteration 17 | Bound: [-0.021315, 0.115421] | l2 radius: 3.30E-02 | Size: 5.20E+03 | Time: 592ms
+> Iteration 18 | Bound: [0.031427, 0.114357] | l2 radius: 2.53E-02 | Size: 1.56E+02 | Time: 595ms
+> No region to refine. Done!
+> Time for subregion 0000000006: 595ms
+> Total time up to subregion 0000000006: 3s777ms = 3.777261257171631 s
+==> Subregion 0000000007 / 0000000008: 
+==> [[-2.  0.  0.], [0.   2.   1.57]]
+==> Lipschitz constant of the zero order test function: 13.229385
+> Iteration 00 | Bound: [-20.997654, 0.400545] | l2 radius: 1.62E+00 | Size: 1.00E+00 | Time: 1ms
+> Iteration 01 | Bound: [-17.669155, 0.403487] | l2 radius: 1.37E+00 | Size: 2.00E+00 | Time: 2ms
+> Iteration 02 | Bound: [-13.634616, 0.342434] | l2 radius: 1.06E+00 | Size: 4.00E+00 | Time: 4ms
+> Iteration 03 | Bound: [-10.435820, 0.263280] | l2 radius: 8.09E-01 | Size: 8.00E+00 | Time: 6ms
+> Iteration 04 | Bound: [-8.747303, 0.289017] | l2 radius: 6.83E-01 | Size: 1.60E+01 | Time: 8ms
+> Iteration 05 | Bound: [-6.829910, 0.158615] | l2 radius: 5.28E-01 | Size: 3.20E+01 | Time: 10ms
+> Iteration 06 | Bound: [-5.255139, 0.094411] | l2 radius: 4.04E-01 | Size: 6.40E+01 | Time: 12ms
+> Iteration 07 | Bound: [-4.342890, 0.175270] | l2 radius: 3.42E-01 | Size: 1.28E+02 | Time: 15ms
+> Iteration 08 | Bound: [-3.399870, 0.094393] | l2 radius: 2.64E-01 | Size: 2.56E+02 | Time: 19ms
+> Iteration 09 | Bound: [-2.629590, 0.045185] | l2 radius: 2.02E-01 | Size: 5.11E+02 | Time: 27ms
+> Iteration 10 | Bound: [-2.180738, 0.078342] | l2 radius: 1.71E-01 | Size: 1.02E+03 | Time: 58ms
+> Iteration 11 | Bound: [-1.664262, 0.082870] | l2 radius: 1.32E-01 | Size: 2.00E+03 | Time: 86ms
+> Iteration 12 | Bound: [-1.161428, 0.065707] | l2 radius: 1.01E-01 | Size: 3.97E+03 | Time: 135ms
+> Iteration 13 | Bound: [-0.798443, 0.076565] | l2 radius: 8.54E-02 | Size: 7.91E+03 | Time: 250ms
+> Iteration 14 | Bound: [-0.450656, 0.090570] | l2 radius: 6.60E-02 | Size: 1.57E+04 | Time: 456ms
+> Iteration 15 | Bound: [-0.225855, 0.099148] | l2 radius: 5.05E-02 | Size: 2.06E+04 | Time: 752ms
+> Iteration 16 | Bound: [-0.144417, 0.089001] | l2 radius: 4.27E-02 | Size: 2.50E+03 | Time: 784ms
+> Iteration 17 | Bound: [-0.051002, 0.098193] | l2 radius: 3.30E-02 | Size: 1.22E+03 | Time: 801ms
+> Iteration 18 | Bound: [0.006800, 0.097410] | l2 radius: 2.53E-02 | Size: 2.20E+02 | Time: 805ms
+> No region to refine. Done!
+> Time for subregion 0000000007: 805ms
+> Total time up to subregion 0000000007: 4s582ms = 4.582913160324097 s
+==> Subregion 0000000008 / 0000000008: 
+==> [[0. 0. 0.], [2.   2.   1.57]]
+==> Lipschitz constant of the zero order test function: 13.229385
+> Iteration 00 | Bound: [-20.948101, 0.450098] | l2 radius: 1.62E+00 | Size: 1.00E+00 | Time: 1ms
+> Iteration 01 | Bound: [-17.668064, 0.404578] | l2 radius: 1.37E+00 | Size: 2.00E+00 | Time: 2ms
+> Iteration 02 | Bound: [-13.692377, 0.284673] | l2 radius: 1.06E+00 | Size: 4.00E+00 | Time: 4ms
+> Iteration 03 | Bound: [-10.406680, 0.292420] | l2 radius: 8.09E-01 | Size: 8.00E+00 | Time: 6ms
+> Iteration 04 | Bound: [-8.750616, 0.285704] | l2 radius: 6.83E-01 | Size: 1.60E+01 | Time: 8ms
+> Iteration 05 | Bound: [-6.698333, 0.290191] | l2 radius: 5.28E-01 | Size: 3.20E+01 | Time: 10ms
+> Iteration 06 | Bound: [-5.069372, 0.280178] | l2 radius: 4.04E-01 | Size: 6.40E+01 | Time: 12ms
+> Iteration 07 | Bound: [-4.238822, 0.279338] | l2 radius: 3.42E-01 | Size: 1.28E+02 | Time: 15ms
+> Iteration 08 | Bound: [-3.230938, 0.263324] | l2 radius: 2.64E-01 | Size: 2.56E+02 | Time: 19ms
+> Iteration 09 | Bound: [-2.419474, 0.255301] | l2 radius: 2.02E-01 | Size: 5.12E+02 | Time: 27ms
+> Iteration 10 | Bound: [-2.013112, 0.245968] | l2 radius: 1.71E-01 | Size: 1.02E+03 | Time: 41ms
+> Iteration 11 | Bound: [-1.526401, 0.220730] | l2 radius: 1.32E-01 | Size: 2.02E+03 | Time: 68ms
+> Iteration 12 | Bound: [-0.962300, 0.215798] | l2 radius: 1.01E-01 | Size: 4.00E+03 | Time: 138ms
+> Iteration 13 | Bound: [-0.634800, 0.211663] | l2 radius: 8.54E-02 | Size: 7.96E+03 | Time: 235ms
+> Iteration 14 | Bound: [-0.306637, 0.200122] | l2 radius: 6.60E-02 | Size: 1.58E+04 | Time: 463ms
+> Iteration 15 | Bound: [-0.105246, 0.197541] | l2 radius: 5.05E-02 | Size: 2.19E+04 | Time: 759ms
+> Iteration 16 | Bound: [-0.023366, 0.195617] | l2 radius: 4.27E-02 | Size: 4.37E+03 | Time: 814ms
+> Iteration 17 | Bound: [0.058705, 0.190167] | l2 radius: 3.30E-02 | Size: 6.60E+01 | Time: 816ms
+> No region to refine. Done!
+> Time for subregion 0000000008: 816ms
+> Total time up to subregion 0000000008: 5s399ms = 5.399708271026611 s
+> Total time excluding drawing: 5s399ms = 5.399708271026611 s
+> Success: True
+==> Done!

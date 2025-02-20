@@ -34,15 +34,15 @@
     },
 
     "dataset_config": {
-        "state_lower_bound": [-2.0, -2.0, 0.0],
-        "state_upper_bound": [2.0, 2.0, 3.14],
+        "state_lower_bound": [-2.0, -2.0, -1.57],
+        "state_upper_bound": [2.0, 2.0, 1.57],
         "mesh_size": [40, 40, 30],
         "post_mesh_size": [80, 80, 60]
     },
 
     "unsafe_set_config": {
-        "unsafe_set_lower_bound": [-0.5, -2, 0.0],
-        "unsafe_set_upper_bound": [0.5, 0.0, 3.14]
+        "unsafe_set_lower_bound": [-0.5, -2, -1.57],
+        "unsafe_set_upper_bound": [0.5, 0.0, 1.57]
     },
 
     "train_config": {
@@ -50,12 +50,12 @@
         "warmup_steps": 30,
         "batch_size": 512,
         "cbf_lr": 1e-3,
-        "cbf_wd": 1e-6,
-        "safe_set_weight": 0.01,
+        "cbf_wd": 1e-5,
+        "safe_set_weight": 0.004,
         "unsafe_set_weight": 1.0,
         "feasibility_weight": 1.0,
-        "safe_set_margin": 0.05,
-        "unsafe_set_margin": 0.14,
-        "feasibility_margin": 0.05
+        "safe_set_margin": 0.02,
+        "unsafe_set_margin": 0.16,
+        "feasibility_margin": 0.10
     }
 }
