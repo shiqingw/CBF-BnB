@@ -20,7 +20,7 @@ def get_dreal_lipschitz_exp(vars, lipschitz_nn, dtype, device):
     input_transform = lipschitz_nn.input_transform.detach().cpu().numpy()
     out = input_transform * (vars - input_bias)
 
-    print("> Start constructing the dReal expression for lyapunov function ...")
+    print("> Start constructing the dReal expression for Lipschitz network ...")
     start_time = time.time()
     print("> Start time:", datetime.fromtimestamp(start_time))
 

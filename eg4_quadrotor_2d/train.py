@@ -461,7 +461,7 @@ if __name__ == '__main__':
         return label_np
     
     # Plots
-    print("==> Visualizing the CBF function and stability condition ...")
+    print("==> Visualizing the CBF function ...")
     pairwise_idx = [(0,1), (0,2), (0,3), (0,4), (0,5), 
                     (1,2), (1,3), (1,4), (1,5),
                     (2,3), (2,4), (2,5),

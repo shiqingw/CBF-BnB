@@ -1,12 +1,12 @@
-mkdir eg3_results/009
-mkdir eg3_results/009
-python -u eg3_unicycle/train.py --exp_num 9 --device cuda > eg3_results/009/output.out
-mkdir eg3_results/010
-mkdir eg3_results/010
-python -u eg3_unicycle/train.py --exp_num 10 --device cuda > eg3_results/010/output.out
-mkdir eg3_results/011
-mkdir eg3_results/011
-python -u eg3_unicycle/train.py --exp_num 11 --device cuda > eg3_results/011/output.out
-mkdir eg3_results/012
-mkdir eg3_results/012
-python -u eg3_unicycle/train.py --exp_num 12 --device cuda > eg3_results/012/output.out
+mkdir eg4_results/001
+mkdir eg4_results/001
+python -u eg4_quadrotor_2d/train.py --exp_num 1 --device cuda > eg4_results/001/output.out
+mkdir eg4_results/002
+mkdir eg4_results/002
+python -u eg4_quadrotor_2d/train.py --exp_num 2 --device cuda > eg4_results/002/output.out
+mkdir eg4_results/003
+mkdir eg4_results/003
+python -u eg4_quadrotor_2d/train.py --exp_num 3 --device cuda > eg4_results/003/output.out
+mkdir eg4_results/004
+mkdir eg4_results/004
+python -u eg4_quadrotor_2d/train.py --exp_num 4 --device cuda > eg4_results/004/output.out
