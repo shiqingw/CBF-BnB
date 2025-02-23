@@ -6,10 +6,10 @@
 ==> Building cbf neural network ...
 ==> dReal variables:  [Variable('x1') Variable('x2') Variable('x3') Variable('x4')]
 ==> dReal for CBF function
-> Start constructing the dReal expression for lyapunov function ...
-> Start time: 2025-02-20 18:38:16.727354
-> Stop time: 2025-02-20 18:38:17.916734
-> Time used: 1s189ms = 1.189380407333374 s
+> Start constructing the dReal expression for Lipschitz network ...
+> Start time: 2025-02-22 12:15:44.506119
+> Stop time: 2025-02-22 12:15:45.677644
+> Time used: 1s171ms = 1.171525478363037 s
 > Checking consistency for lipschitz neural network ...
 ==> dReal for feasibility condition
 > Checking consistency for feasibility condition ...
@@ -17,4 +17,4 @@
 > dReal precision: 1.0E-03
 > dReal number of jobs: 1
 > Start checking
-> Start time: 2025-02-20 18:38:22.386553
+> Start time: 2025-02-22 12:15:50.046529

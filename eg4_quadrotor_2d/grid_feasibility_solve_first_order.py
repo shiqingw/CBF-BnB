@@ -186,7 +186,7 @@ if __name__ == '__main__':
             state_dim=system.state_dim,
             x_lb=subregion_lb.unsqueeze(0),
             x_ub=subregion_ub.unsqueeze(0), 
-            batch_size=2**14, # 16384
+            batch_size=2**13, # 16384
             dtype=config.pt_dtype,
             device=device)
         

@@ -1,0 +1,26 @@
+==> Creating result directory ...
+==> Loading test settings ...
+==> Deciding torch device ...
+==> torch device:  cuda
+==> Building dynamical system ...
+==> Building cbf neural network ...
+==> Lipschitz constant of CBF network: 1.000000
+==> Hessian bound of CBF network: 4.355212
+==> Third order elementwise bound of CBF network: 30.225904
+==> Number of subregions: 4096
+==> Subregion 0000000001 / 0000004096: 
+==> [[-2.  -2.  -0.1 -1.  -1.  -1. ], [-1.   -1.   -0.05 -0.5  -0.5  -0.5 ]]
+==> Lipschitz constant of the zero order test function: 90.344048
+> Iteration 00 | Bound: [-72.990578, 1.952793] | l2 radius: 8.30E-01 | Size: 1.00E+00 | Time: 67ms
+> Iteration 01 | Bound: [-62.003063, 1.919744] | l2 radius: 7.08E-01 | Size: 2.00E+00 | Time: 70ms
+> Iteration 02 | Bound: [-48.686024, 1.868314] | l2 radius: 5.60E-01 | Size: 4.00E+00 | Time: 73ms
+> Iteration 03 | Bound: [-44.773964, 1.843041] | l2 radius: 5.16E-01 | Size: 8.00E+00 | Time: 77ms
+> Iteration 04 | Bound: [-40.496937, 1.817944] | l2 radius: 4.68E-01 | Size: 1.60E+01 | Time: 79ms
+> Iteration 05 | Bound: [-35.740398, 1.782301] | l2 radius: 4.15E-01 | Size: 3.20E+01 | Time: 82ms
+> Iteration 06 | Bound: [-30.251451, 1.769747] | l2 radius: 3.54E-01 | Size: 6.40E+01 | Time: 87ms
+> Iteration 07 | Bound: [-23.585117, 1.767619] | l2 radius: 2.81E-01 | Size: 1.28E+02 | Time: 94ms
+> Iteration 08 | Bound: [-21.632797, 1.757632] | l2 radius: 2.59E-01 | Size: 2.56E+02 | Time: 106ms
+> Iteration 09 | Bound: [-19.501175, 1.746490] | l2 radius: 2.35E-01 | Size: 5.12E+02 | Time: 122ms
+> Iteration 10 | Bound: [-15.149182, 1.731763] | l2 radius: 2.09E-01 | Size: 1.02E+03 | Time: 153ms
+> Iteration 11 | Bound: [-10.629134, 1.725055] | l2 radius: 1.79E-01 | Size: 2.05E+03 | Time: 240ms
+> Iteration 12 | Bound: [-6.108869, 1.723371] | l2 radius: 1.42E-01 | Size: 4.10E+03 | Time: 367ms

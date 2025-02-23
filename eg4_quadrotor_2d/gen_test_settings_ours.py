@@ -76,7 +76,7 @@ def generate_json_script(filename, entry):
         file.write(data_str)
 
 
-num_layers = [2]
+num_layers = [3]
 num_layers.sort()
 cbf_alphas = [5e-1]
 cbf_alphas.sort()
@@ -94,7 +94,7 @@ for num_layer in num_layers:
                 "random_seed": random_seed
             })
 
-start = 1
+start = 5
 exp_nums = range(start, start+len(data))
 for i in range(len(data)):
     entry = data[i]

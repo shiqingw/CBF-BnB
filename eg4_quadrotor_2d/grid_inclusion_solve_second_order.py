@@ -115,7 +115,7 @@ if __name__ == '__main__':
                                     thrid_order_elementwise_l2=third_order_elementwise_bound_cbf_nn,
                                     x_lb=subregion_lb.unsqueeze(0),
                                     x_ub=subregion_ub.unsqueeze(0),
-                                    batch_size=2**14, #16384
+                                    batch_size=2**12, #16384
                                     dtype=config.pt_dtype,
                                     device=device)
 
