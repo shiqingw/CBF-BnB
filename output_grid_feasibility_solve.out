@@ -1,45 +1,13 @@
 nohup: ignoring input
-mkdir: cannot create directory ‘eg4_results/005’: File exists
-Traceback (most recent call last):
-  File "/home/shiqing/projects/CBF-BnB/eg4_quadrotor_2d/grid_feasibility_solve_first_order.py", line 234, in <module>
-    mesh.refine(refine_idx)
-  File "/home/shiqing/projects/CBF-BnB/cores/mesh/feasibility_adaptive_mesh.py", line 137, in refine
-    h_batch, h_dx_batch = self.cbf_nn.forward_with_jacobian(x_m_batch) # shape (N, 1), (N, 1 ,n)
-  File "/home/shiqing/projects/CBF-BnB/cores/lip_nn/models.py", line 112, in forward_with_jacobian
-    out, jac = layer.forward_with_jacobian(out)
-  File "/home/shiqing/projects/CBF-BnB/cores/lip_nn/layers.py", line 177, in forward_with_jacobian
-    jac = torch.matmul(jac, W1)
-torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 8.00 GiB. GPU 0 has a total capacity of 23.62 GiB of which 6.00 GiB is free. Including non-PyTorch memory, this process has 16.67 GiB memory in use. Of the allocated memory 8.25 GiB is allocated by PyTorch, and 7.95 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
-mkdir: cannot create directory ‘eg4_results/006’: File exists
-Traceback (most recent call last):
-  File "/home/shiqing/projects/CBF-BnB/eg4_quadrotor_2d/grid_feasibility_solve_first_order.py", line 234, in <module>
-    mesh.refine(refine_idx)
-  File "/home/shiqing/projects/CBF-BnB/cores/mesh/feasibility_adaptive_mesh.py", line 137, in refine
-    h_batch, h_dx_batch = self.cbf_nn.forward_with_jacobian(x_m_batch) # shape (N, 1), (N, 1 ,n)
-  File "/home/shiqing/projects/CBF-BnB/cores/lip_nn/models.py", line 112, in forward_with_jacobian
-    out, jac = layer.forward_with_jacobian(out)
-  File "/home/shiqing/projects/CBF-BnB/cores/lip_nn/layers.py", line 177, in forward_with_jacobian
-    jac = torch.matmul(jac, W1)
-torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 8.00 GiB. GPU 0 has a total capacity of 23.62 GiB of which 6.03 GiB is free. Including non-PyTorch memory, this process has 16.67 GiB memory in use. Of the allocated memory 8.25 GiB is allocated by PyTorch, and 7.95 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
-mkdir: cannot create directory ‘eg4_results/007’: File exists
-Traceback (most recent call last):
-  File "/home/shiqing/projects/CBF-BnB/eg4_quadrotor_2d/grid_feasibility_solve_first_order.py", line 234, in <module>
-    mesh.refine(refine_idx)
-  File "/home/shiqing/projects/CBF-BnB/cores/mesh/feasibility_adaptive_mesh.py", line 137, in refine
-    h_batch, h_dx_batch = self.cbf_nn.forward_with_jacobian(x_m_batch) # shape (N, 1), (N, 1 ,n)
-  File "/home/shiqing/projects/CBF-BnB/cores/lip_nn/models.py", line 112, in forward_with_jacobian
-    out, jac = layer.forward_with_jacobian(out)
-  File "/home/shiqing/projects/CBF-BnB/cores/lip_nn/layers.py", line 177, in forward_with_jacobian
-    jac = torch.matmul(jac, W1)
-torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 8.00 GiB. GPU 0 has a total capacity of 23.62 GiB of which 6.03 GiB is free. Including non-PyTorch memory, this process has 16.67 GiB memory in use. Of the allocated memory 8.25 GiB is allocated by PyTorch, and 7.95 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
-mkdir: cannot create directory ‘eg4_results/008’: File exists
-Traceback (most recent call last):
-  File "/home/shiqing/projects/CBF-BnB/eg4_quadrotor_2d/grid_feasibility_solve_first_order.py", line 234, in <module>
-    mesh.refine(refine_idx)
-  File "/home/shiqing/projects/CBF-BnB/cores/mesh/feasibility_adaptive_mesh.py", line 137, in refine
-    h_batch, h_dx_batch = self.cbf_nn.forward_with_jacobian(x_m_batch) # shape (N, 1), (N, 1 ,n)
-  File "/home/shiqing/projects/CBF-BnB/cores/lip_nn/models.py", line 112, in forward_with_jacobian
-    out, jac = layer.forward_with_jacobian(out)
-  File "/home/shiqing/projects/CBF-BnB/cores/lip_nn/layers.py", line 177, in forward_with_jacobian
-    jac = torch.matmul(jac, W1)
-torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 8.00 GiB. GPU 0 has a total capacity of 23.62 GiB of which 6.04 GiB is free. Including non-PyTorch memory, this process has 16.67 GiB memory in use. Of the allocated memory 8.25 GiB is allocated by PyTorch, and 7.95 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+mkdir: cannot create directory ‘eg1_results/001’: File exists
+mkdir: cannot create directory ‘eg1_results/002’: File exists
+mkdir: cannot create directory ‘eg1_results/003’: File exists
+mkdir: cannot create directory ‘eg1_results/004’: File exists
+mkdir: cannot create directory ‘eg1_results/005’: File exists
+mkdir: cannot create directory ‘eg1_results/006’: File exists
+mkdir: cannot create directory ‘eg1_results/007’: File exists
+mkdir: cannot create directory ‘eg1_results/008’: File exists
+mkdir: cannot create directory ‘eg1_results/009’: File exists
+mkdir: cannot create directory ‘eg1_results/010’: File exists
+mkdir: cannot create directory ‘eg1_results/011’: File exists
+mkdir: cannot create directory ‘eg1_results/012’: File exists

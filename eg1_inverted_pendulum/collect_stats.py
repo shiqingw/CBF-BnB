@@ -55,7 +55,7 @@ def diagnosis(exp_num):
 if __name__ == "__main__":
     # save to a txt file with separator that can be directly copy pasted to excel-
     with open("text.txt", "w") as file:
-        for exp_num in range(1, 17):
+        for exp_num in range(1, 13):
             try:
                 out = diagnosis(exp_num)
                 print("#############################################")

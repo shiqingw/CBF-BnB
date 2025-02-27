@@ -1,0 +1,54 @@
+==> Creating result directory ...
+==> Loading test settings ...
+==> torch device:  cpu
+==> Seeding everything ...
+==> Building CBF neural network ...
+==> Number of subregions: 4
+==> dReal variables:  [Variable('x1') Variable('x2')]
+==> dReal for CBF function
+> Start constructing the dReal expression for Lipschitz network ...
+> Start time: 2025-02-27 12:30:49.465510
+> Stop time: 2025-02-27 12:30:49.619555
+> Time used: 154ms = 0.15404486656188965 s
+> Checking consistency for lipschitz neural network ...
+==> Verifying with dReal ...
+> dReal precision: 1.0E-03
+> dReal number of jobs: 1
+==> Subregion 0000000001 / 0000000004: 
+==> [[-3.14 -5.  ], [-2.618  5.   ]]
+> Start time: 2025-02-27 12:30:49.628645
+> Stop time: 2025-02-27 12:57:04.588781
+> Result:
+None
+> Time for subregion 0000000001: 26m14s = 1574.960135936737 s
+> Total time up to subregion 0000000001: 26m14s = 1574.960135936737 s
+
+==> Subregion 0000000002 / 0000000004: 
+==> [[ 2.618 -5.   ], [3.14 5.  ]]
+> Start time: 2025-02-27 12:57:04.589287
+> Stop time: 2025-02-27 13:23:48.219753
+> Result:
+None
+> Time for subregion 0000000002: 26m43s = 1603.630465745926 s
+> Total time up to subregion 0000000002: 52m58s = 3178.590601682663 s
+
+==> Subregion 0000000003 / 0000000004: 
+==> [[-2.618 -5.   ], [ 2.618 -4.   ]]
+> Start time: 2025-02-27 13:23:48.220221
+> Stop time: 2025-02-27 13:29:08.104926
+> Result:
+None
+> Time for subregion 0000000003: 5m19s = 319.8847053050995 s
+> Total time up to subregion 0000000003: 58m18s = 3498.4753069877625 s
+
+==> Subregion 0000000004 / 0000000004: 
+==> [[-2.618  4.   ], [2.618 5.   ]]
+> Start time: 2025-02-27 13:29:08.105432
+> Stop time: 2025-02-27 13:34:29.789009
+> Result:
+None
+> Time for subregion 0000000004: 5m21s = 321.6835775375366 s
+> Total time up to subregion 0000000004: 1h3m = 3820.158884525299 s
+
+==> Success: True
+==> Done!

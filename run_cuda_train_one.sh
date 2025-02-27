@@ -1,12 +1,12 @@
-mkdir eg1_results/013
-mkdir eg1_results/013
-python -u eg1_inverted_pendulum/train.py --exp_num 13 --device cuda > eg1_results/013/output.out
-mkdir eg1_results/014
-mkdir eg1_results/014
-python -u eg1_inverted_pendulum/train.py --exp_num 14 --device cuda > eg1_results/014/output.out
-mkdir eg1_results/015
-mkdir eg1_results/015
-python -u eg1_inverted_pendulum/train.py --exp_num 15 --device cuda > eg1_results/015/output.out
-mkdir eg1_results/016
-mkdir eg1_results/016
-python -u eg1_inverted_pendulum/train.py --exp_num 16 --device cuda > eg1_results/016/output.out
+mkdir eg1_results/009
+mkdir eg1_results/009
+python -u eg1_inverted_pendulum/train.py --exp_num 9 --device cuda > eg1_results/009/output.out
+mkdir eg1_results/010
+mkdir eg1_results/010
+python -u eg1_inverted_pendulum/train.py --exp_num 10 --device cuda > eg1_results/010/output.out
+mkdir eg1_results/011
+mkdir eg1_results/011
+python -u eg1_inverted_pendulum/train.py --exp_num 11 --device cuda > eg1_results/011/output.out
+mkdir eg1_results/012
+mkdir eg1_results/012
+python -u eg1_inverted_pendulum/train.py --exp_num 12 --device cuda > eg1_results/012/output.out

@@ -11,7 +11,7 @@ def generate_json_script(filename, entry):
     "cbf_nn_config": {{
         "in_features": 2,
         "out_features": 1,
-        "lipschitz_constant": 2.0,
+        "lipschitz_constant": 1.0,
         "activations": "tanh",
         "num_layers": {entry["num_layer"]},
         "width_each_layer": 128,
@@ -54,21 +54,21 @@ def generate_json_script(filename, entry):
         "num_epochs": 100,
         "warmup_steps": 30,
         "batch_size": 256,
-        "cbf_lr": 1e-2,
-        "cbf_wd": 1e-6,
-        "safe_set_weight": 0.1,
-        "unsafe_set_weight": 2.5,
-        "feasibility_weight": 2.5,
-        "safe_set_margin": 0.02,
-        "unsafe_set_margin": 0.09,
-        "feasibility_margin": 0.06
+        "cbf_lr": 1e-3,
+        "cbf_wd": 1e-5,
+        "safe_set_weight": 0.05,
+        "unsafe_set_weight": 1.0,
+        "feasibility_weight": 1.0,
+        "safe_set_margin": 0.005,
+        "unsafe_set_margin": 0.028,
+        "feasibility_margin": 0.016
     }}
 }}"""
     with open(filename, 'w') as file:
         file.write(data_str)
 
 
-num_layers = [2]
+num_layers = [4]
 num_layers.sort()
 cbf_alphas = [5e-1]
 cbf_alphas.sort()
@@ -86,7 +86,7 @@ for num_layer in num_layers:
                 "random_seed": random_seed
             })
 
-start = 13
+start = 9
 exp_nums = range(start, start+len(data))
 for i in range(len(data)):
     entry = data[i]
