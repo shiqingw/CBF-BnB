@@ -7,8 +7,6 @@ import torch
 import numpy as np
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
-from torchinfo import summary
-from torch.utils.data import DataLoader
 import time
 import matplotlib.pyplot as plt
 import matplotlib
@@ -23,6 +21,7 @@ from cores.utils.config import Configuration
 from cores.utils.draw_utils import draw_curve, draw_multiple_curves
 from cores.utils.draw_utils import draw_safe_set_contour, draw_feasibility_condition_contour
 from cores.cosine_annealing_warmup import CosineAnnealingWarmupRestarts
+from cores.utils.online_utils import label_rectangles, train_cbf
 
 if __name__ == '__main__':
     # Parse arguments
@@ -68,51 +67,10 @@ if __name__ == '__main__':
                         dtype=config.pt_dtype)
     save_nn_weights(system, f"{results_dir}/system_params.pt")
 
-    # Build CBF network
-    print("==> Building cbf neural network ...")
-    cbf_config = test_settings["cbf_nn_config"]
-    cbf_alpha = cbf_config["alpha"]
-    cbf_in_features = cbf_config["in_features"]
-    cbf_out_features = cbf_config["out_features"]
-    cbf_gamma = cbf_config["lipschitz_constant"]
-    cbf_activations = [cbf_config["activations"]]*(cbf_config["num_layers"]-1)
-    cbf_widths = [cbf_in_features]+[cbf_config["width_each_layer"]]*(cbf_config["num_layers"]-1)+[cbf_out_features]
-    cbf_zero_at_zero = bool(cbf_config["zero_at_zero"])
-    cbf_input_bias = np.array(cbf_config["input_bias"], dtype=config.np_dtype)
-    cbf_input_transform = 1.0/np.array(cbf_config["input_transform_to_inverse"], dtype=config.np_dtype)
-    cbf_nn = LipschitzNetwork(in_features=cbf_in_features, 
-                                out_features=cbf_out_features,
-                                gamma=cbf_gamma,
-                                activations=cbf_activations,
-                                widths=cbf_widths,
-                                zero_at_zero=cbf_zero_at_zero,
-                                input_bias=cbf_input_bias,
-                                input_transform=cbf_input_transform,
-                                dtype=config.pt_dtype,
-                                random_psi=False,
-                                trainable_psi=False)
-    summary(cbf_nn, input_size=(1, cbf_in_features), dtypes=[config.pt_dtype])
-    save_nn_weights(cbf_nn, f"{results_dir}/cbf_weights_init.pt")
-    lip_cbf_nn = cbf_nn.get_l2_lipschitz_bound()
-    print("==> Lipschitz constant of CBF network: {:.6f}".format(lip_cbf_nn))
-    cbf_nn.to(device)
-
     # Control config
     control_config = test_settings["control_config"]
     control_lower_bound = torch.tensor(control_config["lower_bound"], dtype=config.pt_dtype, device=device)
     control_upper_bound = torch.tensor(control_config["upper_bound"], dtype=config.pt_dtype, device=device)
-
-    # Define optimizer, learning rate scheduler, loss function, and loss monitor
-    train_config = test_settings["train_config"]
-    num_epochs = train_config["num_epochs"]
-    optimizer = torch.optim.Adam([
-        {'params': cbf_nn.parameters(), 'lr': train_config['cbf_lr'], 'weight_decay': train_config['cbf_wd']}
-        ])
-    scheduler = CosineAnnealingWarmupRestarts(optimizer=optimizer, 
-                                              max_lr=[train_config['cbf_lr']], 
-                                              min_lr=[0.0], 
-                                              first_cycle_steps=num_epochs, 
-                                              warmup_steps=train_config["warmup_steps"])
 
     # robot.model.hfield_data is 300x300
     # Define the height map
@@ -127,7 +85,14 @@ if __name__ == '__main__':
 
     # Collision config
     collision_config = test_settings["collision_config"]
-    collision_offset_in_body = np.array(collision_config["offset_in_body"], dtype=config.np_dtype)
+    collision_front_offset = collision_config["front_offset"]
+    collision_left_right_offset = collision_config["left_right_offset"]
+    collision_rear_offset = collision_config["rear_offset"]
+    collision_offset_in_body = np.array([[collision_front_offset, collision_left_right_offset, 0],
+                                         [collision_front_offset, -collision_left_right_offset, 0],
+                                         [-collision_rear_offset, -collision_left_right_offset, 0],
+                                         [-collision_rear_offset, collision_left_right_offset, 0]],
+                                         dtype=config.np_dtype)
 
     # Simulation settings
     sumulator_config = test_settings["simulator_config"]
@@ -146,6 +111,12 @@ if __name__ == '__main__':
     cbf_training_step = int(cbf_training_dt/simulator_dt)
     print("> cbf_training_dt:", cbf_training_dt)
     print("> cbf_training_step:", cbf_training_step)
+
+    # CBF config
+    cbf_config = test_settings["cbf_nn_config"]
+
+    # Training config
+    train_config = test_settings["train_config"]
 
     # Visualize the collision corners and lidar points
     id_geom_offset = 0
@@ -175,31 +146,50 @@ if __name__ == '__main__':
             pcd_in_body = robot.getLaserScan(nray=lidar_nray, max_range=30.0)
             pcd_directions_in_world = pcd_in_body @ R_b_to_w.T
             pcd_in_world = pos + pcd_directions_in_world
+            pcd_xy_in_world = pcd_in_world[:, :2]
             for point_ind in range(len(pcd_in_world)):
                 robot.add_visual_ellipsoid(np.array([0.01, 0.01, 0.01], dtype=config.np_dtype),
                                     pcd_in_world[point_ind],
                                     np.eye(3).astype(config.np_dtype),
                                     np.array([1,0,0,1]),
                                     id_geom_offset=point_cloud_id_geom_offset+point_ind)
-            distance_samples = np.array([0.2, 0.4, 0.6, 0.8, 1.0], dtype=config.np_dtype)
-            xyz_states_np = pos + pcd_directions_in_world[:, None, :] * distance_samples[None, :, None]
-            xy_states_np = xyz_states_np[:, :, :2]
-            xy_states_np = xy_states_np.reshape(-1, 2)
-            n_theta_samples = 10
-            theta_samples = np.linspace(-np.pi, np.pi, n_theta_samples)
-            xy_states_repeated_np = np.repeat(xy_states_np, n_theta_samples, axis=0)
-            theta_tiled_np = np.tile(theta_samples, xy_states_np.shape[0]).reshape(-1, 1)
-            states_np = np.concatenate([xy_states_repeated_np, theta_tiled_np], axis=1)
-            
-            print(states_np.shape)
-            plt.scatter(pcd_in_world[:,0], pcd_in_world[:,1], s=0.1, c='r')
-            plt.scatter(xy_states_np[:,0], xy_states_np[:,1], s=0.1, c='b')
-            plt.savefig(f'{results_dir}/test_{step_counter:05d}.pdf')
-            plt.close()
+            if step_counter % cbf_training_step == 0:
+                
+                distance_samples = np.array([0.2, 0.4, 0.6, 0.8, 1.0], dtype=config.np_dtype)
+                xyz_states_np = pos + pcd_directions_in_world[:, None, :] * distance_samples[None, :, None]
+                xy_states_np = xyz_states_np[:, :, :2]
+                xy_states_np = xy_states_np.reshape(-1, 2)
+                n_theta_samples = 11
+                theta_samples = np.linspace(-np.pi, np.pi, n_theta_samples)
+                xy_states_repeated_np = np.repeat(xy_states_np, n_theta_samples, axis=0)
+                theta_tiled_np = np.tile(theta_samples, xy_states_np.shape[0]).reshape(-1, 1)
+                states_np = np.concatenate([xy_states_repeated_np, theta_tiled_np], axis=1)
+                labels_np = label_rectangles(states_np, pcd_xy_in_world,
+                                            collision_front_offset, collision_left_right_offset, collision_rear_offset)
+                # plot states_np based on labels_np
+                # fig = plt.figure()
+                # ax = fig.add_subplot(111)
+                # plt.scatter(states_np[labels_np == 1, 0], states_np[labels_np == 1, 1], c='b', s=0.1, label='inside')
+                # plt.scatter(states_np[labels_np == -1, 0], states_np[labels_np == -1, 1], c='r', s=0.1, label='outside')
+                # plt.savefig(f'{results_dir}/test_{step_counter:05d}.pdf')
+                # plt.close()
+
+                # Train CBF
+                train_cbf(cbf_config=cbf_config,
+                          nn_input_bias=[pos[0], pos[1], 0],
+                          train_config=train_config,
+                          states_np=states_np, 
+                          labels_np=labels_np, 
+                          system=system, 
+                          control_lower_bound=control_lower_bound,
+                          control_upper_bound=control_upper_bound, 
+                          results_dir=results_dir,
+                          step_counter=step_counter,
+                          config=config,
+                          device=device)
+                assert False
 
 
-        robot.stepHighlevel(0.1, 0, 0.1, step_height=0, kp=[2, 0.5, 0.5], ki=[0.02, 0.01, 0.01])
-
-        # time.sleep(10)
+        robot.stepHighlevel(0.2, 0, 0.0, step_height=0, kp=[2, 0.5, 0.5], ki=[0.02, 0.01, 0.01])
         
         time.sleep(max(0, simulator_dt - (time.time()-loop_start_time)))

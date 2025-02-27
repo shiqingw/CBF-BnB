@@ -7,7 +7,7 @@
         "lipschitz_constant": 1.0,
         "activations": "tanh",
         "num_layers": 2,
-        "width_each_layer": 64,
+        "width_each_layer": 32,
         "input_bias": [
             0.0,
             0.0,
@@ -25,14 +25,16 @@
     "simulator_config": {
         "total_time": 10.0,
         "simulator_dt": 0.002,
-        "lidar_dt": 0.05,
+        "lidar_dt": 0.10,
         "lidar_nray": 100,
         "lidar_max_range": 30.0,
         "cbf_training_dt": 2.0
     },
 
     "collision_config": {
-        "offset_in_body": [[0.33, 0.15, 0], [0.33, -0.15, 0], [-0.4, -0.15, 0], [-0.4, 0.15, 0]]
+        "front_offset": 0.33,
+        "rear_offset": 0.4,
+        "left_right_offset": 0.15
     },
 
     "control_config": {
@@ -47,16 +49,16 @@
     },
 
     "train_config": {
-        "num_epochs": 100,
-        "warmup_steps": 30,
-        "batch_size": 1024,
-        "cbf_lr": 1e-3,
+        "num_epochs": 50,
+        "warmup_steps": 15,
+        "batch_size": 512,
+        "cbf_lr": 1e-1,
         "cbf_wd": 1e-5,
-        "safe_set_weight": 0.02,
+        "safe_set_weight": 0.005,
         "unsafe_set_weight": 1.0,
         "feasibility_weight": 1.0,
         "safe_set_margin": 0.005,
-        "unsafe_set_margin": 0.13,
-        "feasibility_margin": 0.7
+        "unsafe_set_margin": 0.1,
+        "feasibility_margin": 0.2
     }
 }

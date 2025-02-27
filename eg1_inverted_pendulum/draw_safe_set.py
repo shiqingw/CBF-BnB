@@ -220,6 +220,6 @@ def draw_safe_set(exp_num):
 
 
 if __name__ == "__main__":
-    exp_nums = list(range(9, 10))
+    exp_nums = list(range(12, 13))
     for exp_num in exp_nums:
         draw_safe_set(exp_num)
