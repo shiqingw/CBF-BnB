@@ -1,0 +1,189 @@
+==> Creating result directory ...
+==> Loading test settings ...
+==> Deciding torch device ...
+==> torch device:  cuda
+==> Seeding everything ...
+==> Building dynamical system ...
+==> Building cbf neural network ...
+==========================================================================================
+Layer (type:depth-idx)                   Output Shape              Param #
+==========================================================================================
+LipschitzNetwork                         [1, 1]                    --
+├─Sequential: 1-1                        [1, 1]                    --
+│    └─SandwichFc: 2-1                   [1, 256]                  67,073
+│    └─SandwichLin: 2-2                  [1, 1]                    259
+==========================================================================================
+Total params: 67,332
+Trainable params: 67,076
+Non-trainable params: 256
+Total mult-adds (M): 0.07
+==========================================================================================
+Input size (MB): 0.00
+Forward/backward pass size (MB): 0.00
+Params size (MB): 0.27
+Estimated Total Size (MB): 0.27
+==========================================================================================
+==> Lipschitz constant of CBF network: 2.000000
+==> Amount of training data:  40000
+==> Creating training data ...
+==> Start training ...
+Epoch: 001 | Train Loss: 4.3187E-01 | CBF GN: 6.9165E+00 | Time: 498ms
+Epoch: 001 | Test Loss: 1.6933E-01 | Time: 132ms
+> Save at epoch 001 | Test loss 1.6933E-01
+Epoch: 002 | Test Loss: 4.5017E-03 | Time: 146ms
+> Save at epoch 002 | Test loss 4.5017E-03
+Epoch: 003 | Test Loss: 4.8632E-03 | Time: 162ms
+Epoch: 004 | Test Loss: 4.5653E-03 | Time: 138ms
+Epoch: 005 | Test Loss: 4.4664E-03 | Time: 133ms
+> Save at epoch 005 | Test loss 4.4664E-03
+Epoch: 006 | Train Loss: 5.5790E-03 | CBF GN: 1.8912E-01 | Time: 419ms
+Epoch: 006 | Test Loss: 4.2826E-03 | Time: 134ms
+> Save at epoch 006 | Test loss 4.2826E-03
+Epoch: 007 | Test Loss: 4.5031E-03 | Time: 134ms
+Epoch: 008 | Test Loss: 4.4024E-03 | Time: 134ms
+Epoch: 009 | Test Loss: 3.9018E-03 | Time: 159ms
+> Save at epoch 009 | Test loss 3.9018E-03
+Epoch: 010 | Test Loss: 4.4615E-03 | Time: 134ms
+Epoch: 011 | Train Loss: 5.9196E-03 | CBF GN: 1.8328E-01 | Time: 409ms
+Epoch: 011 | Test Loss: 4.8570E-03 | Time: 133ms
+Epoch: 012 | Test Loss: 4.3221E-03 | Time: 159ms
+Epoch: 013 | Test Loss: 4.5566E-03 | Time: 133ms
+Epoch: 014 | Test Loss: 3.8107E-03 | Time: 133ms
+> Save at epoch 014 | Test loss 3.8107E-03
+Epoch: 015 | Test Loss: 3.9379E-03 | Time: 133ms
+Epoch: 016 | Train Loss: 4.9198E-03 | CBF GN: 1.1338E-01 | Time: 434ms
+Epoch: 016 | Test Loss: 3.4292E-03 | Time: 133ms
+> Save at epoch 016 | Test loss 3.4292E-03
+Epoch: 017 | Test Loss: 3.7536E-03 | Time: 160ms
+Epoch: 018 | Test Loss: 3.5935E-03 | Time: 136ms
+Epoch: 019 | Test Loss: 3.1084E-03 | Time: 136ms
+> Save at epoch 019 | Test loss 3.1084E-03
+Epoch: 020 | Test Loss: 3.5406E-03 | Time: 135ms
+Epoch: 021 | Train Loss: 4.9659E-03 | CBF GN: 1.1322E-01 | Time: 421ms
+Epoch: 021 | Test Loss: 3.0881E-03 | Time: 134ms
+> Save at epoch 021 | Test loss 3.0881E-03
+Epoch: 022 | Test Loss: 2.8944E-03 | Time: 159ms
+> Save at epoch 022 | Test loss 2.8944E-03
+Epoch: 023 | Test Loss: 4.4864E-03 | Time: 139ms
+Epoch: 024 | Test Loss: 2.9814E-03 | Time: 138ms
+Epoch: 025 | Test Loss: 2.4071E-03 | Time: 141ms
+> Save at epoch 025 | Test loss 2.4071E-03
+Epoch: 026 | Train Loss: 3.6558E-03 | CBF GN: 6.9826E-02 | Time: 422ms
+Epoch: 026 | Test Loss: 2.4647E-03 | Time: 160ms
+Epoch: 027 | Test Loss: 2.5003E-03 | Time: 133ms
+Epoch: 028 | Test Loss: 2.2634E-03 | Time: 133ms
+> Save at epoch 028 | Test loss 2.2634E-03
+Epoch: 029 | Test Loss: 2.4547E-03 | Time: 133ms
+Epoch: 030 | Test Loss: 1.9690E-03 | Time: 133ms
+> Save at epoch 030 | Test loss 1.9690E-03
+Epoch: 031 | Train Loss: 3.7092E-03 | CBF GN: 7.4984E-02 | Time: 408ms
+Epoch: 031 | Test Loss: 2.6376E-03 | Time: 159ms
+Epoch: 032 | Test Loss: 1.9947E-03 | Time: 133ms
+Epoch: 033 | Test Loss: 2.3291E-03 | Time: 133ms
+Epoch: 034 | Test Loss: 2.7586E-03 | Time: 136ms
+Epoch: 035 | Test Loss: 2.0261E-03 | Time: 178ms
+Epoch: 036 | Train Loss: 2.9980E-03 | CBF GN: 5.9301E-02 | Time: 449ms
+Epoch: 036 | Test Loss: 1.9137E-03 | Time: 148ms
+> Save at epoch 036 | Test loss 1.9137E-03
+Epoch: 037 | Test Loss: 2.6282E-03 | Time: 181ms
+Epoch: 038 | Test Loss: 1.5269E-03 | Time: 141ms
+> Save at epoch 038 | Test loss 1.5269E-03
+Epoch: 039 | Test Loss: 1.8671E-03 | Time: 161ms
+Epoch: 040 | Test Loss: 2.5711E-03 | Time: 134ms
+Epoch: 041 | Train Loss: 3.8483E-03 | CBF GN: 7.0012E-02 | Time: 449ms
+Epoch: 041 | Test Loss: 1.5006E-03 | Time: 144ms
+> Save at epoch 041 | Test loss 1.5006E-03
+Epoch: 042 | Test Loss: 1.6480E-03 | Time: 151ms
+Epoch: 043 | Test Loss: 1.6814E-03 | Time: 146ms
+Epoch: 044 | Test Loss: 1.3877E-03 | Time: 136ms
+> Save at epoch 044 | Test loss 1.3877E-03
+Epoch: 045 | Test Loss: 1.9618E-03 | Time: 133ms
+Epoch: 046 | Train Loss: 2.6155E-03 | CBF GN: 5.8329E-02 | Time: 409ms
+Epoch: 046 | Test Loss: 1.6668E-03 | Time: 133ms
+Epoch: 047 | Test Loss: 2.0801E-03 | Time: 159ms
+Epoch: 048 | Test Loss: 2.0042E-03 | Time: 146ms
+Epoch: 049 | Test Loss: 1.4218E-03 | Time: 134ms
+Epoch: 050 | Test Loss: 1.8080E-03 | Time: 137ms
+Epoch: 051 | Train Loss: 2.5662E-03 | CBF GN: 5.5245E-02 | Time: 425ms
+Epoch: 051 | Test Loss: 1.7593E-03 | Time: 138ms
+Epoch: 052 | Test Loss: 1.6898E-03 | Time: 135ms
+Epoch: 053 | Test Loss: 1.5919E-03 | Time: 165ms
+Epoch: 054 | Test Loss: 1.4708E-03 | Time: 143ms
+Epoch: 055 | Test Loss: 1.4950E-03 | Time: 133ms
+Epoch: 056 | Train Loss: 2.5271E-03 | CBF GN: 5.7265E-02 | Time: 434ms
+Epoch: 056 | Test Loss: 1.9130E-03 | Time: 134ms
+Epoch: 057 | Test Loss: 1.3842E-03 | Time: 159ms
+> Save at epoch 057 | Test loss 1.3842E-03
+Epoch: 058 | Test Loss: 1.5419E-03 | Time: 133ms
+Epoch: 059 | Test Loss: 1.5022E-03 | Time: 133ms
+Epoch: 060 | Test Loss: 1.4523E-03 | Time: 133ms
+Epoch: 061 | Train Loss: 2.2193E-03 | CBF GN: 5.4601E-02 | Time: 408ms
+Epoch: 061 | Test Loss: 1.4707E-03 | Time: 133ms
+Epoch: 062 | Test Loss: 1.5383E-03 | Time: 133ms
+Epoch: 063 | Test Loss: 1.4403E-03 | Time: 160ms
+Epoch: 064 | Test Loss: 1.3669E-03 | Time: 133ms
+> Save at epoch 064 | Test loss 1.3669E-03
+Epoch: 065 | Test Loss: 1.2610E-03 | Time: 159ms
+> Save at epoch 065 | Test loss 1.2610E-03
+Epoch: 066 | Train Loss: 2.1418E-03 | CBF GN: 5.4832E-02 | Time: 409ms
+Epoch: 066 | Test Loss: 1.6040E-03 | Time: 133ms
+Epoch: 067 | Test Loss: 1.5034E-03 | Time: 133ms
+Epoch: 068 | Test Loss: 1.2954E-03 | Time: 133ms
+Epoch: 069 | Test Loss: 1.2700E-03 | Time: 132ms
+Epoch: 070 | Test Loss: 1.3623E-03 | Time: 133ms
+Epoch: 071 | Train Loss: 1.9428E-03 | CBF GN: 4.9767E-02 | Time: 409ms
+Epoch: 071 | Test Loss: 1.2731E-03 | Time: 160ms
+Epoch: 072 | Test Loss: 1.3211E-03 | Time: 133ms
+Epoch: 073 | Test Loss: 1.4489E-03 | Time: 133ms
+Epoch: 074 | Test Loss: 1.3315E-03 | Time: 134ms
+Epoch: 075 | Test Loss: 1.2424E-03 | Time: 160ms
+> Save at epoch 075 | Test loss 1.2424E-03
+Epoch: 076 | Train Loss: 1.9248E-03 | CBF GN: 4.9890E-02 | Time: 409ms
+Epoch: 076 | Test Loss: 1.1318E-03 | Time: 133ms
+> Save at epoch 076 | Test loss 1.1318E-03
+Epoch: 077 | Test Loss: 1.2443E-03 | Time: 133ms
+Epoch: 078 | Test Loss: 1.1999E-03 | Time: 133ms
+Epoch: 079 | Test Loss: 1.2364E-03 | Time: 132ms
+Epoch: 080 | Test Loss: 1.2316E-03 | Time: 133ms
+Epoch: 081 | Train Loss: 1.8715E-03 | CBF GN: 5.1133E-02 | Time: 408ms
+Epoch: 081 | Test Loss: 1.1286E-03 | Time: 159ms
+> Save at epoch 081 | Test loss 1.1286E-03
+Epoch: 082 | Test Loss: 1.2785E-03 | Time: 134ms
+Epoch: 083 | Test Loss: 1.2325E-03 | Time: 133ms
+Epoch: 084 | Test Loss: 1.1645E-03 | Time: 133ms
+Epoch: 085 | Test Loss: 1.3240E-03 | Time: 133ms
+Epoch: 086 | Train Loss: 1.7219E-03 | CBF GN: 4.4349E-02 | Time: 435ms
+Epoch: 086 | Test Loss: 1.1098E-03 | Time: 133ms
+> Save at epoch 086 | Test loss 1.1098E-03
+Epoch: 087 | Test Loss: 1.1693E-03 | Time: 159ms
+Epoch: 088 | Test Loss: 1.1367E-03 | Time: 134ms
+Epoch: 089 | Test Loss: 1.1673E-03 | Time: 133ms
+Epoch: 090 | Test Loss: 1.1360E-03 | Time: 133ms
+Epoch: 091 | Train Loss: 1.7095E-03 | CBF GN: 4.8465E-02 | Time: 408ms
+Epoch: 091 | Test Loss: 1.1433E-03 | Time: 133ms
+Epoch: 092 | Test Loss: 1.1582E-03 | Time: 133ms
+Epoch: 093 | Test Loss: 1.1542E-03 | Time: 159ms
+Epoch: 094 | Test Loss: 1.1136E-03 | Time: 133ms
+Epoch: 095 | Test Loss: 1.1191E-03 | Time: 133ms
+Epoch: 096 | Train Loss: 1.6666E-03 | CBF GN: 4.6895E-02 | Time: 410ms
+Epoch: 096 | Test Loss: 1.1185E-03 | Time: 162ms
+Epoch: 097 | Test Loss: 1.1290E-03 | Time: 160ms
+Epoch: 098 | Test Loss: 1.1240E-03 | Time: 138ms
+Epoch: 099 | Test Loss: 1.1213E-03 | Time: 134ms
+Epoch: 100 | Test Loss: 1.1181E-03 | Time: 134ms
+Total time: 56s535ms
+==> Visualizing training and test losses ...
+==> Computing the smoothness constants ...
+> Lipschitz constant of CBF network: 2.000000
+> Hessian bound of CBF network: 6.159200
+==> Saving the training results ...
+==> Visualizing the CBF function and feasibility condition ...
+==> Checking the safe and unsafe set ...
+> Safe set percentage: 0.574479
+> Unsafe set percentage: 1.000000
+> Feasibility percentage: 1.000000
+> Success:  True
+==> Saving the feasibility results ...
+==> Visualizing the CBF function and stability condition ...
+==> Visualizing the feasibility condition ...
+==> Done!

@@ -1,0 +1,32 @@
+==> Creating result directory ...
+==> Loading test settings ...
+==> Deciding torch device ...
+==> torch device:  cuda
+==> Building cbf neural network ...
+==> Lipschitz constant of CBF network: 2.000000
+==> Hessian bound of CBF network: 6.159200
+==> Third order elementwise bound of CBF network: 32.000000
+==> Number of subregions: 1
+==> Subregion 0000000001 / 0000000001: 
+==> [[-0.5 -2.  -1.  -1. ], [0.5 0.  1.  1. ]]
+> Iteration 00 | Bound: [-0.505577, 3.099974] | l2 radius: 1.80E+00 | Size: 1.00E+00 | Time: 68ms
+> Iteration 01 | Bound: [-0.470034, 2.692243] | l2 radius: 1.58E+00 | Size: 2.00E+00 | Time: 73ms
+> Iteration 02 | Bound: [-0.408282, 2.237470] | l2 radius: 1.32E+00 | Size: 4.00E+00 | Time: 74ms
+> Iteration 03 | Bound: [-0.385297, 1.614703] | l2 radius: 1.00E+00 | Size: 8.00E+00 | Time: 75ms
+> Iteration 04 | Bound: [-0.321091, 1.481684] | l2 radius: 9.01E-01 | Size: 1.60E+01 | Time: 77ms
+> Iteration 05 | Bound: [-0.308154, 1.272985] | l2 radius: 7.91E-01 | Size: 3.20E+01 | Time: 78ms
+> Iteration 06 | Bound: [-0.304680, 1.018196] | l2 radius: 6.61E-01 | Size: 6.40E+01 | Time: 79ms
+> Iteration 07 | Bound: [-0.292654, 0.638487] | l2 radius: 5.00E-01 | Size: 1.28E+02 | Time: 81ms
+> Iteration 08 | Bound: [-0.243892, 0.522459] | l2 radius: 4.51E-01 | Size: 2.54E+02 | Time: 83ms
+> Iteration 09 | Bound: [-0.232576, 0.385721] | l2 radius: 3.95E-01 | Size: 4.90E+02 | Time: 86ms
+> Iteration 10 | Bound: [-0.208799, 0.253077] | l2 radius: 3.31E-01 | Size: 8.60E+02 | Time: 91ms
+> Iteration 11 | Bound: [-0.196083, 0.108229] | l2 radius: 2.50E-01 | Size: 1.07E+03 | Time: 97ms
+> Iteration 12 | Bound: [-0.173539, 0.059316] | l2 radius: 2.25E-01 | Size: 3.14E+02 | Time: 101ms
+> Iteration 13 | Bound: [-0.143328, 0.017252] | l2 radius: 1.98E-01 | Size: 1.20E+01 | Time: 103ms
+> Iteration 14 | Bound: [-0.110737, -0.016055] | l2 radius: 1.65E-01 | Size: 2.00E+00 | Time: 105ms
+> No region to refine. Done!
+> Time for subregion 0000000001: 105ms
+> Total time up to subregion 0000000001: 105ms = 0.10522270202636719 s
+> Total time excluding drawing: 105ms = 0.10522270202636719 s
+> Success: True
+==> Done!
