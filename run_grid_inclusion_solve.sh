@@ -1,24 +1,16 @@
-mkdir eg1_results/001
-python -u eg1_inverted_pendulum/grid_inclusion_solve_second_order.py --exp_num 1 --device cpu --precision 1.0E-03 > eg1_results/001/output_grid_inclusion_solve_cpu_1.0E-03.out
-mkdir eg1_results/002
-python -u eg1_inverted_pendulum/grid_inclusion_solve_second_order.py --exp_num 2 --device cpu --precision 1.0E-03 > eg1_results/002/output_grid_inclusion_solve_cpu_1.0E-03.out
-mkdir eg1_results/003
-python -u eg1_inverted_pendulum/grid_inclusion_solve_second_order.py --exp_num 3 --device cpu --precision 1.0E-03 > eg1_results/003/output_grid_inclusion_solve_cpu_1.0E-03.out
-mkdir eg1_results/004
-python -u eg1_inverted_pendulum/grid_inclusion_solve_second_order.py --exp_num 4 --device cpu --precision 1.0E-03 > eg1_results/004/output_grid_inclusion_solve_cpu_1.0E-03.out
-mkdir eg1_results/005
-python -u eg1_inverted_pendulum/grid_inclusion_solve_second_order.py --exp_num 5 --device cpu --precision 1.0E-03 > eg1_results/005/output_grid_inclusion_solve_cpu_1.0E-03.out
-mkdir eg1_results/006
-python -u eg1_inverted_pendulum/grid_inclusion_solve_second_order.py --exp_num 6 --device cpu --precision 1.0E-03 > eg1_results/006/output_grid_inclusion_solve_cpu_1.0E-03.out
-mkdir eg1_results/007
-python -u eg1_inverted_pendulum/grid_inclusion_solve_second_order.py --exp_num 7 --device cpu --precision 1.0E-03 > eg1_results/007/output_grid_inclusion_solve_cpu_1.0E-03.out
-mkdir eg1_results/008
-python -u eg1_inverted_pendulum/grid_inclusion_solve_second_order.py --exp_num 8 --device cpu --precision 1.0E-03 > eg1_results/008/output_grid_inclusion_solve_cpu_1.0E-03.out
-mkdir eg1_results/009
-python -u eg1_inverted_pendulum/grid_inclusion_solve_second_order.py --exp_num 9 --device cpu --precision 1.0E-03 > eg1_results/009/output_grid_inclusion_solve_cpu_1.0E-03.out
-mkdir eg1_results/010
-python -u eg1_inverted_pendulum/grid_inclusion_solve_second_order.py --exp_num 10 --device cpu --precision 1.0E-03 > eg1_results/010/output_grid_inclusion_solve_cpu_1.0E-03.out
-mkdir eg1_results/011
-python -u eg1_inverted_pendulum/grid_inclusion_solve_second_order.py --exp_num 11 --device cpu --precision 1.0E-03 > eg1_results/011/output_grid_inclusion_solve_cpu_1.0E-03.out
-mkdir eg1_results/012
-python -u eg1_inverted_pendulum/grid_inclusion_solve_second_order.py --exp_num 12 --device cpu --precision 1.0E-03 > eg1_results/012/output_grid_inclusion_solve_cpu_1.0E-03.out
+mkdir eg1_results/013
+python -u eg1_inverted_pendulum/grid_inclusion_solve_second_order.py --exp_num 13 --device cuda --precision 1.0E-03 > eg1_results/013/output_grid_inclusion_solve_cuda_1.0E-03.out
+mkdir eg1_results/014
+python -u eg1_inverted_pendulum/grid_inclusion_solve_second_order.py --exp_num 14 --device cuda --precision 1.0E-03 > eg1_results/014/output_grid_inclusion_solve_cuda_1.0E-03.out
+mkdir eg1_results/015
+python -u eg1_inverted_pendulum/grid_inclusion_solve_second_order.py --exp_num 15 --device cuda --precision 1.0E-03 > eg1_results/015/output_grid_inclusion_solve_cuda_1.0E-03.out
+mkdir eg1_results/016
+python -u eg1_inverted_pendulum/grid_inclusion_solve_second_order.py --exp_num 16 --device cuda --precision 1.0E-03 > eg1_results/016/output_grid_inclusion_solve_cuda_1.0E-03.out
+mkdir eg1_results/017
+python -u eg1_inverted_pendulum/grid_inclusion_solve_second_order.py --exp_num 17 --device cuda --precision 1.0E-03 > eg1_results/017/output_grid_inclusion_solve_cuda_1.0E-03.out
+mkdir eg1_results/018
+python -u eg1_inverted_pendulum/grid_inclusion_solve_second_order.py --exp_num 18 --device cuda --precision 1.0E-03 > eg1_results/018/output_grid_inclusion_solve_cuda_1.0E-03.out
+mkdir eg1_results/019
+python -u eg1_inverted_pendulum/grid_inclusion_solve_second_order.py --exp_num 19 --device cuda --precision 1.0E-03 > eg1_results/019/output_grid_inclusion_solve_cuda_1.0E-03.out
+mkdir eg1_results/020
+python -u eg1_inverted_pendulum/grid_inclusion_solve_second_order.py --exp_num 20 --device cuda --precision 1.0E-03 > eg1_results/020/output_grid_inclusion_solve_cuda_1.0E-03.out
