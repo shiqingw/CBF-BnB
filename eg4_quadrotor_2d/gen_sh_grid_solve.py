@@ -27,7 +27,7 @@ def generate_sh_script_grid_stability_solve(filename, exp_nums, device, precisio
             file.write(command1)
             file.write(command2)
 
-exp_nums = list(range(5, 9))
+exp_nums = list(range(9, 17))
 device = "cuda"
 
 file = os.path.join(str(Path(__file__).parent.parent), f"run_grid_inclusion_solve.sh")
