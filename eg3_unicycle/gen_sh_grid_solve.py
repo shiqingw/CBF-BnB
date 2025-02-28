@@ -27,7 +27,7 @@ def generate_sh_script_grid_stability_solve(filename, exp_nums, device, precisio
             file.write(command1)
             file.write(command2)
 
-exp_nums = list(range(1, 5))
+exp_nums = list(range(17, 21))
 device = "cuda"
 precision = 1.0E-3
 

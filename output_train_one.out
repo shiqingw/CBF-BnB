@@ -1,9 +1,9 @@
 nohup: ignoring input
-mkdir: cannot create directory ‘eg1_results/017’: File exists
-mkdir: cannot create directory ‘eg1_results/017’: File exists
-mkdir: cannot create directory ‘eg1_results/018’: File exists
-mkdir: cannot create directory ‘eg1_results/018’: File exists
-mkdir: cannot create directory ‘eg1_results/019’: File exists
-mkdir: cannot create directory ‘eg1_results/019’: File exists
-mkdir: cannot create directory ‘eg1_results/020’: File exists
-mkdir: cannot create directory ‘eg1_results/020’: File exists
+mkdir: cannot create directory ‘eg3_results/017’: File exists
+mkdir: cannot create directory ‘eg3_results/017’: File exists
+mkdir: cannot create directory ‘eg3_results/018’: File exists
+mkdir: cannot create directory ‘eg3_results/018’: File exists
+mkdir: cannot create directory ‘eg3_results/019’: File exists
+mkdir: cannot create directory ‘eg3_results/019’: File exists
+mkdir: cannot create directory ‘eg3_results/020’: File exists
+mkdir: cannot create directory ‘eg3_results/020’: File exists

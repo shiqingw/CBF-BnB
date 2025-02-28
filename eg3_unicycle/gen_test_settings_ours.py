@@ -11,7 +11,7 @@ def generate_json_script(filename, entry):
     "cbf_nn_config": {{
         "in_features": 3,
         "out_features": 1,
-        "lipschitz_constant": 1.0,
+        "lipschitz_constant": {entry["lipschitz_constant"]},
         "activations": "tanh",
         "num_layers": {entry["num_layer"]},
         "width_each_layer": 256,
@@ -61,17 +61,19 @@ def generate_json_script(filename, entry):
         "safe_set_weight": 0.0025,
         "unsafe_set_weight": 1.0,
         "feasibility_weight": 1.0,
-        "safe_set_margin": 0.04,
-        "unsafe_set_margin": 0.16,
-        "feasibility_margin": 0.10
+        "safe_set_margin": 0.02,
+        "unsafe_set_margin": 0.2,
+        "feasibility_margin": 0.25
     }}
 }}"""
     with open(filename, 'w') as file:
         file.write(data_str)
 
 
-num_layers = [4]
+num_layers = [2]
 num_layers.sort()
+lipschitz_constants = [4.0]
+lipschitz_constants.sort()
 cbf_alphas = [5e-1]
 cbf_alphas.sort()
 random_seeds = [0, 100, 200, 300]
@@ -80,15 +82,17 @@ random_seeds.sort()
 # iterate over all combinations of gammas, train_ratios, and random_seeds and generate a test_settings file for each
 data = []
 for num_layer in num_layers:
-    for cbf_alpha in cbf_alphas:
-        for random_seed in random_seeds:
-            data.append({
-                "num_layer": num_layer,
-                "cbf_alpha": cbf_alpha,
-                "random_seed": random_seed
-            })
+    for lipschitz_constant in lipschitz_constants:
+        for cbf_alpha in cbf_alphas:
+            for random_seed in random_seeds:
+                data.append({
+                    "num_layer": num_layer,
+                    "lipschitz_constant": lipschitz_constant,
+                    "cbf_alpha": cbf_alpha,
+                    "random_seed": random_seed
+                })
 
-start = 9
+start = 17
 exp_nums = range(start, start+len(data))
 for i in range(len(data)):
     entry = data[i]

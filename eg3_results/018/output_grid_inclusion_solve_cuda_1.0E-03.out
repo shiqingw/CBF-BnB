@@ -1,0 +1,34 @@
+==> Creating result directory ...
+==> Loading test settings ...
+==> Deciding torch device ...
+==> torch device:  cuda
+==> Building cbf neural network ...
+==> Lipschitz constant of CBF network: 4.000000
+==> Hessian bound of CBF network: 17.420848
+==> Third order elementwise bound of CBF network: 128.000000
+==> Number of subregions: 1
+==> Subregion 0000000001 / 0000000001: 
+==> [[-0.5  -2.   -1.57], [0.5  0.   1.57]]
+> Iteration 00 | Bound: [-1.052418, 6.657212] | l2 radius: 1.93E+00 | Size: 1.00E+00 | Time: 69ms
+> Iteration 01 | Bound: [-1.125021, 4.339373] | l2 radius: 1.37E+00 | Size: 2.00E+00 | Time: 73ms
+> Iteration 02 | Bound: [-0.932598, 3.293464] | l2 radius: 1.06E+00 | Size: 4.00E+00 | Time: 75ms
+> Iteration 03 | Bound: [-0.876409, 2.358541] | l2 radius: 8.09E-01 | Size: 8.00E+00 | Time: 76ms
+> Iteration 04 | Bound: [-0.726866, 2.005331] | l2 radius: 6.83E-01 | Size: 1.60E+01 | Time: 77ms
+> Iteration 05 | Bound: [-0.583837, 1.529194] | l2 radius: 5.28E-01 | Size: 3.20E+01 | Time: 79ms
+> Iteration 06 | Bound: [-0.530126, 1.087349] | l2 radius: 4.04E-01 | Size: 6.40E+01 | Time: 80ms
+> Iteration 07 | Bound: [-0.399936, 0.966162] | l2 radius: 3.42E-01 | Size: 1.20E+02 | Time: 82ms
+> Iteration 08 | Bound: [-0.309238, 0.591886] | l2 radius: 2.64E-01 | Size: 2.08E+02 | Time: 84ms
+> Iteration 09 | Bound: [-0.279320, 0.335028] | l2 radius: 2.02E-01 | Size: 1.92E+02 | Time: 86ms
+> Iteration 10 | Bound: [-0.183959, 0.194801] | l2 radius: 1.71E-01 | Size: 9.20E+01 | Time: 87ms
+> Iteration 11 | Bound: [-0.089291, 0.093494] | l2 radius: 1.32E-01 | Size: 4.80E+01 | Time: 88ms
+> Iteration 12 | Bound: [-0.044341, 0.041032] | l2 radius: 1.01E-01 | Size: 1.40E+01 | Time: 89ms
+> Iteration 13 | Bound: [-0.028939, 0.021453] | l2 radius: 8.54E-02 | Size: 4.00E+00 | Time: 91ms
+> Iteration 14 | Bound: [-0.017114, 0.007943] | l2 radius: 6.60E-02 | Size: 2.00E+00 | Time: 93ms
+> Iteration 15 | Bound: [-0.011493, 0.000467] | l2 radius: 5.05E-02 | Size: 2.00E+00 | Time: 95ms
+> Iteration 16 | Bound: [-0.009564, -0.002503] | l2 radius: 4.27E-02 | Size: 2.00E+00 | Time: 97ms
+> No region to refine. Done!
+> Time for subregion 0000000001: 97ms
+> Total time up to subregion 0000000001: 97ms = 0.09762811660766602 s
+> Total time excluding drawing: 97ms = 0.09762811660766602 s
+> Success: True
+==> Done!

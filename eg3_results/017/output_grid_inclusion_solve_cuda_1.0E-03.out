@@ -1,0 +1,31 @@
+==> Creating result directory ...
+==> Loading test settings ...
+==> Deciding torch device ...
+==> torch device:  cuda
+==> Building cbf neural network ...
+==> Lipschitz constant of CBF network: 4.000000
+==> Hessian bound of CBF network: 17.420848
+==> Third order elementwise bound of CBF network: 128.000000
+==> Number of subregions: 1
+==> Subregion 0000000001 / 0000000001: 
+==> [[-0.5  -2.   -1.57], [0.5  0.   1.57]]
+> Iteration 00 | Bound: [-0.919143, 6.790487] | l2 radius: 1.93E+00 | Size: 1.00E+00 | Time: 68ms
+> Iteration 01 | Bound: [-0.962295, 4.502099] | l2 radius: 1.37E+00 | Size: 2.00E+00 | Time: 72ms
+> Iteration 02 | Bound: [-0.832319, 3.393743] | l2 radius: 1.06E+00 | Size: 4.00E+00 | Time: 74ms
+> Iteration 03 | Bound: [-0.796322, 2.438628] | l2 radius: 8.09E-01 | Size: 8.00E+00 | Time: 75ms
+> Iteration 04 | Bound: [-0.658245, 2.073952] | l2 radius: 6.83E-01 | Size: 1.60E+01 | Time: 76ms
+> Iteration 05 | Bound: [-0.560001, 1.553030] | l2 radius: 5.28E-01 | Size: 3.20E+01 | Time: 78ms
+> Iteration 06 | Bound: [-0.519233, 1.098242] | l2 radius: 4.04E-01 | Size: 6.40E+01 | Time: 79ms
+> Iteration 07 | Bound: [-0.400197, 0.925543] | l2 radius: 3.42E-01 | Size: 1.16E+02 | Time: 82ms
+> Iteration 08 | Bound: [-0.317599, 0.558997] | l2 radius: 2.64E-01 | Size: 2.08E+02 | Time: 86ms
+> Iteration 09 | Bound: [-0.293734, 0.310130] | l2 radius: 2.02E-01 | Size: 1.94E+02 | Time: 89ms
+> Iteration 10 | Bound: [-0.206853, 0.172813] | l2 radius: 1.71E-01 | Size: 8.80E+01 | Time: 91ms
+> Iteration 11 | Bound: [-0.111904, 0.074062] | l2 radius: 1.32E-01 | Size: 3.40E+01 | Time: 93ms
+> Iteration 12 | Bound: [-0.066909, 0.019524] | l2 radius: 1.01E-01 | Size: 4.00E+00 | Time: 95ms
+> Iteration 13 | Bound: [-0.051477, -0.000776] | l2 radius: 8.54E-02 | Size: 2.00E+00 | Time: 97ms
+> No region to refine. Done!
+> Time for subregion 0000000001: 97ms
+> Total time up to subregion 0000000001: 97ms = 0.09769535064697266 s
+> Total time excluding drawing: 97ms = 0.09769535064697266 s
+> Success: True
+==> Done!
