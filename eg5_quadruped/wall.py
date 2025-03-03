@@ -12,6 +12,8 @@ import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.use('Agg')  # Set the backend to 'Agg'
 from scipy.spatial.transform import Rotation
+import scipy.sparse as sparse
+import osqp
 
 from Go2Py.sim.mujoco import Go2Sim
 from cores.dynamical_systems.create_system import get_system
@@ -22,6 +24,7 @@ from cores.utils.draw_utils import draw_curve, draw_multiple_curves
 from cores.utils.draw_utils import draw_safe_set_contour, draw_feasibility_condition_contour
 from cores.cosine_annealing_warmup import CosineAnnealingWarmupRestarts
 from cores.utils.online_utils import label_rectangles, train_cbf
+from cores.utils.osqp_utils import init_osqp
 
 if __name__ == '__main__':
     # Parse arguments
@@ -118,10 +121,18 @@ if __name__ == '__main__':
     # Training config
     train_config = test_settings["train_config"]
 
+    # Define OSQP problem
+    print("==> Define OSQP problem")
+    n_vars = system.control_dim
+    n_cbf = 1
+    n_in = n_vars + n_cbf
+    cbf_qp = init_osqp(n_v=n_vars, n_in=n_in, config=config)
+
     # Visualize the collision corners and lidar points
     id_geom_offset = 0
     collision_corner_id_geom_offset = id_geom_offset
     point_cloud_id_geom_offset = id_geom_offset + len(collision_offset_in_body)
+    flag_cbf = False
 
     for step_counter in range(0, horizon):
         loop_start_time = time.time()
@@ -153,7 +164,7 @@ if __name__ == '__main__':
                                     np.eye(3).astype(config.np_dtype),
                                     np.array([1,0,0,1]),
                                     id_geom_offset=point_cloud_id_geom_offset+point_ind)
-            if step_counter % cbf_training_step == 0:
+            if (flag_cbf == False) and (step_counter % cbf_training_step == 0):
                 
                 distance_samples = np.array([0.2, 0.4, 0.6, 0.8, 1.0], dtype=config.np_dtype)
                 xyz_states_np = pos + pcd_directions_in_world[:, None, :] * distance_samples[None, :, None]
@@ -166,16 +177,9 @@ if __name__ == '__main__':
                 states_np = np.concatenate([xy_states_repeated_np, theta_tiled_np], axis=1)
                 labels_np = label_rectangles(states_np, pcd_xy_in_world,
                                             collision_front_offset, collision_left_right_offset, collision_rear_offset)
-                # plot states_np based on labels_np
-                # fig = plt.figure()
-                # ax = fig.add_subplot(111)
-                # plt.scatter(states_np[labels_np == 1, 0], states_np[labels_np == 1, 1], c='b', s=0.1, label='inside')
-                # plt.scatter(states_np[labels_np == -1, 0], states_np[labels_np == -1, 1], c='r', s=0.1, label='outside')
-                # plt.savefig(f'{results_dir}/test_{step_counter:05d}.pdf')
-                # plt.close()
 
                 # Train CBF
-                train_cbf(cbf_config=cbf_config,
+                cbf_nn = train_cbf(cbf_config=cbf_config,
                           nn_input_bias=[pos[0], pos[1], 0],
                           train_config=train_config,
                           states_np=states_np, 
@@ -187,9 +191,37 @@ if __name__ == '__main__':
                           step_counter=step_counter,
                           config=config,
                           device=device)
-                assert False
+            
+                flag_cbf = True
+            
+        C = np.zeros((n_in, n_vars), dtype=config.np_dtype)
+        lb = np.zeros(n_in, dtype=config.np_dtype)
+        ub = np.zeros(n_in, dtype=config.np_dtype)
+        x_np = np.array([pos[0], pos[1], theta_2d], dtype=config.np_dtype)
+        drift_np = np.zeros(system.state_dim, dtype=config.np_dtype)
+        actuation_np = np.eye(system.control_dim, dtype=config.np_dtype)
+        h_torch, h_dx_torch = cbf_nn.forward_with_jacobian(torch.tensor(x_np, dtype=config.pt_dtype, device=device).unsqueeze(0))
+        h_np = h_torch.detach().cpu().numpy().squeeze(0)
+        h_dx_np = h_dx_torch.detach().cpu().numpy().squeeze(0)
+        C[:n_vars, :n_vars] = np.eye(n_vars, dtype=config.np_dtype)
+        lb[:n_vars] = control_lower_bound.cpu().numpy()
+        ub[:n_vars] = control_upper_bound.cpu().numpy()
+        C[n_vars:, :n_vars] = h_dx_np @ actuation_np
+        lb[n_vars:] = -cbf_config["alpha"] * h_np + h_dx_np @ drift_np
+        ub[n_vars:] = np.inf
+        u_nominal = np.array([0.4, 0, 0.0], dtype=config.np_dtype)
+        g = -u_nominal
 
+        data = C.flatten()
+        rows, cols = np.indices(C.shape)
+        row_indices = rows.flatten()
+        col_indices = cols.flatten()
+        Ax = sparse.csc_matrix((data, (row_indices, col_indices)), shape=C.shape)
+        cbf_qp.update(q=g, l=lb, u=ub, Ax=Ax.data)
+        results = cbf_qp.solve()
+        u_safe = results.x
+        print(u_safe)
 
-        robot.stepHighlevel(0.2, 0, 0.0, step_height=0, kp=[2, 0.5, 0.5], ki=[0.02, 0.01, 0.01])
+        robot.stepHighlevel(u_safe[0], u_safe[1], u_safe[2], step_height=0, kp=[2, 0.5, 0.5], ki=[0.02, 0.01, 0.01])
         
         time.sleep(max(0, simulator_dt - (time.time()-loop_start_time)))

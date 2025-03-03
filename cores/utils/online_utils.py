@@ -86,7 +86,7 @@ def label_rectangles(A, B, a, b, c):
 def train_cbf(cbf_config, nn_input_bias, train_config, states_np, labels_np, system, 
               control_upper_bound, control_lower_bound, results_dir, step_counter, config, device):
     # Build CBF network
-    print("==> Building cbf neural network ...")
+    print("> Building cbf neural network ...")
     cbf_alpha = cbf_config["alpha"]
     cbf_in_features = cbf_config["in_features"]
     cbf_out_features = cbf_config["out_features"]
@@ -109,8 +109,8 @@ def train_cbf(cbf_config, nn_input_bias, train_config, states_np, labels_np, sys
                                 trainable_psi=False)
     # summary(cbf_nn, input_size=(1, cbf_in_features), dtypes=[config.pt_dtype])
     # save_nn_weights(cbf_nn, f"{results_dir}/cbf_weights_init.pt")
-    lip_cbf_nn = cbf_nn.get_l2_lipschitz_bound()
-    print("==> Lipschitz constant of CBF network: {:.6f}".format(lip_cbf_nn))
+    # lip_cbf_nn = cbf_nn.get_l2_lipschitz_bound()
+    # print("==> Lipschitz constant of CBF network: {:.6f}".format(lip_cbf_nn))
     cbf_nn.to(device)
 
     # Trainset    
@@ -136,7 +136,7 @@ def train_cbf(cbf_config, nn_input_bias, train_config, states_np, labels_np, sys
                                               warmup_steps=train_config["warmup_steps"])
     
     # Start training
-    print("==> Start training ...")
+    print("> Start training ...")
     safe_set_weight = train_config["safe_set_weight"]
     unsafe_set_weight = train_config["unsafe_set_weight"]
     feasibility_weight = train_config["feasibility_weight"]
@@ -240,7 +240,7 @@ def train_cbf(cbf_config, nn_input_bias, train_config, states_np, labels_np, sys
         scheduler.step()
     
     end_time = time.time()
-    print("Total time: {}".format(format_time(end_time - start_time)))
+    print("> Total time: {}".format(format_time(end_time - start_time)))
 
     def feasibility_fun(x):
         h, h_dx = cbf_nn.forward_with_jacobian(x) # (batch_size, 1), (batch_size, 1, state_dim)
@@ -261,15 +261,16 @@ def train_cbf(cbf_config, nn_input_bias, train_config, states_np, labels_np, sys
     # Calculate statistics
     num_true_safe = np.sum(labels_np > 0)
     num_true_unsafe = np.sum(labels_np < 0)
-    cbf_torch = cbf_nn.forward(train_state).detach().cpu()
-    num_pred_safe = np.sum(cbf_torch[label > 0].detach().cpu().numpy() > 0)
-    num_pred_unsafe = np.sum(cbf_torch[label < 0].detach().cpu().numpy() < 0)
+    cbf_torch = cbf_nn.forward(train_state).detach().cpu().squeeze(1) # (num_samples,)
+    cbf_np = cbf_torch.numpy()
+    num_pred_safe = np.sum(cbf_np[labels_np > 0] >= 0)
+    num_pred_unsafe = np.sum(cbf_np[labels_np < 0] < 0)
     
-    feasibility_on_pred_safe = feasibility_fun(train_state[cbf_torch >= 0]).detach().cpu().numpy()
+    feasibility_on_pred_safe = feasibility_fun(train_state[cbf_torch >= 0]).detach().cpu().numpy() # (num_samples,)
     feasibility_on_pred_safe = np.sum(feasibility_on_pred_safe >= 0)
-    print(f"Safe percentage: {num_pred_safe/num_true_safe:.4f}")
-    print(f"Unsafe percentage: {num_pred_unsafe/num_true_unsafe:.4f}")
-    print(f"Feasibility on pred safe: {feasibility_on_pred_safe/num_pred_safe:.4f}")
+    print(f"> Safe percentage: {num_pred_safe/num_true_safe:.4f}")
+    print(f"> Unsafe percentage: {num_pred_unsafe/num_true_unsafe:.4f}")
+    print(f"> Feasibility on pred safe: {feasibility_on_pred_safe/num_pred_safe:.4f}")
 
     draw_curve(data=train_loss_monitor,
                ylabel="Train Loss", 
@@ -285,11 +286,11 @@ def train_cbf(cbf_config, nn_input_bias, train_config, states_np, labels_np, sys
                dpi=100)
     
     # Plots
-    print("==> Visualizing the CBF function ...")
+    print("> Visualizing the CBF function ...")
     state_lower_bound = np.min(states_np, axis=0)
     state_upper_bound = np.max(states_np, axis=0)
         
-    print("==> Visualizing the feasibility condition ...")
+    print("> Visualizing the feasibility condition ...")
     pairwise_idx = [(0,1), (0,2), (1,2)]
     state_labels = [r"$x$", r"$y$", r"$\theta$"]
     state_names = ["x", "y", "theta"]
