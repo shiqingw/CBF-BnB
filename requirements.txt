@@ -1,0 +1,8 @@
+matplotlib==3.9.2
+mujoco==3.2.7
+numpy==2.0.2
+osqp==0.6.7.post1
+scipy==1.14.1
+torch==2.4.1
+torchinfo==1.8.0
+opencv-python==4.11.0.86
