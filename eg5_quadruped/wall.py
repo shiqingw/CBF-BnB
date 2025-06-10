@@ -145,13 +145,13 @@ if __name__ == '__main__':
                                [np.sin(theta_2d), np.cos(theta_2d), 0],
                                [0, 0, 1]], dtype=config.np_dtype)
         collision_corners_in_world = pos + collision_offset_in_body @ R_2d_to_3d.T
-        for corner_ind in range(len(collision_corners_in_world)):
-            robot.add_visual_capsule(point1=collision_corners_in_world[corner_ind],
-                                     point2=collision_corners_in_world[(corner_ind+1)%len(collision_corners_in_world)], 
-                                     radius=0.01, 
-                                     rgba=np.array([0,1,0,1]), 
-                                     id_geom_offset=collision_corner_id_geom_offset+corner_ind, 
-                                     limit_num=False)
+        # for corner_ind in range(len(collision_corners_in_world)):
+        #     robot.add_visual_capsule(point1=collision_corners_in_world[corner_ind],
+        #                              point2=collision_corners_in_world[(corner_ind+1)%len(collision_corners_in_world)], 
+        #                              radius=0.01, 
+        #                              rgba=np.array([0,1,0,1]), 
+        #                              id_geom_offset=collision_corner_id_geom_offset+corner_ind, 
+        #                              limit_num=False)
 
         if (step_counter % lidar_step == 0) and abs(rpy[1]) <= 0.1:
             pcd_in_body = robot.getLaserScan(nray=lidar_nray, max_range=30.0)
