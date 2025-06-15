@@ -1,0 +1,263 @@
+==> Creating result directory ...
+==> Loading test settings ...
+==> Deciding torch device ...
+==> torch device:  cuda
+==> Building dynamical system ...
+==> Building cbf neural network ...
+==> Lipschitz constant of CBF network: 1.000000
+==> Hessian bound of CBF network: 2.177606
+==> Third order elementwise bound of CBF network: 8.000000
+==> Current beta range: [1.0000, 10.0000]
+==> Testing beta = 5.5000
+==> Number of subregions: 1
+==> Subregion 0000000001 / 0000000001: 
+==> [[-3.14 -5.  ], [3.14 5.  ]]
+==> Lipschitz constant of the zero order test function: 60.696886
+> Iteration 00 | Bound: [-358.268616, 0.098053] | l2 radius: 5.90E+00 | Size: 1.00E+00 | Time: 135ms
+> Iteration 01 | Bound: [-242.705185, 0.912480] | l2 radius: 4.01E+00 | Size: 2.00E+00 | Time: 139ms
+> Iteration 02 | Bound: [-179.162247, 0.021082] | l2 radius: 2.95E+00 | Size: 4.00E+00 | Time: 142ms
+> Iteration 03 | Bound: [-121.785126, 0.023705] | l2 radius: 2.01E+00 | Size: 8.00E+00 | Time: 145ms
+> Iteration 04 | Bound: [-89.561035, 0.030632] | l2 radius: 1.48E+00 | Size: 1.60E+01 | Time: 149ms
+> Iteration 05 | Bound: [-60.873802, 0.030613] | l2 radius: 1.00E+00 | Size: 3.20E+01 | Time: 153ms
+> Iteration 06 | Bound: [-44.787262, 0.008571] | l2 radius: 7.38E-01 | Size: 6.40E+01 | Time: 157ms
+> Iteration 07 | Bound: [-30.442448, 0.009761] | l2 radius: 5.02E-01 | Size: 1.28E+02 | Time: 162ms
+> Iteration 08 | Bound: [-18.890026, 0.000015] | l2 radius: 3.69E-01 | Size: 2.56E+02 | Time: 177ms
+> Iteration 09 | Bound: [-8.707731, 0.004017] | l2 radius: 2.51E-01 | Size: 4.20E+02 | Time: 181ms
+> Iteration 10 | Bound: [-4.725423, 0.000117] | l2 radius: 1.85E-01 | Size: 6.60E+02 | Time: 185ms
+> Iteration 11 | Bound: [-2.165276, 0.011332] | l2 radius: 1.25E-01 | Size: 1.09E+03 | Time: 191ms
+> Iteration 12 | Bound: [-1.158435, 0.010515] | l2 radius: 9.23E-02 | Size: 2.00E+03 | Time: 201ms
+> Iteration 13 | Bound: [-0.530337, 0.010496] | l2 radius: 6.27E-02 | Size: 3.41E+03 | Time: 217ms
+> Iteration 14 | Bound: [-0.282051, 0.010408] | l2 radius: 4.61E-02 | Size: 4.36E+03 | Time: 250ms
+> Iteration 15 | Bound: [-0.124976, 0.010400] | l2 radius: 3.14E-02 | Size: 6.33E+03 | Time: 277ms
+> Iteration 16 | Bound: [-0.062892, 0.010426] | l2 radius: 2.31E-02 | Size: 8.51E+03 | Time: 347ms
+> Iteration 17 | Bound: [-0.023593, 0.010423] | l2 radius: 1.57E-02 | Size: 9.84E+03 | Time: 404ms
+> Iteration 18 | Bound: [-0.008004, 0.010405] | l2 radius: 1.15E-02 | Size: 7.39E+03 | Time: 437ms
+> Iteration 19 | Bound: [0.001838, 0.010405] | l2 radius: 7.84E-03 | Size: 3.76E+03 | Time: 467ms
+> No region to refine. Done!
+> Time for subregion 0000000001: 467ms
+> Total time up to subregion 0000000001: 467ms = 0.4672219753265381 s
+> Total time : 467ms = 0.4672219753265381 s
+> Success: True
+==> Feasibility test passed for beta = 5.5000. Reducing beta range to [5.5000, 10.0000].
+==> Time for this iteration: 498ms
+==> Total time for binary search so far: 498ms = 0.4987525939941406 s
+##################################################
+==> Current beta range: [5.5000, 10.0000]
+==> Testing beta = 7.7500
+==> Number of subregions: 1
+==> Subregion 0000000001 / 0000000001: 
+==> [[-3.14 -5.  ], [3.14 5.  ]]
+==> Lipschitz constant of the zero order test function: 60.941866
+> Iteration 00 | Bound: [-359.715149, 0.097956] | l2 radius: 5.90E+00 | Size: 1.00E+00 | Time: 1ms
+> Iteration 01 | Bound: [-243.697693, 0.903264] | l2 radius: 4.01E+00 | Size: 2.00E+00 | Time: 3ms
+> Iteration 02 | Bound: [-179.892044, 0.014519] | l2 radius: 2.95E+00 | Size: 4.00E+00 | Time: 4ms
+> Iteration 03 | Bound: [-122.281738, 0.018742] | l2 radius: 2.01E+00 | Size: 8.00E+00 | Time: 6ms
+> Iteration 04 | Bound: [-89.925308, 0.027973] | l2 radius: 1.48E+00 | Size: 1.60E+01 | Time: 7ms
+> Iteration 05 | Bound: [-61.121441, 0.028799] | l2 radius: 1.00E+00 | Size: 3.20E+01 | Time: 9ms
+> Iteration 06 | Bound: [-44.969017, 0.007623] | l2 radius: 7.38E-01 | Size: 6.40E+01 | Time: 11ms
+> Iteration 07 | Bound: [-30.566010, 0.009110] | l2 radius: 5.02E-01 | Size: 1.28E+02 | Time: 12ms
+> Iteration 08 | Bound: [-18.953579, 0.006054] | l2 radius: 3.69E-01 | Size: 2.56E+02 | Time: 15ms
+> Iteration 09 | Bound: [-8.737232, 0.003863] | l2 radius: 2.51E-01 | Size: 4.20E+02 | Time: 18ms
+> Iteration 10 | Bound: [-4.741911, 0.005511] | l2 radius: 1.85E-01 | Size: 6.60E+02 | Time: 22ms
+> Iteration 11 | Bound: [-2.173009, 0.005791] | l2 radius: 1.25E-01 | Size: 1.09E+03 | Time: 29ms
+> Iteration 12 | Bound: [-1.167912, 0.005127] | l2 radius: 9.23E-02 | Size: 2.00E+03 | Time: 38ms
+> Iteration 13 | Bound: [-0.537650, 0.005154] | l2 radius: 6.27E-02 | Size: 3.42E+03 | Time: 54ms
+> Iteration 14 | Bound: [-0.288642, 0.005150] | l2 radius: 4.61E-02 | Size: 4.38E+03 | Time: 87ms
+> Iteration 15 | Bound: [-0.130990, 0.005145] | l2 radius: 3.14E-02 | Size: 6.38E+03 | Time: 115ms
+> Iteration 16 | Bound: [-0.068537, 0.005112] | l2 radius: 2.31E-02 | Size: 8.62E+03 | Time: 168ms
+> Iteration 17 | Bound: [-0.029079, 0.005111] | l2 radius: 1.57E-02 | Size: 1.02E+04 | Time: 227ms
+> Iteration 18 | Bound: [-0.013416, 0.005113] | l2 radius: 1.15E-02 | Size: 8.65E+03 | Time: 278ms
+> Iteration 19 | Bound: [-0.003530, 0.005113] | l2 radius: 7.84E-03 | Size: 6.83E+03 | Time: 308ms
+> Iteration 20 | Bound: [0.000423, 0.005110] | l2 radius: 5.77E-03 | Size: 2.82E+03 | Time: 347ms
+> No region to refine. Done!
+> Time for subregion 0000000001: 347ms
+> Total time up to subregion 0000000001: 347ms = 0.34743499755859375 s
+> Total time : 347ms = 0.34743499755859375 s
+> Success: True
+==> Feasibility test passed for beta = 7.7500. Reducing beta range to [7.7500, 10.0000].
+==> Time for this iteration: 348ms
+==> Total time for binary search so far: 846ms = 0.8469271659851074 s
+##################################################
+==> Current beta range: [7.7500, 10.0000]
+==> Testing beta = 8.8750
+==> Number of subregions: 1
+==> Subregion 0000000001 / 0000000001: 
+==> [[-3.14 -5.  ], [3.14 5.  ]]
+==> Lipschitz constant of the zero order test function: 61.064357
+> Iteration 00 | Bound: [-360.438416, 0.097908] | l2 radius: 5.90E+00 | Size: 1.00E+00 | Time: 1ms
+> Iteration 01 | Bound: [-244.193939, 0.898656] | l2 radius: 4.01E+00 | Size: 2.00E+00 | Time: 2ms
+> Iteration 02 | Bound: [-180.256927, 0.011237] | l2 radius: 2.95E+00 | Size: 4.00E+00 | Time: 4ms
+> Iteration 03 | Bound: [-122.530037, 0.016260] | l2 radius: 2.01E+00 | Size: 8.00E+00 | Time: 6ms
+> Iteration 04 | Bound: [-90.107437, 0.026643] | l2 radius: 1.48E+00 | Size: 1.60E+01 | Time: 7ms
+> Iteration 05 | Bound: [-61.245255, 0.027891] | l2 radius: 1.00E+00 | Size: 3.20E+01 | Time: 9ms
+> Iteration 06 | Bound: [-45.059891, 0.007149] | l2 radius: 7.38E-01 | Size: 6.40E+01 | Time: 11ms
+> Iteration 07 | Bound: [-30.627789, 0.008785] | l2 radius: 5.02E-01 | Size: 1.28E+02 | Time: 12ms
+> Iteration 08 | Bound: [-18.985355, 0.003603] | l2 radius: 3.69E-01 | Size: 2.56E+02 | Time: 15ms
+> Iteration 09 | Bound: [-8.751983, 0.002809] | l2 radius: 2.51E-01 | Size: 4.20E+02 | Time: 18ms
+> Iteration 10 | Bound: [-4.750155, 0.003344] | l2 radius: 1.85E-01 | Size: 6.60E+02 | Time: 23ms
+> Iteration 11 | Bound: [-2.176876, 0.003020] | l2 radius: 1.25E-01 | Size: 1.09E+03 | Time: 29ms
+> Iteration 12 | Bound: [-1.172650, 0.002433] | l2 radius: 9.23E-02 | Size: 2.00E+03 | Time: 39ms
+> Iteration 13 | Bound: [-0.541313, 0.002434] | l2 radius: 6.27E-02 | Size: 3.43E+03 | Time: 55ms
+> Iteration 14 | Bound: [-0.291943, 0.002521] | l2 radius: 4.61E-02 | Size: 4.39E+03 | Time: 89ms
+> Iteration 15 | Bound: [-0.134008, 0.002503] | l2 radius: 3.14E-02 | Size: 6.40E+03 | Time: 118ms
+> Iteration 16 | Bound: [-0.071415, 0.002441] | l2 radius: 2.31E-02 | Size: 8.68E+03 | Time: 169ms
+> Iteration 17 | Bound: [-0.031886, 0.002438] | l2 radius: 1.57E-02 | Size: 1.04E+04 | Time: 236ms
+> Iteration 18 | Bound: [-0.016162, 0.002426] | l2 radius: 1.15E-02 | Size: 9.25E+03 | Time: 292ms
+> Iteration 19 | Bound: [-0.006253, 0.002425] | l2 radius: 7.84E-03 | Size: 8.22E+03 | Time: 328ms
+> Iteration 20 | Bound: [-0.002285, 0.002424] | l2 radius: 5.77E-03 | Size: 4.99E+03 | Time: 365ms
+> Iteration 21 | Bound: [0.000205, 0.002424] | l2 radius: 3.92E-03 | Size: 3.70E+03 | Time: 383ms
+> No region to refine. Done!
+> Time for subregion 0000000001: 383ms
+> Total time up to subregion 0000000001: 383ms = 0.38362693786621094 s
+> Total time : 383ms = 0.38362693786621094 s
+> Success: True
+==> Feasibility test passed for beta = 8.8750. Reducing beta range to [8.8750, 10.0000].
+==> Time for this iteration: 384ms
+==> Total time for binary search so far: 1s231ms = 1.2313647270202637 s
+##################################################
+==> Current beta range: [8.8750, 10.0000]
+==> Testing beta = 9.4375
+==> Number of subregions: 1
+==> Subregion 0000000001 / 0000000001: 
+==> [[-3.14 -5.  ], [3.14 5.  ]]
+==> Lipschitz constant of the zero order test function: 61.125602
+> Iteration 00 | Bound: [-360.800049, 0.097884] | l2 radius: 5.90E+00 | Size: 1.00E+00 | Time: 0ms
+> Iteration 01 | Bound: [-244.442062, 0.896352] | l2 radius: 4.01E+00 | Size: 2.00E+00 | Time: 2ms
+> Iteration 02 | Bound: [-180.439362, 0.009596] | l2 radius: 2.95E+00 | Size: 4.00E+00 | Time: 4ms
+> Iteration 03 | Bound: [-122.654182, 0.015019] | l2 radius: 2.01E+00 | Size: 8.00E+00 | Time: 6ms
+> Iteration 04 | Bound: [-90.198502, 0.025978] | l2 radius: 1.48E+00 | Size: 1.60E+01 | Time: 7ms
+> Iteration 05 | Bound: [-61.307163, 0.027438] | l2 radius: 1.00E+00 | Size: 3.20E+01 | Time: 9ms
+> Iteration 06 | Bound: [-45.105328, 0.006912] | l2 radius: 7.38E-01 | Size: 6.40E+01 | Time: 10ms
+> Iteration 07 | Bound: [-30.658680, 0.008622] | l2 radius: 5.02E-01 | Size: 1.28E+02 | Time: 12ms
+> Iteration 08 | Bound: [-19.001244, 0.002378] | l2 radius: 3.69E-01 | Size: 2.56E+02 | Time: 15ms
+> Iteration 09 | Bound: [-8.759358, 0.001527] | l2 radius: 2.51E-01 | Size: 4.20E+02 | Time: 18ms
+> Iteration 10 | Bound: [-4.754278, 0.001963] | l2 radius: 1.85E-01 | Size: 6.60E+02 | Time: 23ms
+> Iteration 11 | Bound: [-2.178809, 0.001633] | l2 radius: 1.25E-01 | Size: 1.09E+03 | Time: 29ms
+> Iteration 12 | Bound: [-1.175055, 0.001086] | l2 radius: 9.23E-02 | Size: 2.00E+03 | Time: 39ms
+> Iteration 13 | Bound: [-0.543215, 0.001074] | l2 radius: 6.27E-02 | Size: 3.44E+03 | Time: 69ms
+> Iteration 14 | Bound: [-0.293593, 0.001185] | l2 radius: 4.61E-02 | Size: 4.39E+03 | Time: 88ms
+> Iteration 15 | Bound: [-0.135526, 0.001179] | l2 radius: 3.14E-02 | Size: 6.41E+03 | Time: 131ms
+> Iteration 16 | Bound: [-0.072862, 0.001097] | l2 radius: 2.31E-02 | Size: 8.76E+03 | Time: 180ms
+> Iteration 17 | Bound: [-0.033293, 0.001097] | l2 radius: 1.57E-02 | Size: 1.05E+04 | Time: 259ms
+> Iteration 18 | Bound: [-0.017547, 0.001079] | l2 radius: 1.15E-02 | Size: 9.57E+03 | Time: 330ms
+> Iteration 19 | Bound: [-0.007628, 0.001078] | l2 radius: 7.84E-03 | Size: 8.88E+03 | Time: 378ms
+> Iteration 20 | Bound: [-0.003651, 0.001073] | l2 radius: 5.77E-03 | Size: 6.56E+03 | Time: 405ms
+> Iteration 21 | Bound: [-0.001157, 0.001073] | l2 radius: 3.92E-03 | Size: 5.32E+03 | Time: 440ms
+> Iteration 22 | Bound: [-0.000143, 0.001072] | l2 radius: 2.88E-03 | Size: 4.10E+03 | Time: 458ms
+> Iteration 23 | Bound: [0.000487, 0.001072] | l2 radius: 1.96E-03 | Size: 1.03E+03 | Time: 463ms
+> No region to refine. Done!
+> Time for subregion 0000000001: 464ms
+> Total time up to subregion 0000000001: 464ms = 0.46401405334472656 s
+> Total time : 464ms = 0.46401405334472656 s
+> Success: True
+==> Feasibility test passed for beta = 9.4375. Reducing beta range to [9.4375, 10.0000].
+==> Time for this iteration: 464ms
+==> Total time for binary search so far: 1s696ms = 1.6960968971252441 s
+##################################################
+==> Current beta range: [9.4375, 10.0000]
+==> Testing beta = 9.7188
+==> Number of subregions: 1
+==> Subregion 0000000001 / 0000000001: 
+==> [[-3.14 -5.  ], [3.14 5.  ]]
+==> Lipschitz constant of the zero order test function: 61.156224
+> Iteration 00 | Bound: [-360.980835, 0.097872] | l2 radius: 5.90E+00 | Size: 1.00E+00 | Time: 0ms
+> Iteration 01 | Bound: [-244.566101, 0.895200] | l2 radius: 4.01E+00 | Size: 2.00E+00 | Time: 2ms
+> Iteration 02 | Bound: [-180.530579, 0.008776] | l2 radius: 2.95E+00 | Size: 4.00E+00 | Time: 3ms
+> Iteration 03 | Bound: [-122.716255, 0.014399] | l2 radius: 2.01E+00 | Size: 8.00E+00 | Time: 5ms
+> Iteration 04 | Bound: [-90.244034, 0.025645] | l2 radius: 1.48E+00 | Size: 1.60E+01 | Time: 6ms
+> Iteration 05 | Bound: [-61.338116, 0.027211] | l2 radius: 1.00E+00 | Size: 3.20E+01 | Time: 8ms
+> Iteration 06 | Bound: [-45.128044, 0.006794] | l2 radius: 7.38E-01 | Size: 6.40E+01 | Time: 10ms
+> Iteration 07 | Bound: [-30.674377, 0.008286] | l2 radius: 5.02E-01 | Size: 1.28E+02 | Time: 11ms
+> Iteration 08 | Bound: [-19.009188, 0.001766] | l2 radius: 3.69E-01 | Size: 2.56E+02 | Time: 14ms
+> Iteration 09 | Bound: [-8.763046, 0.000886] | l2 radius: 2.51E-01 | Size: 4.20E+02 | Time: 17ms
+> Iteration 10 | Bound: [-4.756339, 0.001233] | l2 radius: 1.85E-01 | Size: 6.60E+02 | Time: 21ms
+> Iteration 11 | Bound: [-2.179776, 0.000915] | l2 radius: 1.25E-01 | Size: 1.09E+03 | Time: 27ms
+> Iteration 12 | Bound: [-1.176301, 0.000413] | l2 radius: 9.23E-02 | Size: 2.00E+03 | Time: 49ms
+> Iteration 13 | Bound: [-0.544192, 0.000394] | l2 radius: 6.27E-02 | Size: 3.44E+03 | Time: 65ms
+> Iteration 14 | Bound: [-0.294419, 0.000496] | l2 radius: 4.61E-02 | Size: 4.40E+03 | Time: 84ms
+> Iteration 15 | Bound: [-0.136287, 0.000489] | l2 radius: 3.14E-02 | Size: 6.42E+03 | Time: 124ms
+> Iteration 16 | Bound: [-0.073588, 0.000417] | l2 radius: 2.31E-02 | Size: 8.76E+03 | Time: 173ms
+> Iteration 17 | Bound: [-0.033997, 0.000414] | l2 radius: 1.57E-02 | Size: 1.05E+04 | Time: 216ms
+> Iteration 18 | Bound: [-0.018240, 0.000398] | l2 radius: 1.15E-02 | Size: 9.71E+03 | Time: 268ms
+> Iteration 19 | Bound: [-0.008316, 0.000397] | l2 radius: 7.84E-03 | Size: 9.22E+03 | Time: 322ms
+> Iteration 20 | Bound: [-0.004335, 0.000393] | l2 radius: 5.77E-03 | Size: 7.33E+03 | Time: 368ms
+> Iteration 21 | Bound: [-0.001840, 0.000393] | l2 radius: 3.92E-03 | Size: 6.06E+03 | Time: 394ms
+> Iteration 22 | Bound: [-0.000824, 0.000393] | l2 radius: 2.88E-03 | Size: 5.96E+03 | Time: 433ms
+> Iteration 23 | Bound: [-0.000193, 0.000392] | l2 radius: 1.96E-03 | Size: 5.96E+03 | Time: 459ms
+> Early stopping. Done!
+> Time for subregion 0000000001: 459ms
+> Total time up to subregion 0000000001: 459ms = 0.45996832847595215 s
+> Total time : 459ms = 0.45996832847595215 s
+> Success: True
+==> Feasibility test passed for beta = 9.7188. Reducing beta range to [9.7188, 10.0000].
+==> Time for this iteration: 460ms
+==> Total time for binary search so far: 2s156ms = 2.1567578315734863 s
+##################################################
+==> Current beta range: [9.7188, 10.0000]
+==> Testing beta = 9.8594
+==> Number of subregions: 1
+==> Subregion 0000000001 / 0000000001: 
+==> [[-3.14 -5.  ], [3.14 5.  ]]
+==> Lipschitz constant of the zero order test function: 61.171536
+> Iteration 00 | Bound: [-361.071228, 0.097866] | l2 radius: 5.90E+00 | Size: 1.00E+00 | Time: 1ms
+> Iteration 01 | Bound: [-244.628143, 0.894624] | l2 radius: 4.01E+00 | Size: 2.00E+00 | Time: 2ms
+> Iteration 02 | Bound: [-180.576187, 0.008366] | l2 radius: 2.95E+00 | Size: 4.00E+00 | Time: 4ms
+> Iteration 03 | Bound: [-122.747292, 0.014088] | l2 radius: 2.01E+00 | Size: 8.00E+00 | Time: 6ms
+> Iteration 04 | Bound: [-90.266792, 0.025479] | l2 radius: 1.48E+00 | Size: 1.60E+01 | Time: 8ms
+> Iteration 05 | Bound: [-61.353596, 0.027097] | l2 radius: 1.00E+00 | Size: 3.20E+01 | Time: 9ms
+> Iteration 06 | Bound: [-45.139404, 0.006735] | l2 radius: 7.38E-01 | Size: 6.40E+01 | Time: 11ms
+> Iteration 07 | Bound: [-30.682327, 0.008018] | l2 radius: 5.02E-01 | Size: 1.28E+02 | Time: 13ms
+> Iteration 08 | Bound: [-19.013159, 0.001459] | l2 radius: 3.69E-01 | Size: 2.56E+02 | Time: 15ms
+> Iteration 09 | Bound: [-8.764890, 0.000566] | l2 radius: 2.51E-01 | Size: 4.20E+02 | Time: 18ms
+> Iteration 10 | Bound: [-4.757369, 0.000869] | l2 radius: 1.85E-01 | Size: 6.60E+02 | Time: 23ms
+> Iteration 11 | Bound: [-2.180259, 0.000556] | l2 radius: 1.25E-01 | Size: 1.09E+03 | Time: 29ms
+> Iteration 12 | Bound: [-1.176924, 0.000076] | l2 radius: 9.23E-02 | Size: 2.00E+03 | Time: 54ms
+> Iteration 13 | Bound: [-0.544681, 0.000054] | l2 radius: 6.27E-02 | Size: 3.44E+03 | Time: 70ms
+> Iteration 14 | Bound: [-0.294831, 0.000151] | l2 radius: 4.61E-02 | Size: 4.40E+03 | Time: 90ms
+> Iteration 15 | Bound: [-0.136667, 0.000143] | l2 radius: 3.14E-02 | Size: 6.43E+03 | Time: 132ms
+> Iteration 16 | Bound: [-0.073951, 0.000073] | l2 radius: 2.31E-02 | Size: 8.76E+03 | Time: 193ms
+> Iteration 17 | Bound: [-0.034351, 0.000071] | l2 radius: 1.57E-02 | Size: 1.05E+04 | Time: 257ms
+> Iteration 18 | Bound: [-0.018588, 0.000057] | l2 radius: 1.15E-02 | Size: 9.79E+03 | Time: 298ms
+> Iteration 19 | Bound: [-0.008660, 0.000055] | l2 radius: 7.84E-03 | Size: 9.37E+03 | Time: 352ms
+> Iteration 20 | Bound: [-0.004677, 0.000053] | l2 radius: 5.77E-03 | Size: 7.65E+03 | Time: 397ms
+> Iteration 21 | Bound: [-0.002181, 0.000053] | l2 radius: 3.92E-03 | Size: 6.43E+03 | Time: 426ms
+> Iteration 22 | Bound: [-0.001165, 0.000052] | l2 radius: 2.88E-03 | Size: 6.82E+03 | Time: 468ms
+> Iteration 23 | Bound: [-0.000534, 0.000053] | l2 radius: 1.96E-03 | Size: 8.03E+03 | Time: 518ms
+> Early stopping. Done!
+> Time for subregion 0000000001: 518ms
+> Total time up to subregion 0000000001: 518ms = 0.5186767578125 s
+> Total time : 518ms = 0.5186767578125 s
+> Success: True
+==> Feasibility test passed for beta = 9.8594. Reducing beta range to [9.8594, 10.0000].
+==> Time for this iteration: 519ms
+==> Total time for binary search so far: 2s676ms = 2.676218271255493 s
+##################################################
+==> Current beta range: [9.8594, 10.0000]
+==> Testing beta = 9.9297
+==> Number of subregions: 1
+==> Subregion 0000000001 / 0000000001: 
+==> [[-3.14 -5.  ], [3.14 5.  ]]
+==> Lipschitz constant of the zero order test function: 61.179191
+> Iteration 00 | Bound: [-361.116425, 0.097863] | l2 radius: 5.90E+00 | Size: 1.00E+00 | Time: 1ms
+> Iteration 01 | Bound: [-244.659164, 0.894336] | l2 radius: 4.01E+00 | Size: 2.00E+00 | Time: 3ms
+> Iteration 02 | Bound: [-180.598984, 0.008161] | l2 radius: 2.95E+00 | Size: 4.00E+00 | Time: 5ms
+> Iteration 03 | Bound: [-122.762817, 0.013933] | l2 radius: 2.01E+00 | Size: 8.00E+00 | Time: 6ms
+> Iteration 04 | Bound: [-90.278175, 0.025396] | l2 radius: 1.48E+00 | Size: 1.60E+01 | Time: 8ms
+> Iteration 05 | Bound: [-61.361332, 0.027041] | l2 radius: 1.00E+00 | Size: 3.20E+01 | Time: 10ms
+> Iteration 06 | Bound: [-45.145081, 0.006705] | l2 radius: 7.38E-01 | Size: 6.40E+01 | Time: 11ms
+> Iteration 07 | Bound: [-30.686302, 0.007884] | l2 radius: 5.02E-01 | Size: 1.28E+02 | Time: 13ms
+> Iteration 08 | Bound: [-19.015144, 0.001306] | l2 radius: 3.69E-01 | Size: 2.56E+02 | Time: 16ms
+> Iteration 09 | Bound: [-8.765812, 0.000405] | l2 radius: 2.51E-01 | Size: 4.20E+02 | Time: 19ms
+> Iteration 10 | Bound: [-4.757885, 0.000686] | l2 radius: 1.85E-01 | Size: 6.60E+02 | Time: 23ms
+> Iteration 11 | Bound: [-2.180501, 0.000377] | l2 radius: 1.25E-01 | Size: 1.09E+03 | Time: 30ms
+> Iteration 12 | Bound: [-1.177236, -0.000092] | l2 radius: 9.23E-02 | Size: 2.00E+03 | Time: 40ms
+> Negative region:  [-1.7171876 -1.796875 ]
+> Negative value:  -9.219721e-05
+> Double check:  tensor([-9.2240e-05])
+> CBF value:  tensor([[0.0114]])
+==> Feasibility test failed for beta = 9.9297. Reducing beta range to [9.8594, 9.9297].
+==> Time for this iteration: 51ms
+==> Total time for binary search so far: 2s728ms = 2.7281320095062256 s
+##################################################
+==> Best beta found: 9.8594
+==> Done!
